@@ -264,6 +264,7 @@ footer {
     background-color: var(--first-color);
 }
 
-footer p {
+footer p,
+footer a {
     color: var(--white-color);
 }
