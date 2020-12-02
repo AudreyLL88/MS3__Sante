@@ -271,11 +271,11 @@ footer a {
 
 .subscribe{
     background-color: var(--first-color-dark);
-}
-
-.subscribe-body {
+     display: flex;
+    justify-content: center;
     align-items: center;
 }
+
 
 .recipe-body{
     background: url("https://cdn.pixabay.com/photo/2018/06/05/22/21/ice-cubes-3456598_960_720.jpg") center center no-repeat;
