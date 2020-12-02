@@ -77,7 +77,6 @@ h6 {
 
 .l-header{
   width: 100%;
-  position: fixed;
   top: 0;
   left: 0;
   z-index: var(--z-fixed);
@@ -98,6 +97,9 @@ h6 {
 }
 
 @media screen and (max-width: 768px){
+ .l-header{
+     position: fixed;
+ }
   .nav__menu{
     position: fixed;
     top: 0;
@@ -319,3 +321,25 @@ footer a {
     z-index: -1;
     border-radius: 10px;
 }
+
+/* Submit cocktail page */
+
+.cocktail-section {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.cocktail-form label {
+    color: var(--first-color-darken);
+}
+
+.cocktail-headline h2 {
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2rem;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    color:var(--first-color-dark);
+}
+
+

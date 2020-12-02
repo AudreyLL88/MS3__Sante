@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Small Business - Start Bootstrap Template</title>
+
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Lobster&display=swap" rel="stylesheet">
+  <!--Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+        integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA==" crossorigin="anonymous" type="text/css">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <!-- CSS file -->
+  <link href="static/css/styles.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <header class="l-header">
+        <!-- top navbar -->
+		<nav class="nav bd-grid">
+            <div>
+                <a href="#" class="nav__logo">Santé!</a>
+            </div>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="fas fa-bars red-text text-lighten-2"></i>
+            </div>
+            <div class="nav__menu" id="nav-menu">
+                <div class="nav__close" id="nav-close">
+                    <i class="fas fa-times"></i>
+                </div>
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Recipes</a></li>
+                        <li class="nav__item"><a href="#" class="nav__link">Profile</a></li>
+                        <li class="nav__item"><a href="#" class="nav__link">New Recipes</a></li>
+                        <li class="nav__item"><a href="#" class="nav__link">Cocktails</a></li>
+                        <li class="nav__item"><a href="#" class="nav__link">Log Out</a></li>
+                        <li class="nav__item"><a href="login.html" class="nav__link">Log In</a></li>
+                        <li class="nav__item"><a href="register.html" class="nav__link">Register</a></li>
+                </ul>
+            </div>
+        </nav>
+	</header>
+
+<section class="container cocktail-section">
+    <div class="cocktail-headline text-center">
+    <h2>Submit Cocktail</h2>
+    </div>
+    <hr class="mb-5">
+
+<form method="POST" class="pb-5 cocktail-form">
+    <div class="form-group">
+        <label for="title">Cocktail Title</label>
+        <input required type="text" class="form-control" id="title" name="title" aria-describedby="recipe title"
+            maxlength="45">
+    </div>
+
+    
+    <div class="form-group">
+        <label for="category_name">Category</label>
+        <select required name="category_name" id="category_name" class="form-control">
+            <option selected disabled>Select Category</option>
+            <option value="">Category Name</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input required type="text" class="form-control" id="description" name="description"
+            aria-describedby="recipe description" maxlength="130">
+        <small class="form-text text-muted">Short description</small>
+    </div>
+
+    <div class="form-group">
+        <label for="image_url">Image Url</label>
+        <input required type="text" class="form-control" name="image_url" id="image_url"
+            aria-describedby="recipe description">
+        <small type="url" class="form-text text-muted">Cocktail Picture hosted on a website</small>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <div class="form-group">
+                <label for="prep">Prep Time</label>
+                <select required id="prep" name="prep" class="form-control">
+                    <option selected disabled>Select option</option>
+                    <option>Fast</option>
+                    <option>Steady</option>
+                    <option>Slow</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <div class="form-group">
+                <label for="serves">Amount of Servings</label>
+                <select required id="serves" name="serves" class="form-control">
+                    <option selected disabled>Select servings</option>
+                    <option>2</option>
+                    <option>4</option>
+                    <option>6</option>
+                    <option>8</option>
+                    <option>10</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+            <div class="form-group">
+                <label for="difficulty">Difficulty</label>
+                <select required id="difficulty" name="difficulty" class="form-control">
+                    <option selected disabled>Select difficulty</option>
+                    <option>Easy</option>
+                    <option>Medium</option>
+                    <option>Hard</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+                <label for="ingredients">Ingredients</label>
+                <textarea required class="form-control" id="ingredients" name="ingredients" rows="3"
+                    placeholder="Each ingredient in it's own line."></textarea>
+                <small class="form-text text-muted">One ingredient at a time</small>
+            </div>
+        <div class="col-sm-12 col-md-6">
+              <label for="instructions">Instructions</label>
+                <textarea required class="form-control" id="instructions" name="instructions" rows="3"
+                    placeholder="Put each step in a new line."></textarea>
+                <small class="form-text text-muted">One instruction at a time</small>
+        </div>
+    </div>
+    
+        <button class="btn btn-lg btn-warning text-uppercase text-white mt-3" value="login" type="submit">Submit</button>
+    
+</form>
+</section>
+
+  <!-- Footer -->
+  <footer class="py-5">
+    <div class="container">
+    <div class="row">
+      <div class="col-md-12 py-3">
+        <div class="mb-5 text-center">
+          <a class="fb-icon">
+            <i class="fab fa-facebook-f fa-lg mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <a class="tw-icon">
+            <i class="fab fa-twitter fa-lg mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <a class="ins-icon">
+            <i class="fab fa-instagram fa-lg mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <a class="pin-icon">
+            <i class="fab fa-pinterest fa-lg fa-2x"> </i>
+          </a>
+        </div>
+      </div>
+    </div>
+      <p class="m-0 text-center text-white">Copyright &copy; Audrey Lloancy 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap and GSAP core JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ==" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="static/js/main.js"></script>
+
+</body>
+
+</html>
