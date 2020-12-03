@@ -62,6 +62,7 @@ h4,
 h5,
 h6 {
     font-family: "Lobster", cursive;
+    color:var(--first-color-dark);
 }
 
 /*  LAYOUT  */
@@ -344,5 +345,9 @@ footer a {
     margin-bottom: 20px;
     color:var(--first-color-dark);
 }
+
+
+
+
 
 
