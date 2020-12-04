@@ -7,6 +7,7 @@
   --first-color-dark: rgb(240, 181, 4);
   --first-color-darken: rgb(228, 163, 0);
   --white-color: #FFF;
+  --shadow-color: #D3D3D3
   
   /* Font and typography */
   --body-font:'Montserrat', sans-serif;
@@ -345,6 +346,30 @@ footer a {
     margin-bottom: 20px;
     color:var(--first-color-dark);
 }
+
+/* cocktail cards */
+
+.cocktail-card {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   cursor: pointer;
+   transition: transform 200ms ease-in;
+   border-radius: 5px;
+}
+
+.cocktail-card:hover {
+    transform: scale(1.02);
+}
+
+.cocktail-card img{
+    height:12rem;
+    width:100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+
 
 
 
