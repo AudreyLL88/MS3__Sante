@@ -35,13 +35,19 @@
             <i class="fas fa-times"></i>
           </div>
           <ul class="nav__list">
-            <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
-            <li class="nav__item"><a href="cocktails.html" class="nav__link">Recipes</a></li>
-            <li class="nav__item"><a href="profile.html" class="nav__link">Profile</a></li>
-            <li class="nav__item"><a href="add_cocktail.html" class="nav__link">New Recipes</a></li>
-            <li class="nav__item"><a href="login.html" class="nav__link">Log Out</a></li>
-            <li class="nav__item"><a href="login.html" class="nav__link">Log In</a></li>
-            <li class="nav__item"><a href="register.html" class="nav__link">Register</a></li>
+            <li class="nav__item"><a href="{{ url_for('index') }}" class="nav__link">Home</a></li>
+            <li class="nav__item"><a href="{{ url_for('get_cocktails') }}" class="nav__link">Recipes</a></li>
+                
+                        <li class="nav__item"><a href="" class="nav__link">Profile</a></li>
+                        <li class="nav__item"><a href="" class="nav__link">New Recipes</a></li>
+                        
+                        <li class="nav__item"><a href="" class="nav__link">Cocktails</a></li>
+               
+                        <li class="nav__item"><a href="}" class="nav__link">Log Out</a></li>
+                    
+                        <li class="nav__item"><a href="" class="nav__link">Log In</a></li>
+                        <li class="nav__item"><a href="" class="nav__link">Register</a></li>
+               
           </ul>
         </div>
       </nav>

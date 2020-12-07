@@ -1,325 +1,219 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html"%}
+{% block content %}
 
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Santé!</title>
-
-  <!-- Google fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Lobster&display=swap" rel="stylesheet">
-  <!--Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
-        integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA==" crossorigin="anonymous" type="text/css">
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-  <!-- CSS file -->
-  <link href="static/css/styles.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-  <!-- Navigation -->
-  <header class="l-header">
-        <!-- top navbar -->
-		<nav class="nav bd-grid">
-            <div>
-                <a href="#" class="nav__logo">Santé!</a>
+    <section id="cocktail-recipe">
+        <div class="container">
+            <div class="row my-5">
+            <!-- Title -->
+            <div class="col-12">
+                <h2 class="text-center">Negroni</h2>
+                <p class="text-center text-muted">Created by:</p>
+                <hr>
             </div>
-            <div class="nav__toggle" id="nav-toggle">
-                <i class="fas fa-bars red-text text-lighten-2"></i>
             </div>
-            <div class="nav__menu" id="nav-menu">
-                <div class="nav__close" id="nav-close">
-                    <i class="fas fa-times"></i>
-                </div>
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
-                    <li class="nav__item"><a href="cocktails.html" class="nav__link">Recipes</a></li>
-                        <li class="nav__item"><a href="profile.html" class="nav__link">Profile</a></li>
-                        <li class="nav__item"><a href="add_cocktail.html" class="nav__link">New Recipes</a></li>
-                        <li class="nav__item"><a href="login.html" class="nav__link">Log Out</a></li>
-                        <li class="nav__item"><a href="login.html" class="nav__link">Log In</a></li>
-                        <li class="nav__item"><a href="register.html" class="nav__link">Register</a></li>
-                </ul>
+            <div class="row vertical-align">
+            <div class="col-md-8">  
+                <img class="rounded" src="https://cdn.pixabay.com/photo/2016/11/23/14/49/alcohol-1853327_960_720.jpg" alt="cocktail"/> 
             </div>
-        </nav>
-	</header>
-
-<section id="cocktail-recipe">
-    <div class="container">
-      <div class="row my-5">
-        <!-- Title -->
-        <div class="col-12">
-          <h2 class="text-center">Negroni</h2>
-          <p class="text-center text-muted">Created by:</p>
-          <hr>
-        </div>
-      </div>
-      <div class="row vertical-align">
-		<div class="col-md-8">  
-            <img class="rounded" src="https://cdn.pixabay.com/photo/2016/11/23/14/49/alcohol-1853327_960_720.jpg" alt="cocktail"/> 
-		</div>
-		<div class="col-md-4">
-            <div class="card bg-light rounded shadow p-3">
-            <div class="cocktail-info">
-              <h4 class="mb-3 mt-3">Info</h4>
-              <!-- Time -->
-              <div class="row">
-                <div class="col-12">
-                    <blockquote class="wp-block-quote"><p> "A delicious and classic drink, perfect for the summer." 
-                     </p><cite>Tim Heiler</cite></blockquote>
-                </div>
-            </div>
-              <div class="row mt-2">
-                <div class="col-2 text-center">
-                  <i class="fa fa-clock-o" aria-hidden="true"></i>
-                </div>
-                <div class="col-6">Preparation Time</div>
-                <div class="col-4">Slow</div>
-              </div>
-              <!-- Difficulty -->
-              <div class="row">
-                <div class="col-2 text-center">
-                  <i class="fa fa-area-chart" aria-hidden="true"></i>
-                </div>
-                <div class="col-6">Difficulty</div>
-                <div class="col-4">Easy</div>
-              </div>
-              <!-- Serves -->
-            <div class="row">
-                <div class="col-2 text-center">
-                  <i class="fa fa-users" aria-hidden="true"></i>
-                </div>
-                <div class="col-6">Servings</div>
+            <div class="col-md-4">
+                <div class="card bg-light rounded shadow p-3">
+                <div class="cocktail-info">
+                    <h4 class="mb-3 mt-3">Info</h4>
+                    <!-- Time -->
+                    <div class="row">
+                    <div class="col-12">
+                        <blockquote class="wp-block-quote">
+                        <p> "A delicious and classic drink, perfect for the summer." 
+                        </p>
+                        <cite>Tim Heiler</cite>
+                        </blockquote>
+                    </div>
+                    </div>
+                    <div class="row mt-2">
+                    <div class="col-2 text-center">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-6">Preparation Time</div>
+                    <div class="col-4">Slow</div>
+                    </div>
+                    <!-- Difficulty -->
+                    <div class="row">
+                    <div class="col-2 text-center">
+                        <i class="fa fa-area-chart" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-6">Difficulty</div>
+                    <div class="col-4">Easy</div>
+                    </div>
+                    <!-- Serves -->
+                    <div class="row">
+                    <div class="col-2 text-center">
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-6">Servings</div>
                     <div class="col-4">2</div>
-              </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-8">
-                  <button class="btn btn-danger align-center-items">Delete</button>
-                  <button class="btn btn-success">Edit</button>
+                    </div>
                 </div>
-              <div class="col-4">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
+                <div class="row mt-5">
+                    <div class="col-8">
+                    <button class="btn btn-danger align-center-items">Delete</button>
+                    <button class="btn btn-success">Edit</button>
+                    </div>
+                    <div class="col-4">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    </div>
+                </div>
                 </div>
             </div>
             </div>
-		</div>
-	</div>
-      <!-- Ingredients -->
-      <div class="card rounded shadow bg-warning p-4">
-    <div class="row">
-        <div class="col-md-2 mt-3">
+            <!-- Ingredients -->
+            <div class="card rounded shadow bg-warning p-4">
+            <div class="row">
+                <div class="col-md-2 mt-3">
                 <div class="cocktail-ingredients text-white">
                     <h4 class="text-white">Ingredients</h4>
                     <hr>
                     <ul>
-                        <li>2cl Campari</li>
-                        <li>Orange Zest</li>
-                        <li>Bitters</li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                    <li>2cl Campari</li>
+                    <li>Orange Zest</li>
+                    <li>Bitters</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
                     </ul>
                 </div>
-            </div>
-            <div class="col-md-2 mt-2">
-                    <div class="cocktail-tools text-white">
-                        <h4 class="text-white">Tools</h4>
-                        <hr>
-                        <ul>
-                            <li>Shaker</li>
-                            <li>Spoon</li>
-                            <li>Blender</li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ul>
-                    </div>
+                </div>
+                <div class="col-md-2 mt-2">
+                <div class="cocktail-tools text-white">
+                    <h4 class="text-white">Tools</h4>
+                    <hr>
+                    <ul>
+                    <li>Shaker</li>
+                    <li>Spoon</li>
+                    <li>Blender</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    </ul>
+                </div>
                 </div>
                 <div class="col-md-8 mt-2">
-                    <div class="cocktail-directions text-white">
-                        <h4 class="text-white">Directions</h4>
-                        <hr>
-                        <ol>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ol>
+                <div class="cocktail-directions text-white">
+                    <h4 class="text-white">Directions</h4>
+                    <hr>
+                    <ol>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    </ol>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </section>
+        <section>
+        <div class="container my-4">
+            <h4 class="text-center">You might also enjoy:</h4>
+            <hr class="my-4">
+            <!--Carousel Wrapper-->
+            <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+            <!--Controls-->
+            <div class="controls-top text-center">
+                <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+                <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>
+            </div>
+            <!--/.Controls-->
+            <!--Indicators-->
+            <ol class="carousel-indicators">
+                <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+                <li data-target="#multi-item-example" data-slide-to="1"></li>
+                <li data-target="#multi-item-example" data-slide-to="2"></li>
+            </ol>
+            <!--/.Indicators-->
+            <!--Slides-->
+            <div class="carousel-inner" role="listbox">
+                <!--First slide-->
+                <div class="carousel-item active">
+                <div class="row">
+                    <div class="col-md-4 col-sm-12 clearfix d-md-block d-sm-block">
+                    <div class="card mb-2">
+                        <img class="card-img" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
+                        alt="Card image cap">
+                        <div class="card-img-overlay">
+                        <h4 class="card-title">Card title</h4>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-4 clearfix col-sm-12 d-md-block">
+                    <div class="card mb-2">
+                        <img class="card-img" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
+                        alt="Card image cap">
+                        <div class="card-img-overlay">
+                        <h4 class="card-title">Card title</h4>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-4 clearfix col-sm-12 d-md-block">
+                    <div class="card mb-2">
+                        <img class="card-img" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
+                        alt="Card image cap">
+                        <div class="card-img-overlay">
+                        <h4 class="card-title">Card title</h4>
+                        </div>
+                    </div>
                     </div>
                 </div>
-    </div>
-</div>
-            
-            </div>
-</section>
-
-  <section>
- <div class="container my-4">
-
-    <h4 class="text-center">You might also enjoy:</h4>
-
-    <hr class="my-4">
-
-    <!--Carousel Wrapper-->
-    <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-
-      <!--Controls-->
-      <div class="controls-top text-center">
-        <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-        <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>
-      </div>
-      <!--/.Controls-->
-
-      <!--Indicators-->
-      <ol class="carousel-indicators">
-        <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-        <li data-target="#multi-item-example" data-slide-to="1"></li>
-        <li data-target="#multi-item-example" data-slide-to="2"></li>
-      </ol>
-      <!--/.Indicators-->
-
-      <!--Slides-->
-      <div class="carousel-inner" role="listbox">
-
-        <!--First slide-->
-        <div class="carousel-item active">
-
-          <div class="row">
-            <div class="col-md-4 col-sm-12 clearfix d-md-block d-sm-block">
-              <div class="card mb-2">
-                <img class="card-img" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
-                  alt="Card image cap">
-                  <div class="card-img-overlay">
-               <h4 class="card-title">Card title</h4>
                 </div>
-              </div>
-            </div>
-
-            <div class="col-md-4 clearfix col-sm-12 d-md-block">
-              <div class="card mb-2">
-                <img class="card-img" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
-                  alt="Card image cap">
-                  <div class="card-img-overlay">
-               <h4 class="card-title">Card title</h4>
+                <!--/.First slide-->
+                <!--Second slide-->
+                <div class="carousel-item">
+                <div class="row">
+                    <div class="col-md-4 col-sm-12 clearfix d-md-block d-sm-block">
+                    <div class="card mb-2">
+                        <img class="card-img" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
+                        alt="Card image cap">
+                        <div class="card-img-overlay">
+                        <h4 class="card-title">Card title</h4>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12 clearfix d-md-block d-sm-block">
+                    <div class="card mb-2">
+                        <img class="card-img" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
+                        alt="Card image cap">
+                        <div class="card-img-overlay">
+                        <h4 class="card-title">Card title</h4>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12 clearfix d-md-block d-sm-block">
+                    <div class="card mb-2">
+                        <img class="card-img" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
+                        alt="Card image cap">
+                        <div class="card-img-overlay">
+                        <h4 class="card-title">Card title</h4>
+                        </div>
+                    </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-
-        
-            <div class="col-md-4 clearfix col-sm-12 d-md-block">
-              <div class="card mb-2">
-                <img class="card-img" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
-                  alt="Card image cap">
-                  <div class="card-img-overlay">
-               <h4 class="card-title">Card title</h4>
                 </div>
-              </div>
+                <!--/.Second slide-->
             </div>
-          </div>
-
+            <!--/.Slides-->
+            </div>
+            <!--/.Carousel Wrapper-->
         </div>
-        <!--/.First slide-->
+    </section>
 
-        <!--Second slide-->
-        <div class="carousel-item">
-
-          <div class="row">
-            <div class="col-md-4 col-sm-12 clearfix d-md-block d-sm-block">
-              <div class="card mb-2">
-                <img class="card-img" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
-                  alt="Card image cap">
-                  <div class="card-img-overlay">
-               <h4 class="card-title">Card title</h4>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4 col-sm-12 clearfix d-md-block d-sm-block">
-              <div class="card mb-2">
-                <img class="card-img" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
-                  alt="Card image cap">
-                  <div class="card-img-overlay">
-               <h4 class="card-title">Card title</h4>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4 col-sm-12 clearfix d-md-block d-sm-block">
-              <div class="card mb-2">
-                <img class="card-img" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
-                  alt="Card image cap">
-                  <div class="card-img-overlay">
-               <h4 class="card-title">Card title</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <!--/.Second slide-->
-      </div>
-      <!--/.Slides-->
-
-    </div>
-    <!--/.Carousel Wrapper-->
-
-
-  </div>
-  </section>
-
-
-  <!-- Footer -->
-  <footer class="py-5">
-    <div class="container">
-    <div class="row">
-      <div class="col-md-12 py-3">
-        <div class="mb-5 text-center">
-          <a class="fb-icon">
-            <i class="fab fa-facebook-f fa-lg mr-md-5 mr-3 fa-2x"> </i>
-          </a>
-          <a class="tw-icon">
-            <i class="fab fa-twitter fa-lg mr-md-5 mr-3 fa-2x"> </i>
-          </a>
-          <a class="ins-icon">
-            <i class="fab fa-instagram fa-lg mr-md-5 mr-3 fa-2x"> </i>
-          </a>
-          <a class="pin-icon">
-            <i class="fab fa-pinterest fa-lg fa-2x"> </i>
-          </a>
-        </div>
-      </div>
-    </div>
-      <p class="m-0 text-center text-white">Copyright &copy; Audrey Lloancy 2020</p>
-    </div>
-    <!-- /.container -->
-  </footer>
-
-  <!-- Bootstrap and GSAP core JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ==" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-    <script src="static/js/main.js"></script>
-    <script src="static/js/script.js"></script>
-
-</body>
-
-</html>
-
+    {% endblock %}

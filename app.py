@@ -23,6 +23,12 @@ def index():
     return render_template("index.html", cocktails=cocktails)
 
 
+@app.route("/get_cocktails")
+def get_cocktails():
+    cocktails = list(mongo.db.cocktails.find())
+    return render_template("cocktails.html", cocktails=cocktails)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
