@@ -92,38 +92,25 @@
             <hr>
             </div>
         </div>
+        {% if cocktails|length > 0 %}
         <div class="row">
+             {% for cocktail in cocktails %}
             <div class="col-md-4">
+            
             <div class="cocktail-card shadow my-3">
                 <div class="cocktail-body">
-                <img src="https://cdn.pixabay.com/photo/2019/06/13/11/28/cocktail-4271392_960_720.jpg" alt="" class="cocktail-img">
-                <h2 class="card-cocktail-title p-3">Negroni</h2>
-                <p class="card-cocktail-description px-3">description</p>
+                <img src="{{ cocktail.cocktail_img }}" alt="" class="cocktail-img">
+                <h2 class="card-cocktail-title p-3">{{ cocktail.cocktail_name }}</h2>
+                <h6><span class="badge bg-success">{{ cocktail.category_name }}</span></h6>
+                <p class="card-cocktail-description px-3">{{ cocktail.cocktail_description }}</p>
                 </div>
-                <button class="cocktail-btn btn btn-small btn-warning text-white p-3 m-3 border border-warning ">Try</button>
+                <a src="{{ url_for( 'get_cocktails') }}" class="cocktail-btn btn btn-small btn-warning text-white p-3 m-3 border border-warning ">Try</a>
             </div>
             </div>
-            <div class="col-md-4">
-            <div class="cocktail-card shadow my-3">
-                <div class="cocktail-body">
-                <img src="https://cdn.pixabay.com/photo/2019/06/13/11/28/cocktail-4271392_960_720.jpg" alt="" class="cocktail-img">
-                <h2 class="card-cocktail-title p-3">Negroni</h2>
-                <p class="card-cocktail-description px-3">description</p>
-                </div>
-                <button class="cocktail-btn btn btn-small btn-warning text-white p-3 m-3 border border-warning ">Try</button>
-            </div>
-            </div>
-            <div class="col-md-4">
-            <div class="cocktail-card shadow my-3">
-                <div class="cocktail-body">
-                <img src="https://cdn.pixabay.com/photo/2019/06/13/11/28/cocktail-4271392_960_720.jpg" alt="" class="cocktail-img">
-                <h2 class="card-cocktail-title p-3">Negroni</h2>
-                <p class="card-cocktail-description px-3">description</p>
-                </div>
-                <button class="cocktail-btn btn btn-small btn-warning text-white p-3 m-3 border border-warning ">Try</button>
-            </div>
-            </div>
+             {% endfor %}
         </div>
     </div>
 
+           
+{% endif %}
 {% endblock %}
