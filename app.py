@@ -103,7 +103,7 @@ def add_cocktail():
             "cocktail_description": request.form.get("cocktail_description"),
             "cocktail_img": request.form.get("cocktail_img"),
             "cocktail_ingredients": request.form.get("cocktail_ingredients"),
-            "cocktail_instructions": request.form.get("cocktail_ingredients"),
+            "cocktail_instructions": request.form.get("cocktail_instructions"),
             "cocktail_prep": request.form.get("cocktail_prep"),
             "cocktail_diff": request.form.get("cocktail_diff"),
             "cocktail_serv": request.form.get("cocktail_serv"),
@@ -115,6 +115,12 @@ def add_cocktail():
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_cocktail.html", categories=categories)
+
+
+@app.route('/cocktail/<cocktail_id>')
+def get_cocktail(cocktail_id):
+    cocktail = mongo.db.cocktails.find_one({"_id": ObjectId(cocktail_id)})
+    return render_template("cocktail.html", cocktail=cocktail)
 
 
 if __name__ == "__main__":

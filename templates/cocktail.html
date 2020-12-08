@@ -6,26 +6,26 @@
             <div class="row my-5">
             <!-- Title -->
             <div class="col-12">
-                <h2 class="text-center">Negroni</h2>
-                <p class="text-center text-muted">Created by:</p>
+                <h2 class="text-center">{{ cocktail.cocktail_name }}</h2>
+                <p class="text-center text-muted">{{ cocktail.created_by }}</p>
                 <hr>
             </div>
             </div>
             <div class="row vertical-align">
             <div class="col-md-8">  
-                <img class="rounded" src="https://cdn.pixabay.com/photo/2016/11/23/14/49/alcohol-1853327_960_720.jpg" alt="cocktail"/> 
+                <img class="rounded" src="{{ cocktail.cocktail_img }}" alt="cocktail"/> 
             </div>
             <div class="col-md-4">
                 <div class="card bg-light rounded shadow p-3">
                 <div class="cocktail-info">
-                    <h4 class="mb-3 mt-3">Info</h4>
+                    <h4 class="mb-3 mt-3">About this cocktail:</h4>
                     <!-- Time -->
                     <div class="row">
                     <div class="col-12">
                         <blockquote class="wp-block-quote">
-                        <p> "A delicious and classic drink, perfect for the summer." 
+                        <p> "{{ cocktail.cocktail_description }}" 
                         </p>
-                        <cite>Tim Heiler</cite>
+                        <cite>{{ cocktail.created_by }}</cite>
                         </blockquote>
                     </div>
                     </div>
@@ -34,7 +34,7 @@
                         <i class="fa fa-clock-o" aria-hidden="true"></i>
                     </div>
                     <div class="col-6">Preparation Time</div>
-                    <div class="col-4">Slow</div>
+                    <div class="col-4">{{ cocktail.cocktail_prep }}</div>
                     </div>
                     <!-- Difficulty -->
                     <div class="row">
@@ -42,7 +42,7 @@
                         <i class="fa fa-area-chart" aria-hidden="true"></i>
                     </div>
                     <div class="col-6">Difficulty</div>
-                    <div class="col-4">Easy</div>
+                    <div class="col-4">{{ cocktail.cocktail_diff }}</div>
                     </div>
                     <!-- Serves -->
                     <div class="row">
@@ -50,7 +50,7 @@
                         <i class="fa fa-users" aria-hidden="true"></i>
                     </div>
                     <div class="col-6">Servings</div>
-                    <div class="col-4">2</div>
+                    <div class="col-4">{{ cocktail.cocktail_serv }}</div>
                     </div>
                 </div>
                 <div class="row mt-5">
@@ -75,14 +75,7 @@
                     <h4 class="text-white">Ingredients</h4>
                     <hr>
                     <ul>
-                    <li>2cl Campari</li>
-                    <li>Orange Zest</li>
-                    <li>Bitters</li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                    <li>{{ cocktail.cocktail_ingredients }}</li>
                     </ul>
                 </div>
                 </div>
@@ -104,10 +97,10 @@
                 </div>
                 <div class="col-md-8 mt-2">
                 <div class="cocktail-directions text-white">
-                    <h4 class="text-white">Directions</h4>
+                    <h4 class="text-white">Instructions</h4>
                     <hr>
                     <ol>
-                    <li></li>
+                    <li>{{ cocktail.cocktail_instructions }}</li>
                     <li></li>
                     <li></li>
                     <li></li>

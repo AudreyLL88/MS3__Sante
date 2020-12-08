@@ -24,7 +24,7 @@
                                     <h2 class="card-cocktail-title p-3">{{ cocktail.cocktail_name }}</h2>
                                     <p class="card-cocktail-description px-3">{{ cocktail.cocktail_description }}</p>
                                 </div>
-                                <a href="{{url_for('get_cocktails', cocktail_id=cocktail._id)}}" class="cocktail-btn btn btn-small btn-warning text-white p-3 m-3 border border-warning ">Try</a>
+                                <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}" class="cocktail-btn btn btn-small btn-warning text-white p-3 m-3 border border-warning ">Try</a>
                                 {% if session.user|lower == cocktail.created_by|lower %}
                                     <a  href="" class="btn btn-danger">Delete</a>
                                     <a  href="" class="btn btn-success">Edit</a>
