@@ -14,7 +14,7 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <!-- CSS file -->
-    <link href="static/css/styles.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
     {% block styles %}
     {% endblock %}
   </head>
@@ -39,10 +39,7 @@
             <li class="nav__item"><a href="{{ url_for('get_cocktails') }}" class="nav__link">Recipes</a></li>
              {% if session.user %}
                         <li class="nav__item"><a href="{{ url_for('profile', username=session['user']) }}" class="nav__link">Profile</a></li>
-                        <li class="nav__item"><a href="{{ url_for('get_cocktails') }}" class="nav__link">New Recipes</a></li>
-                        {% if session.user|lower == "admin"|lower %}
-                        <li class="nav__item"><a href="" class="nav__link">Cocktails</a></li>
-                        {% endif %}
+                        <li class="nav__item"><a href="{{ url_for('add_cocktail') }}" class="nav__link">New Recipes</a></li>
                         <li class="nav__item"><a href="{{ url_for('logout') }}" class="nav__link">Log Out</a></li>
                     {% else %}
                         <li class="nav__item"><a href="{{ url_for('login') }}" class="nav__link">Log In</a></li>
@@ -88,7 +85,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ==" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-    <script src="static/js/main.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     {% block scripts %}
     {% endblock %}
   </body>
