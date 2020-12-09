@@ -56,19 +56,19 @@
                     </div>
                 </div>
                 <div class="col-lg-5">
-                    <h1 class="mb-3">It's Apéro time!</h1>
+                    <h2 class="mb-3">It's Apéro time!</h2>
                     <p>L'Apé-what? L'apéro in french is an after-work drink that you share with your co-worker. As we are all working from home now and the bars are closed, It is important to learn to socialize in a different way. With Santé! No need for a bartender, make your own drink and call your friends from the safety and comfort of your own home!</p>
                     <a class="btn btn-warning text-white mt-3" href="#">CHECK OUR RECIPES!</a>
                 </div>
             </div>
 
             <!-- Subscription call to action  -->
-            <div class="card subscribe text-white my-5 py-4 text-center border-0">
-                <div class="card-body">
+            <div class="subscribe text-white my-5 py-4 text-center border-0 rounded">
                     <div class="row">
                         <div class="col-12 text-center subscribe-body">
                             <div class="subscribe-title">
-                                <h2 class="mb-3">Subscribe to our Newsletter</h2>
+                                <h3 class="mb-3">Subscribe to our Newsletter</h3>
+                                <p>Get the freshest ideas!</p>
                                 <div class="input-group">
                                     <input type="email" class="form-control" placeholder="Enter your email">
                                     <span class="input-group-btn">
@@ -85,7 +85,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
             <!-- Featured cocktails -->
             <div class="row">
@@ -96,15 +95,20 @@
             </div>
 
             {% if cocktails|length > 0 %}
-                <div class="row">
+                <div class="row text-center">
                     {% for cocktail in cocktails %}
                         <div class="col-md-4">
                             <div class="cocktail-card shadow my-3">
                                 <div class="cocktail-body">
-                                    <img src="{{ cocktail.cocktail_img }}" alt="" class="cocktail-img">
-                                    <h2 class="card-cocktail-title p-3">{{ cocktail.cocktail_name }}</h2>
-                                    <h6><span class="badge bg-success">{{ cocktail.category_name }}</span></h6>
-                                    <p class="card-cocktail-description px-3">{{ cocktail.cocktail_description }}</p>
+                                    <img src="{{ cocktail.cocktail_img }}" alt="" class="cocktail-img rounded">
+                                    <h4 class="card-cocktail-title py-2 px-3">{{ cocktail.cocktail_name }}</h4>
+                                    <p>{{ cocktail.category_name }}</p>
+                                    <small class="card-cocktail-description px-3">"{{ cocktail.cocktail_description }}"</small>
+                                     <p>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+			                        </p>
                                 </div>
                                 <a src="{{url_for('get_cocktail', cocktail_id=c5fbd7042ba8eb9182e0071c4)}}" class="cocktail-btn btn btn-small btn-warning text-white p-3 m-3 border border-warning ">Try</a>
                             </div>

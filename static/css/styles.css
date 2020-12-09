@@ -60,14 +60,18 @@ img {
 	height: auto;
 }
 
-h1,
 h2,
-h3,
 h4,
 h5,
 h6 {
 	font-family: "Lobster", cursive;
 	color: var(--first-color-dark);
+}
+
+h1,
+h3 {
+    font-family: "Lobster", cursive;
+    color: #ffff;
 }
 
 
@@ -367,7 +371,7 @@ footer a {
 
 .cocktail-card img {
 	height: 12rem;
+    min-height:12rem;
 	width: 100%;
 	object-fit: cover;
-	border-radius: 5px;
 }
