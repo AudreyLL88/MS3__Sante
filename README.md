@@ -1,45 +1,300 @@
-<img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
+# Santé! #
+---
+![Hero Screenshot]
 
-Welcome AudreyLL88,
+## Contents ##
+---
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use.
+* UX
+    * [Project Goals](#project-goals)
+    * [User Goals](#user-goals)
+    * [User Stories](#user-stories)
+    * [User Requirements and Expectations](#requirements)
+    * [Design Choices](#design-choices)
+        * [Fonts](#fonts)
+        * [Icons](#icons)
+        * [Colors](#colors)
+* [Wireframing](#wireframing)
+* [Features](#features)
+    * [Features that have been developed](#developed)
+    * [Features that will be implemented in the future](#implemented)
+* [Technologies](#technologies)
+* [Testing](#testing)
+* [Issues](#issues)
+* [Deployment](#deployment)
+* [Credit](#credits)
 
-## Gitpod Reminders
+## UX (User Experience) ##
+---
+<a name="project-goals"></a>
+### Project Goals ###
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
-`python3 -m http.server`
 
-A blue button should appear to click: *Make Public*,
+<a name="user-goals"></a>
+### User Goals ###
 
-Another blue button should appear to click: *Open Browser*.
+* 
+* 
+* 
+* 
+* 
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+<a name="user-stories"></a>
+### User Stories ### 
 
-A blue button should appear to click: *Make Public*,
+* The **user** wants 
 
-Another blue button should appear to click: *Open Browser*.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
 
-## Updates Since The Instructional Video
+<a name="requirements"></a>
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+### Research ###
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+* 
+* 
+* 
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+<a name="design-choices"></a>
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+### Design Choices ###
+---
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+<a name="fonts"></a>
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+### Fonts ###
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+* 
+<a name="icons"></a>
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+### Icons and Images ###
 
---------
+* 
 
-Happy coding!
+<a name="colors"></a>
+
+### Colors ###
+
+* 
+![Color Scheme]() 
+
+
+<a name="wireframing"></a>
+
+## Wireframing ##
+---
+For **wireframing** I used the tool [**Balsamiq**](https://balsamiq.com/).
+
+View my wireframes [here]().
+
+* 
+<a name="features"></a>
+## Features ## 
+---
+
+<a name="developed"></a>
+### Implemented Features ###
+
+* 
+<a name="implemented"></a>
+### Future implemented features ###
+
+* 
+
+
+<a name="technologies"></a>
+## Technologies used ##
+
+* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* [Javascript]()
+* [Python]()
+
+
+**Tools & Libraries**
+
+* [Bootstrap](https://getbootstrap.com/)
+* [Font-Awesome](https://fontawesome.com/icons?d=gallery)
+* [Google fonts](https://fonts.google.com/)
+* [Git](https://git-scm.com/)
+* 
+* 
+
+<a name="testing"></a>
+
+## Testing ##
+---
+![Testing]()
+
+* 
+
+**Responsiveness**
+
+* **Implementation** 
+
+* 
+
+**GSAP Animation**
+
+![GSAP]()
+
+* **Implementation** 
+
+* 
+
+**Featured Cocktails**
+
+![featured]()
+
+* **Implementation** 
+
+* 
+
+**All Cocktails**
+
+![all]()
+
+* **Implementation**
+
+* 
+
+**Cocktail Recipe**
+
+![recipe]
+
+* **Implementation**
+
+* 
+
+**Search bar**
+
+![search]() 
+
+* **Implementation**
+
+* 
+
+**Log In**
+
+![login]()
+
+* **Implementation**
+
+* 
+
+**Register**
+
+![register]()
+
+* **Implementation**
+
+* 
+
+**Profile**
+
+![profile]()
+
+* **Implementation**
+
+* 
+
+**Submit a cocktail**
+
+![submit]()
+
+* **Implementation**
+
+* 
+
+**Edit a cocktail**
+
+![submit]()
+
+* **Implementation**
+
+* 
+
+**Delete a cocktail**
+
+![delete]()
+
+* **Implementation**
+
+* 
+
+**Manage Category**
+
+![manage]()
+
+* **Implementation**
+
+* 
+
+**Rate a cocktail**
+
+![rate]()
+
+* **Implementation**
+
+* 
+
+**Share a cocktail**
+
+![submit]()
+
+* **Implementation**
+
+* 
+
+<a name="issues"></a>
+## Issues ##
+---
+
+**During development**
+
+* 
+
+
+
+# Deployment<hr>
+***Requirements:***
+- 
+
+
+## Local Deployment<hr>
+- 
+
+- 
+
+***categories***
+```
+_id:<ObjectId>
+category_name:<string>
+```
+
+
+## Deploying on Heroku<hr>
+- 
+
+
+<a name="credits"></a>
+## Credits ##
+---
+
+**Text Credits:**
+
+* 
+
+**Image Credits:**
+
+* 
+
+**Many thanks to:**
+
+* My mentor **Ignatius Ukwuoma** for his patience and kindness
+* **Kasia** for her very inspiring ReadME
+* **Code Institute Slack community** for the technical and emotional support
+* **Ivar Dahlberg**, for all the beautiful designs he created and his assistance
+* **Mesaicos Stockholm LandHockey team** for cutting me some slack for not being very alert (and I am the goalkeeper...)
+
+**Site for educational purposes only!** (for now)
