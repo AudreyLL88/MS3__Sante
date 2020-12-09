@@ -1,93 +1,112 @@
 {% extends "base.html"%}
 {% block content %}
 
+<!-- Main section/Page title -->
 <section class="container cocktail-section">
-  <div class="cocktail-headline text-center">
-    <h2>Submit Cocktail</h2>
-  </div>
-  <hr class="mb-5">
-  <form method="POST" class="pb-5 cocktail-form" action="{{ url_for('add_cocktail') }}">
-    <div class="form-group">
-      <label for="cocktail_name">Cocktail Title</label>
-      <input required type="text" class="form-control" id="cocktail_name" name="cocktail_name" aria-describedby="cocktail name"
-        maxlength="45">
-    </div>
-    <div class="form-group">
-      <label for="category_name">Category</label>
-      <select required name="category_name" id="category_name" class="form-control">
-        <option selected disabled>Select Category</option>
-        {% for category in categories %}
-        <option value="{{ category.category_name }}">{{ category.category_name }}</option>
-        {% endfor %}
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="cocktail_description">Description</label>
-      <input required type="text" class="form-control" id="cocktail_description" name="cocktail_description"
-        aria-describedby="cocktail description" maxlength="130">
-      <small class="form-text text-muted">Short description</small>
-    </div>
-    <div class="form-group">
-      <label for="cocktail_img">Image Url</label>
-      <input required type="text" class="form-control" name="cocktail_img" id="cocktail_img"
-        aria-describedby="cocktail description">
-      <small type="url" class="form-text text-muted">Cocktail Picture hosted on a website</small>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <div class="form-group">
-          <label for="cocktail_prep">Prep Time</label>
-          <select required id="cocktail_prep" name="cocktail_prep" class="form-control">
-            <option selected disabled>Select option</option>
-            <option>Fast</option>
-            <option>Steady</option>
-            <option>Slow</option>
-          </select>
-        </div>
+   <div class="cocktail-headline text-center">
+      <h2>Submit Cocktail</h2>
+   </div>
+   <hr class="mb-5">
+
+   <!--Cocktail name input -->
+   <form method="POST" class="pb-5 cocktail-form" action="{{ url_for('add_cocktail') }}">
+      <div class="form-group">
+         <label for="cocktail_name">Cocktail Title</label>
+         <input required type="text" class="form-control" id="cocktail_name" name="cocktail_name" aria-describedby="cocktail name"
+            maxlength="45">
       </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <div class="form-group">
-          <label for="cocktail_serv">Amount of Servings</label>
-          <select required id="cocktail_serv" name="cocktail_serv" class="form-control">
-            <option selected disabled>Select servings</option>
-            <option>2</option>
-            <option>4</option>
-            <option>6</option>
-            <option>8</option>
-            <option>10</option>
-          </select>
-        </div>
+
+      <!--Cocktail category input -->
+      <div class="form-group">
+         <label for="category_name">Category</label>
+         <select required name="category_name" id="category_name" class="form-control">
+            <option selected disabled>Select Category</option>
+            {% for category in categories %}
+            <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+            {% endfor %}
+         </select>
       </div>
-      <div class="col-sm-12 col-md-6">
-        <div class="form-group">
-          <label for="cocktail_diff">Difficulty</label>
-          <select required id="cocktail_diff" name="cocktail_diff" class="form-control">
-            <option selected disabled>Select difficulty</option>
-            <option>Easy</option>
-            <option>Medium</option>
-            <option>Hard</option>
-          </select>
-        </div>
+
+      <!--Cocktail description input -->
+      <div class="form-group">
+         <label for="cocktail_description">Description</label>
+         <input required type="text" class="form-control" id="cocktail_description" name="cocktail_description"
+            aria-describedby="cocktail description" maxlength="130">
+         <small class="form-text text-muted">Short description</small>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <label for="cocktail_ingredients">Ingredients</label>
-        <textarea required class="form-control" id="cocktail_ingredients" name="cocktail_ingredients" rows="3"
-          placeholder="Each ingredient in it's own line."></textarea>
-        <small class="form-text text-muted">One ingredient at a time</small>
+
+      <!--Cocktail image input -->
+      <div class="form-group">
+         <label for="cocktail_img">Image Url</label>
+         <input required type="text" class="form-control" name="cocktail_img" id="cocktail_img"
+            aria-describedby="cocktail description">
+         <small type="url" class="form-text text-muted">Cocktail Picture hosted on a website</small>
       </div>
-      <div class="col-sm-12 col-md-6">
-        <label for="cocktail_instructions">Instructions</label>
-        <textarea required class="form-control" id="cocktail_instructions" name="cocktail_instructions" rows="3"
-          placeholder="Put each step in a new line."></textarea>
-        <small class="form-text text-muted">One instruction at a time</small>
+
+      <!--Cocktail prep time input -->
+      <div class="row">
+         <div class="col-sm-12 col-md-6">
+            <div class="form-group">
+               <label for="cocktail_prep">Prep Time</label>
+               <select required id="cocktail_prep" name="cocktail_prep" class="form-control">
+                  <option selected disabled>Select option</option>
+                  <option>Fast</option>
+                  <option>Steady</option>
+                  <option>Slow</option>
+               </select>
+            </div>
+         </div>
       </div>
-    </div>
-    <button class="btn btn-lg btn-warning text-uppercase text-white mt-3" value="login" type="submit">Submit</button>
-  </form>
+
+      <!--Cocktail serving input -->
+      <div class="row">
+         <div class="col-sm-12 col-md-6">
+            <div class="form-group">
+               <label for="cocktail_serv">Amount of Servings</label>
+               <select required id="cocktail_serv" name="cocktail_serv" class="form-control">
+                  <option selected disabled>Select servings</option>
+                  <option>2</option>
+                  <option>4</option>
+                  <option>6</option>
+                  <option>8</option>
+                  <option>10</option>
+               </select>
+            </div>
+         </div>
+
+         <!--Cocktail level input -->
+         <div class="col-sm-12 col-md-6">
+            <div class="form-group">
+               <label for="cocktail_diff">Difficulty</label>
+               <select required id="cocktail_diff" name="cocktail_diff" class="form-control">
+                  <option selected disabled>Select difficulty</option>
+                  <option>Easy</option>
+                  <option>Medium</option>
+                  <option>Hard</option>
+               </select>
+            </div>
+         </div>
+      </div>
+
+      <!--Cocktail ingredients input -->
+      <div class="row">
+         <div class="col-sm-12 col-md-6">
+            <label for="cocktail_ingredients">Ingredients</label>
+            <textarea required class="form-control" id="cocktail_ingredients" name="cocktail_ingredients" rows="3"
+               placeholder="Each ingredient in it's own line."></textarea>
+            <small class="form-text text-muted">One ingredient at a time</small>
+         </div>
+
+         <!--Cocktail instruction input -->
+         <div class="col-sm-12 col-md-6">
+            <label for="cocktail_instructions">Instructions</label>
+            <textarea required class="form-control" id="cocktail_instructions" name="cocktail_instructions" rows="3"
+               placeholder="Put each step in a new line."></textarea>
+            <small class="form-text text-muted">One instruction at a time</small>
+         </div>
+      </div>
+      <button class="btn btn-lg btn-warning text-uppercase text-white mt-3" value="login" type="submit">Submit</button>
+   </form>
 </section>
 
 {% endblock %}

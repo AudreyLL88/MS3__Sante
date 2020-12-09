@@ -1,40 +1,50 @@
 {% extends "base.html" %}
 {% block content %}
 
+    <!--Main container -->
     <div class="container">
+
+        <!--Username header -->
         <header class="py-5 mb-2">
             <div class="jumbotron bg-warning mx-5">
-            <div class="row text-center">
-                <div class="col-lg-12">
-                <h2 class="text-white">Welcome {{ username }}</h2>
+                <div class="row text-center">
+                    <div class="col-lg-12">
+                    <h2 class="text-white">Welcome {{ username }}</h2>
+                    </div>
                 </div>
-            </div>
             </div>
         </header>
+
+        <!--User cocktails -->
         <div class="row">
             <div class="col-md-8 mb-5">
-            <h2>Your Cocktails</h2>
-            <hr>
+                <h2>Your Cocktails</h2>
+                <hr> 
             <div class="row">
-                <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body recipe-body">
-                    <h2 class="card-title">Title</h2>
-                    <span class="badge badge-success">Category</span>
-                    </div>
-                    <div class="card-footer">
-                    <a href="recipe.html" class="btn btn-sm recipe-button mx-1 my-1">View</a>
-                    <a href="#" class="btn btn-sm btn-danger mx-1 my-1">Delete</a>
-                    <a href="edit_cocktail.html" class="btn btn-sm btn-success mx-1 my-1">Edit</a>
-                    </div>
-                </div>
+                    {% for cocktail in cocktails %}
+                        <div class="col-md-4">
+                            <div class="cocktail-card shadow my-3">
+                                <div class="cocktail-body">
+                                    <img src="{{ cocktail.cocktail_img }}" alt="" class="cocktail-img">
+                                    <h2 class="card-cocktail-title p-3">{{ cocktail.cocktail_name }}</h2>
+                                    <p class="card-cocktail-description px-3">{{ cocktail.cocktail_description }}</p>
+                                </div>
+                                <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}" class="cocktail-btn btn btn-small btn-warning text-white p-3 m-3 border border-warning ">Try</a>
+                                {% if session.user|lower == cocktail.created_by|lower %}
+                                    <a  href="" class="btn btn-danger">Delete</a>
+                                    <a  href="{{ url_for('edit_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-success">Edit</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
-            </div>
+           
+           <!--Submit a recipe button -->
             <div class="col-md-4 mb-5">
-            <h2>Submit a recipe</h2>
-            <hr>
-            <a class="btn btn-warning text-white btn-lg" href="add_cocktail.html">Create New &raquo;</a>
+                <h2>Submit a recipe</h2>
+                <hr>
+                <a class="btn btn-warning text-white btn-lg" href="add_cocktail.html">Create New &raquo;</a>
             </div>
         </div>
     </div>

@@ -2,15 +2,16 @@ const navMenu = document.getElementById('nav-menu'),
     toggleMenu = document.getElementById('nav-toggle'),
     closeMenu = document.getElementById('nav-close')
 
-
+//Toggle Navbar on mobile
 toggleMenu.addEventListener('click', ()=>{
     navMenu.classList.toggle('show')
-})
+}) // Open navbar on click
 
 closeMenu.addEventListener('click', ()=>{
     navMenu.classList.remove('show')
-})
+})// Close navbar on click
 
+// Hero image animation on mouse move in index.html
 document.addEventListener('mousemove', move);
 function move(e){
     this.querySelectorAll('.move').forEach(layer =>{
@@ -23,11 +24,11 @@ function move(e){
     })
 }
 
-
+// GSAP Animation navbar
 gsap.from('.nav__logo, .nav__toggle', {opacity: 0, duration: 1, delay:2, y: 10})
 gsap.from('.nav__item', {opacity: 0, duration: 1, delay: 2.1, y: 30, stagger: 0.2,})
 
-
+// GSAP Animation index.html hero elements
 gsap.from('.home__title', {opacity: 0, duration: 1, delay:1.6, y: 30})
 gsap.from('.home__description', {opacity: 0, duration: 1, delay:1.8, y: 30})
 gsap.from('.home__button', {opacity: 0, duration: 1, delay:2.1, y: 30})

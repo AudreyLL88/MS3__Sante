@@ -1,94 +1,113 @@
 {% extends "base.html" %}
 {% block content %}
    
+   <!--Main container -->
     <section class="container cocktail-section">
         <div class="cocktail-headline text-center">
             <h2>Edit your Cocktail</h2>
         </div>
         <hr class="mb-5">
         <form class="pb-5 cocktail-form"  method="POST" action="{{ url_for('edit_cocktail', cocktail_id=cocktail._id) }}">
+
+            <!--Cocktail name input -->
             <div class="form-group">
-            <label for="cocktail_name">Cocktail Name</label>
-            <input required value="{{ cocktail.cocktail_name }}" type="text" class="form-control" id="cocktail_name" name="cocktail_name" aria-describedby="cocktail name"
-                maxlength="45">
+                <label for="cocktail_name">Cocktail Name</label>
+                <input required value="{{ cocktail.cocktail_name }}" type="text" class="form-control" id="cocktail_name" name="cocktail_name" aria-describedby="cocktail name"
+                    maxlength="45">
             </div>
+
+            <!--Cocktail category input -->
             <div class="form-group">
-            <label for="category_name">Category</label>
-            <select required name="category_name" id="category_name" class="form-control">
-                <option selected disabled>Select Category</option>
-                 {% for category in categories %}
-                            {% if category.category_name == cocktail.category_name %}
-                <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
-                            {% else %}
-                                <option value="{{ category.category_name }}">{{ category.category_name }}</option>
-                            {% endif %}
-                        {% endfor %}
-            </select>
+                <label for="category_name">Category</label>
+                <select required name="category_name" id="category_name" class="form-control">
+                    <option selected disabled>Select Category</option>
+                    {% for category in categories %}
+                                {% if category.category_name == cocktail.category_name %}
+                    <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
+                                {% else %}
+                                    <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                                {% endif %}
+                            {% endfor %}
+                </select>
             </div>
+
+            <!--Cocktail description input -->
             <div class="form-group">
-            <label for="cocktail_description">Description</label>
-            <input required type="text" class="form-control" id="cocktail_description" name="cocktail_description"
-               value="{{- cocktail.cocktail_description -}}" aria-describedby="cocktail description" maxlength="130">
-            <small class="form-text text-muted"></small>
+                <label for="cocktail_description">Description</label>
+                <input required type="text" class="form-control" id="cocktail_description" name="cocktail_description"
+                value="{{- cocktail.cocktail_description -}}" aria-describedby="cocktail description" maxlength="130">
+                <small class="form-text text-muted"></small>
             </div>
+
+            <!--Cocktail image input -->
             <div class="form-group">
-            <label for="cocktail_img">Image Url</label>
-            <input required type="text" class="form-control" name="cocktail_img" id="cocktail_img"
-              value="{{ cocktail.cocktail_img }}"  aria-describedby="recipe description">
-            <small type="url" class="form-text text-muted"></small>
+                <label for="cocktail_img">Image Url</label>
+                <input required type="text" class="form-control" name="cocktail_img" id="cocktail_img"
+                value="{{ cocktail.cocktail_img }}"  aria-describedby="recipe description">
+                <small type="url" class="form-text text-muted"></small>
             </div>
+
+            <!--Cocktail prep time input -->
             <div class="row">
             <div class="col-sm-12 col-md-6">
                 <div class="form-group">
-                <label for="cocktail_prep">Prep Time</label>
-                <select required id="cocktail_prep" name="cocktail_prep" class="form-control">
-                    <option  value="{{ cocktail.cocktail_prep }}" selected>{{ cocktail.cocktail_prep }}</option>
-                    <option>Fast</option>
-                    <option>Steady</option>
-                    <option>Slow</option>
-                </select>
+                    <label for="cocktail_prep">Prep Time</label>
+                    <select required id="cocktail_prep" name="cocktail_prep" class="form-control">
+                        <option  value="{{ cocktail.cocktail_prep }}" selected>{{ cocktail.cocktail_prep }}</option>
+                        <option>Fast</option>
+                        <option>Steady</option>
+                        <option>Slow</option>
+                    </select>
                 </div>
             </div>
             </div>
+
+            <!--Cocktail serving input -->
             <div class="row">
             <div class="col-sm-12 col-md-6">
                 <div class="form-group">
-                <label for="cocktail_serv">Amount of Servings</label>
-                <select required id="cocktail_serv" name="cocktail_serv" class="form-control">
-                    <option  value="{{ cocktail.cocktail_serv }}" selected> {{ cocktail.cocktail_serv }}</option>
-                    <option>2</option>
-                    <option>4</option>
-                    <option>6</option>
-                    <option>8</option>
-                    <option>10</option>
-                </select>
+                    <label for="cocktail_serv">Amount of Servings</label>
+                    <select required id="cocktail_serv" name="cocktail_serv" class="form-control">
+                        <option  value="{{ cocktail.cocktail_serv }}" selected> {{ cocktail.cocktail_serv }}</option>
+                        <option>2</option>
+                        <option>4</option>
+                        <option>6</option>
+                        <option>8</option>
+                        <option>10</option>
+                    </select>
                 </div>
             </div>
+
+            <!--Cocktail difficulty input -->
             <div class="col-sm-12 col-md-6">
                 <div class="form-group">
-                <label for="cocktail_diff">Difficulty</label>
-                <select required id="cocktail_diff" name="cocktail_diff" class="form-control">
-                    <option  value="{{ cocktail.cocktail_diff }}" selected> {{ cocktail.cocktail_diff }}</option>
-                    <option>Easy</option>
-                    <option>Medium</option>
-                    <option>Hard</option>
-                </select>
+                    <label for="cocktail_diff">Difficulty</label>
+                    <select required id="cocktail_diff" name="cocktail_diff" class="form-control">
+                        <option  value="{{ cocktail.cocktail_diff }}" selected> {{ cocktail.cocktail_diff }}</option>
+                        <option>Easy</option>
+                        <option>Medium</option>
+                        <option>Hard</option>
+                    </select>
                 </div>
             </div>
             </div>
+
+            <!--Cocktail ingredients input -->
             <div class="row">
-            <div class="col-sm-12 col-md-6">
-                <label for="cocktail_ingredients">Ingredients</label>
-                <textarea required class="form-control" id="cocktail_ingredients" name="cocktail_ingredients" rows="3"
-                value="{{ cocktail.cocktail_ingredients }}">{{ cocktail.cocktail_ingredients }}</textarea>
-                <small class="form-text text-muted">One ingredient at a time</small>
-            </div>
-            <div class="col-sm-12 col-md-6">
-                <label for="cocktail_instructions">Instructions</label>
-                <textarea required class="form-control" id="cocktail_instructions" name="cocktail_instructions" rows="3"
-                value="{{ cocktail.cocktail_instructions }}">{{ cocktail.cocktail_instructions }}</textarea>
-                <small class="form-text text-muted">One instruction at a time</small>
-            </div>
+                <div class="col-sm-12 col-md-6">
+                    <label for="cocktail_ingredients">Ingredients</label>
+                    <textarea required class="form-control" id="cocktail_ingredients" name="cocktail_ingredients" rows="3"
+                    value="{{ cocktail.cocktail_ingredients }}">{{ cocktail.cocktail_ingredients }}</textarea>
+                    <small class="form-text text-muted">One ingredient at a time</small>
+                </div>
+
+                <!--Cocktail instructions input -->
+                <div class="col-sm-12 col-md-6">
+                    <label for="cocktail_instructions">Instructions</label>
+                    <textarea required class="form-control" id="cocktail_instructions" name="cocktail_instructions" rows="3"
+                    value="{{ cocktail.cocktail_instructions }}">{{ cocktail.cocktail_instructions }}</textarea>
+                    <small class="form-text text-muted">One instruction at a time</small>
+                </div>
             </div>
             <button class="btn btn-lg btn-warning text-uppercase text-white mt-3" value="login" type="submit">Submit</button>
         </form>

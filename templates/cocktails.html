@@ -1,45 +1,51 @@
 {% extends "base.html" %}
 {% block content %}
-   
-    <section class="container cocktail-section">
-        <div class="cocktail-headline text-center">
-            <h2>All Cocktails</h2>
-        </div>
-        <hr class="mb-2">
-        <div class="row mt-4">
-        <form action="{{ url_for('search') }}" method="post" class="col-4 align-item-center">
-            <div class="col-12">
+
+ <!-- Main container/Page Title -->
+<section class="container cocktail-section">
+   <div class="cocktail-headline text-center">
+      <h2>All Cocktails</h2>
+   </div>
+   <hr class="mb-2">
+
+    <!-- Search box -->
+   <div class="row mt-4">
+      <form action="{{ url_for('search') }}" method="post" class="col-4 align-item-center">
+         <div class="col-12">
             <input type="search" name="query" class="query rounded border-2" placeholder="Search cocktails">
             <button type="submit" class="btn btn-small white-text btn-warning">
-            <i class="fa fa-search"></i>
+                <i class="fa fa-search"></i>
             </button>
-            </div>
-        </form>
-        </div>
-             {% if cocktails|length > 0 %}
-                <div class="row">
-                    {% for cocktail in cocktails %}
-                        <div class="col-md-4">
-                            <div class="cocktail-card shadow my-3">
-                                <div class="cocktail-body">
-                                    <img src="{{ cocktail.cocktail_img }}" alt="" class="cocktail-img">
-                                    <h2 class="card-cocktail-title p-3">{{ cocktail.cocktail_name }}</h2>
-                                    <p class="card-cocktail-description px-3">{{ cocktail.cocktail_description }}</p>
-                                </div>
-                                <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}" class="cocktail-btn btn btn-small btn-warning text-white p-3 m-3 border border-warning ">Try</a>
-                                {% if session.user|lower == cocktail.created_by|lower %}
-                                    <a  href="" class="btn btn-danger">Delete</a>
-                                    <a  href="{{ url_for('edit_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-success">Edit</a>
-                                {% endif %}
-                            </div>
-                        </div>
-                    {% endfor %}
-                    {% else %}
-                    <div class="row m-5">
-                    <h2>No result found</h2>
-                    </div>
-                </div>
-            {% endif %}
-    </section>
+         </div>
+      </form>
+   </div>
 
+    <!-- Cocktail card -->
+   {% if cocktails|length > 0 %}
+   <div class="row">
+      {% for cocktail in cocktails %}
+      <div class="col-md-4">
+         <div class="cocktail-card shadow my-3">
+            <div class="cocktail-body">
+               <img src="{{ cocktail.cocktail_img }}" alt="" class="cocktail-img">
+               <h2 class="card-cocktail-title p-3">{{ cocktail.cocktail_name }}</h2>
+               <p class="card-cocktail-description px-3">{{ cocktail.cocktail_description }}</p>
+            </div>
+            <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}" class="cocktail-btn btn btn-small btn-warning text-white p-3 m-3 border border-warning ">Try</a>
+            {% if session.user|lower == cocktail.created_by|lower %}
+            <a  href="" class="btn btn-danger">Delete</a>
+            <a  href="{{ url_for('edit_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-success">Edit</a>
+            {% endif %}
+         </div>
+      </div>
+      {% endfor %}
+
+       <!-- No results -->
+      {% else %}
+      <div class="row m-5">
+         <h2>No result found</h2>
+      </div>
+   </div>
+   {% endif %}
+</section>
 {% endblock %}

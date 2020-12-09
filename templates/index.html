@@ -1,116 +1,117 @@
 {% extends "base.html" %}
 {% block content %}
 
+    <!--Hero animation -->
     <main class="l-main">
         <section class="home">
             <div class="home__container bd-grid">
-            <div class="home__img">
-                <img src="static/img/Layer_0.png" alt="" data-speed="2" class="move">
-                <img src="static/img/Layer_1.png" alt="" data-speed="2" class="move">
-                <img src="static/img/Layer_2.png" alt="" data-speed="2" class="move">
-                <img src="static/img/Layer_3.png" alt="" data-speed="-2" class="move">
-                <img src="static/img/Layer_4.png" alt="" data-speed="-2" class="move">
-                <img src="static/img/Layer_5.png" alt="" data-speed="2" class="move">
-            </div>
-            <div class="home__data">
-                <h1 class="home__title">No Bar?<br> No Problem.</h1>
-                <p class="home__description">Join our community <br> and become your own bartender</p>
-                <a href="#" class="home__button">Register</a>
-            </div>
+                <div class="home__img">
+                    <img src="static/img/Layer_0.png" alt="" data-speed="2" class="move">
+                    <img src="static/img/Layer_1.png" alt="" data-speed="2" class="move">
+                    <img src="static/img/Layer_2.png" alt="" data-speed="2" class="move">
+                    <img src="static/img/Layer_3.png" alt="" data-speed="-2" class="move">
+                    <img src="static/img/Layer_4.png" alt="" data-speed="-2" class="move">
+                    <img src="static/img/Layer_5.png" alt="" data-speed="2" class="move">
+                </div>
+                <div class="home__data">
+                    <h1 class="home__title">No Bar?<br> No Problem.</h1>
+                    <p class="home__description">Join our community <br> and become your own bartender</p>
+                    <a href="#" class="home__button">Register</a>
+                </div>
             </div>
         </section>
-        </main>
+    </main>
+
         <!-- Page Content -->
         <div class="container">
-        <!-- Heading Row -->
-        <div class="row align-items-center my-5">
-            <div class="col-lg-7">
-            <div id="carouselExampleIndicators" class="carousel slide shadow mb-3" data-ride="carousel">
-                <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="img-fluid rounded d-block" src="https://cdn.pixabay.com/photo/2019/06/13/11/28/cocktail-4271392_960_720.jpg" alt="">
-                </div>
-                <div class="carousel-item">
-                    <img class="img-fluid rounded mb-4 mb-lg-0 d-block" src="https://cdn.pixabay.com/photo/2019/06/13/11/28/cocktail-4271392_960_720.jpg" alt="">
-                </div>
-                <div class="carousel-item">
-                    <img class="img-fluid rounded mb-4 mb-lg-0 d-block" src="https://cdn.pixabay.com/photo/2019/06/13/11/28/cocktail-4271392_960_720.jpg" alt="">
-                </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-                </a>
-            </div>
-            </div>
-            <!-- /.col-lg-8 -->
-            <div class="col-lg-5">
-            <h1 class="mb-3">It's Apéro time!</h1>
-            <p>L'Apé-what? L'apéro in french is an after-work drink that you share with your co-worker. As we are all working from home now and the bars are closed, It is important to learn to socialize in a different way. With Santé! No need for a bartender, make your own drink and call your friends from the safety and comfort of your own home!</p>
-            <a class="btn btn-warning text-white mt-3" href="#">CHECK OUR RECIPES!</a>
-            </div>
-            <!-- /.col-md-4 -->
-        </div>
-        <!-- /.row -->
-        <!-- Call to Action Well -->
-        <div class="card subscribe text-white my-5 py-4 text-center border-0">
-            <div class="card-body">
-            <div class="row">
-                <div class="col-12 text-center subscribe-body">
-                <div class="subscribe-title">
-                    <h2 class="mb-3">Subscribe to our Newsletter</h2>
-                    <div class="input-group">
-                    <input type="email" class="form-control" placeholder="Enter your email">
-                    <span class="input-group-btn">
-                    <button class="btn btn-warning text-white" type="submit">Subscribe</button>
-                    </span>
-                    </div>
-                    <div class="form-check mt-2">
-                    <input class="form-check-input" type="checkbox" id="autoSizingCheck">
-                    <label class="form-check-label" for="autoSizingCheck">
-                    I am over 18
-                    </label>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-        </div>
-        <!-- Content Row -->
-        <div class="row">
-            <div class="col-12">
-            <h2 class="text-center">Our featured Cocktails</h2>
-            <hr>
-            </div>
-        </div>
-        {% if cocktails|length > 0 %}
-        <div class="row">
-             {% for cocktail in cocktails %}
-            <div class="col-md-4">
-            
-            <div class="cocktail-card shadow my-3">
-                <div class="cocktail-body">
-                <img src="{{ cocktail.cocktail_img }}" alt="" class="cocktail-img">
-                <h2 class="card-cocktail-title p-3">{{ cocktail.cocktail_name }}</h2>
-                <h6><span class="badge bg-success">{{ cocktail.category_name }}</span></h6>
-                <p class="card-cocktail-description px-3">{{ cocktail.cocktail_description }}</p>
-                </div>
-                <a src="{{url_for('get_cocktail', cocktail_id=c5fbd7042ba8eb9182e0071c4)}}" class="cocktail-btn btn btn-small btn-warning text-white p-3 m-3 border border-warning ">Try</a>
-            </div>
-            </div>
-             {% endfor %}
-        </div>
-    </div>
 
-           
-{% endif %}
+            <!-- Carousel / About section-->
+            <div class="row align-items-center my-5">
+                <div class="col-lg-7">
+                    <div id="carouselExampleIndicators" class="carousel slide shadow mb-3" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="img-fluid rounded d-block" src="https://cdn.pixabay.com/photo/2019/06/13/11/28/cocktail-4271392_960_720.jpg" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="img-fluid rounded mb-4 mb-lg-0 d-block" src="https://cdn.pixabay.com/photo/2019/06/13/11/28/cocktail-4271392_960_720.jpg" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="img-fluid rounded mb-4 mb-lg-0 d-block" src="https://cdn.pixabay.com/photo/2019/06/13/11/28/cocktail-4271392_960_720.jpg" alt="">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <h1 class="mb-3">It's Apéro time!</h1>
+                    <p>L'Apé-what? L'apéro in french is an after-work drink that you share with your co-worker. As we are all working from home now and the bars are closed, It is important to learn to socialize in a different way. With Santé! No need for a bartender, make your own drink and call your friends from the safety and comfort of your own home!</p>
+                    <a class="btn btn-warning text-white mt-3" href="#">CHECK OUR RECIPES!</a>
+                </div>
+            </div>
+
+            <!-- Subscription call to action  -->
+            <div class="card subscribe text-white my-5 py-4 text-center border-0">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 text-center subscribe-body">
+                            <div class="subscribe-title">
+                                <h2 class="mb-3">Subscribe to our Newsletter</h2>
+                                <div class="input-group">
+                                    <input type="email" class="form-control" placeholder="Enter your email">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-warning text-white" type="submit">Subscribe</button>
+                                    </span>
+                                </div>
+                                <div class="form-check mt-2">
+                                    <input class="form-check-input" type="checkbox" id="autoSizingCheck">
+                                    <label class="form-check-label" for="autoSizingCheck">
+                                        I am over 18
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured cocktails -->
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="text-center">Our featured Cocktails</h2>
+                    <hr>
+                </div>
+            </div>
+
+            {% if cocktails|length > 0 %}
+                <div class="row">
+                    {% for cocktail in cocktails %}
+                        <div class="col-md-4">
+                            <div class="cocktail-card shadow my-3">
+                                <div class="cocktail-body">
+                                    <img src="{{ cocktail.cocktail_img }}" alt="" class="cocktail-img">
+                                    <h2 class="card-cocktail-title p-3">{{ cocktail.cocktail_name }}</h2>
+                                    <h6><span class="badge bg-success">{{ cocktail.category_name }}</span></h6>
+                                    <p class="card-cocktail-description px-3">{{ cocktail.cocktail_description }}</p>
+                                </div>
+                                <a src="{{url_for('get_cocktail', cocktail_id=c5fbd7042ba8eb9182e0071c4)}}" class="cocktail-btn btn btn-small btn-warning text-white p-3 m-3 border border-warning ">Try</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
 {% endblock %}
