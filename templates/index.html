@@ -6,12 +6,12 @@
         <section class="home">
             <div class="home__container bd-grid">
                 <div class="home__img">
-                    <img src="static/img/Layer_0.png" alt="" data-speed="2" class="move">
+                    <img src="static/img/Layer_0.png" alt="" data-speed="3" class="move">
                     <img src="static/img/Layer_1.png" alt="" data-speed="2" class="move">
-                    <img src="static/img/Layer_2.png" alt="" data-speed="2" class="move">
-                    <img src="static/img/Layer_3.png" alt="" data-speed="-2" class="move">
-                    <img src="static/img/Layer_4.png" alt="" data-speed="-2" class="move">
-                    <img src="static/img/Layer_5.png" alt="" data-speed="2" class="move">
+                    <img src="static/img/Layer_2.png" alt="" data-speed="1" class="move">
+                    <img src="static/img/Layer_3.png" alt="" data-speed="0" class="move">
+                    <img src="static/img/Layer_4.png" alt="" data-speed="-1" class="move">
+                    <img src="static/img/Layer_5.png" alt="" data-speed="-2" class="move">
                 </div>
                 <div class="home__data">
                     <h1 class="home__title">No Bar?<br> No Problem.</h1>
@@ -63,7 +63,7 @@
             </div>
 
             <!-- Subscription call to action  -->
-            <div class="subscribe text-white my-5 py-4 text-center border-0 rounded">
+            <div class="subscribe text-white my-5 py-4 text-center border-0 rounded shadow">
                     <div class="row">
                         <div class="col-12 text-center subscribe-body">
                             <div class="subscribe-title">
@@ -72,12 +72,12 @@
                                 <div class="input-group">
                                     <input type="email" class="form-control" placeholder="Enter your email">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-warning text-white" type="submit">Subscribe</button>
+                                        <button class="btn btn-subscription" type="submit">Subscribe</button>
                                     </span>
                                 </div>
                                 <div class="form-check mt-2">
                                     <input class="form-check-input" type="checkbox" id="autoSizingCheck">
-                                    <label class="form-check-label" for="autoSizingCheck">
+                                    <label class="form-check-label" for="autoSizingCheck" required>
                                         I am over 18
                                     </label>
                                 </div>
@@ -110,7 +110,7 @@
                                         <i class="fa fa-star" aria-hidden="true"></i>
 			                        </p>
                                 </div>
-                                <a src="{{url_for('get_cocktail', cocktail_id=c5fbd7042ba8eb9182e0071c4)}}" class="cocktail-btn btn btn-small btn-warning text-white p-3 m-3 border border-warning ">Try</a>
+                                <a src="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}" class="cocktail-btn btn btn-small btn-warning text-white p-3 m-3 border border-warning ">Try</a>
                             </div>
                         </div>
                     {% endfor %}
