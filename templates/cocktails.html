@@ -11,15 +11,15 @@
     <!-- Search box -->
    <div class="row mt-4">
       <form action="{{ url_for('search') }}" method="post" class="col-4 align-item-center">
-         <div class="col-12">
-            <input type="search" name="query" class="query rounded border-2" placeholder="Search cocktails">
-            <button type="submit" class="btn btn-small white-text btn-warning">
-                <i class="fa fa-search"></i>
-            </button>
+         <div class="col-sm-12 input-group">
+                <input type="search" name="query" class="query form-control" placeholder="Search cocktail">
+                <span class="input-group-btn">
+                    <button class="btn btn-warning text-white" type="submit"><i class="fa fa-search"></i></button>
+                </span>
          </div>
       </form>
    </div>
-
+                              
     <!-- Cocktail card -->
    {% if cocktails|length > 0 %}
    <div class="row">
