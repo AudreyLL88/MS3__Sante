@@ -30,6 +30,13 @@ def get_cocktails():
     return render_template("cocktails.html", cocktails=cocktails)
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    cocktails = list(mongo.db.cocktails.find({"$text": {"$search": query}}))
+    return render_template("cocktails.html", cocktails=cocktails)
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -62,8 +69,6 @@ def login():
             if check_password_hash(
                   existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(
-                        request.form.get("username")))
                     return redirect(url_for(
                         "profile", username=session["user"]))
             else:
@@ -80,11 +85,12 @@ def login():
 def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+    cocktail = list(mongo.db.cocktails.find({"created_by": username.lower()}))
 
     if session["user"]:
         return render_template("profile.html", username=username)
 
-    return render_template("profile.html", username=username)
+    return render_template("profile.html", cocktail=cocktail)
 
 
 @app.route("/logout")
