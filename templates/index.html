@@ -104,7 +104,7 @@
                 <h6><span class="badge bg-success">{{ cocktail.category_name }}</span></h6>
                 <p class="card-cocktail-description px-3">{{ cocktail.cocktail_description }}</p>
                 </div>
-                <a src="{{ url_for( 'get_cocktails') }}" class="cocktail-btn btn btn-small btn-warning text-white p-3 m-3 border border-warning ">Try</a>
+                <a src="{{url_for('get_cocktail', cocktail_id=c5fbd7042ba8eb9182e0071c4)}}" class="cocktail-btn btn btn-small btn-warning text-white p-3 m-3 border border-warning ">Try</a>
             </div>
             </div>
              {% endfor %}
