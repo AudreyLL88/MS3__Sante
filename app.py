@@ -87,8 +87,11 @@ def profile(username):
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        cocktails = list(
-            mongo.db.cocktails.find({"created_by": username.lower()}))
+        if session["user"] == "admin":
+            cocktails = list(mongo.db.cocktails.find())
+        else:
+            cocktails = list(
+                mongo.db.cocktails.find({"created_by": username.lower()}))
         return render_template(
             "profile.html", username=username, cocktails=cocktails)
 
@@ -142,6 +145,12 @@ def get_cocktail(cocktail_id):
 def delete_cocktail(cocktail_id):
     mongo.db.cocktails.remove({"_id": ObjectId(cocktail_id)})
     return redirect(url_for("get_cocktails"))
+
+
+@app.route("/get_categories")
+def get_categories():
+    categories = list(mongo.db.categories.find().sort("category_name", 1))
+    return render_template("categories.html", categories=categories)
 
 
 if __name__ == "__main__":
