@@ -85,12 +85,14 @@ def login():
 def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    cocktail = list(mongo.db.cocktails.find({"created_by": username.lower()}))
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        cocktails = list(
+            mongo.db.cocktails.find({"created_by": username.lower()}))
+        return render_template(
+            "profile.html", username=username, cocktails=cocktails)
 
-    return render_template("profile.html", cocktail=cocktail)
+    return render_template("profile.html", username=username)
 
 
 @app.route("/logout")
@@ -139,6 +141,7 @@ def edit_cocktail(cocktail_id):
             "created_by": session["user"]
         }
         mongo.db.cocktails.update({"_id": ObjectId(cocktail_id)}, submit)
+        flash("Cocktail Successfully Updated")
 
     cocktail = mongo.db.cocktails.find_one({"_id": ObjectId(cocktail_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
@@ -150,6 +153,12 @@ def edit_cocktail(cocktail_id):
 def get_cocktail(cocktail_id):
     cocktail = mongo.db.cocktails.find_one({"_id": ObjectId(cocktail_id)})
     return render_template("cocktail.html", cocktail=cocktail)
+
+
+@app.route("/delete_cocktail/<cocktail_id>")
+def delete_cocktail(cocktail_id):
+    mongo.db.cocktails.remove({"_id": ObjectId(cocktail_id)})
+    return redirect(url_for("get_cocktails"))
 
 
 if __name__ == "__main__":
