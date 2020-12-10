@@ -105,7 +105,7 @@ def logout():
 @app.route("/add_cocktail", methods=["GET", "POST"])
 def add_cocktail():
     if request.method == "POST":
-        task = {
+        cocktail = {
             "category_name": request.form.get("category_name"),
             "cocktail_name": request.form.get("cocktail_name"),
             "cocktail_description": request.form.get("cocktail_description"),
@@ -117,8 +117,7 @@ def add_cocktail():
             "cocktail_serv": request.form.get("cocktail_serv"),
             "created_by": session["user"]
         }
-        mongo.db.cocktails.insert_one(task)
-        flash("Cocktail Successfully Added")
+        mongo.db.cocktails.insert_one(cocktail)
         return redirect(url_for("get_cocktails"))
 
     categories = mongo.db.categories.find().sort("category_name", 1)

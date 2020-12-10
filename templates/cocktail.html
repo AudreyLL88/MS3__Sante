@@ -64,10 +64,12 @@
 
                 <!-- Buttons -->
                <div class="row mt-5">
+                {% if session.user|lower == cocktail.created_by|lower %}
                   <div class="col-8">
                      <button class="btn btn-danger align-center-items">Delete</button>
                      <button class="btn btn-success">Edit</button>
                   </div>
+                  {% endif %}
                   <div class="col-4">
                      <i class="fa fa-star" aria-hidden="true"></i>
                      <i class="fa fa-star" aria-hidden="true"></i>
