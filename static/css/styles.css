@@ -376,3 +376,7 @@ footer a {
 	width: 100%;
 	object-fit: cover;
 }
+
+.category-header{
+    background:url('https://cdn.pixabay.com/photo/2016/04/01/14/35/drink-1300867_960_720.jpg') center center no-repeat;
+}
