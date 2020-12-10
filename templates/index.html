@@ -99,18 +99,18 @@
                     {% for cocktail in cocktails %}
                         <div class="col-md-4">
                             <div class="cocktail-card shadow my-3">
-                                <div class="cocktail-body">
+                                <div class="cocktail-body text-center">
                                     <img src="{{ cocktail.cocktail_img }}" alt="" class="cocktail-img rounded">
                                     <h4 class="card-cocktail-title py-2 px-3">{{ cocktail.cocktail_name }}</h4>
                                     <p>{{ cocktail.category_name }}</p>
                                     <small class="card-cocktail-description px-3">"{{ cocktail.cocktail_description }}"</small>
-                                     <p>
+                                    <p>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
-			                        </p>
+                                    </p>
                                 </div>
-                                <a src="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}" class="cocktail-btn btn btn-small btn-warning text-white p-3 m-3 border border-warning ">Try</a>
+                                <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}" class="cocktail-btn btn btn-small btn-warning text-white p-3 m-3 border border-warning ">Try</a>
                             </div>
                         </div>
                     {% endfor %}
