@@ -2,197 +2,84 @@
 {% block content %}
 
  <!-- Main container -->
-<section id="cocktail-recipe">
+<section id="cocktail_recipe">
    <div class="container">
-      <div class="row my-5">
 
-         <!-- Title -->
-         <div class="col-12">
-            <h2 class="text-center">{{ cocktail.cocktail_name }}</h2>
-            <p class="text-center text-muted">{{ cocktail.created_by }}</p>
+<!-- Title -->
+         <div class="cocktail_name text-center">
+            <h2>{{ cocktail.cocktail_name }}</h2>
             <hr>
-         </div>
-      </div>
-
-       <!-- Image -->
-      <div class="row vertical-align">
-         <div class="col-md-8">  
-            <img class="rounded" src="{{ cocktail.cocktail_img }}" alt="cocktail"/> 
-         </div>
-         <div class="col-md-4">
-            <div class="card bg-light rounded shadow p-3">
-               <div class="cocktail-info">
-                  <h4 class="mb-3 mt-3">About this cocktail:</h4>
-                  <!-- Description -->
-                  <div class="row">
-                     <div class="col-12">
-                        <blockquote class="wp-block-quote">
-                           <p> "{{ cocktail.cocktail_description }}" 
-                           </p>
-                           <cite>{{ cocktail.created_by }}</cite>
-                        </blockquote>
-                     </div>
-                  </div>
-
-                   <!-- Prep time-->
-                  <div class="row mt-2">
-                     <div class="col-2 text-center">
-                        <i class="fa fa-clock-o" aria-hidden="true"></i>
-                     </div>
-                     <div class="col-6">Preparation Time</div>
-                     <div class="col-4">{{ cocktail.cocktail_prep }}</div>
-                  </div>
-
-                  <!-- Difficulty -->
-                  <div class="row">
-                     <div class="col-2 text-center">
-                        <i class="fa fa-area-chart" aria-hidden="true"></i>
-                     </div>
-                     <div class="col-6">Difficulty</div>
-                     <div class="col-4">{{ cocktail.cocktail_diff }}</div>
-                  </div>
-
-                  <!-- Serves -->
-                  <div class="row">
-                     <div class="col-2 text-center">
-                        <i class="fa fa-users" aria-hidden="true"></i>
-                     </div>
-                     <div class="col-6">Servings</div>
-                     <div class="col-4">{{ cocktail.cocktail_serv }}</div>
-                  </div>
-               </div>
-
-                <!-- Buttons -->
-               <div class="row mt-5">
-                {% if session.user|lower == cocktail.created_by|lower %}
-                  <div class="col-8">
-                     <button class="btn btn-danger align-center-items">Delete</button>
-                     <button class="btn btn-success">Edit</button>
-                  </div>
-                  {% endif %}
-                  <div class="col-4">
-                     <i class="fa fa-star" aria-hidden="true"></i>
-                     <i class="fa fa-star" aria-hidden="true"></i>
-                     <i class="fa fa-star" aria-hidden="true"></i>
-                  </div>
-               </div>
+            <div class="text-muted text-center mb-4">
+                <p>Posted by: {{ cocktail.created_by }}</p>
+                <p> at DATE in category:
+                    CATEGORY</p>
             </div>
-         </div>
-      </div>
+        </div>
 
-      <!-- Ingredients -->
-      <div class="card rounded shadow bg-warning p-4">
-         <div class="row">
-            <div class="col-md-2 mt-3">
-               <div class="cocktail-ingredients text-white">
-                  <h4 class="text-white">Ingredients</h4>
-                  <hr>
-                  <ul>
-                     <li>{{ cocktail.cocktail_ingredients }}</li>
-                  </ul>
-               </div>
+<!-- Image -->
+
+        <img class="cocktail_img d-block mx-auto" src="{{ cocktail.cocktail_img }}" alt="{{ cocktail.cocktail_name }}">
+
+<!-- About -->
+
+        <div class="cocktail_description m-3 pt-2">
+            <h6>{{ cocktail.cocktail_description }}</h6>
+        </div>
+        <div class="ratings text-center mb-3">
+            <p>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+            </p>
+        </div>
+        {% if session.user|lower == cocktail.created_by|lower %}
+        <div class="pb-3 text-center">
+           <a  href="{{ url_for('delete_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-small btn-danger p-3 m-3">Delete</a>
+            <a  href="{{ url_for('edit_cocktail', cocktail_id=cocktail._id)}}" class="btn  btn-small btn-success p-3 m-3">Edit</a>
+        </div>
+        {% endif %}
+
+        <div class="cocktail_info text-center bg-warning rounded">
+            <div class="row text-white">
+                <div class="col-4">
+                    <h3>PREP TIME: </h3>
+                    <p>{{ cocktail.cocktail_prep }}</p>
+                </div>
+                <div class="col-4">
+                    <h3>SERVES:</h3>
+                    <p>{{ cocktail.cocktail_serv }}</p>
+                </div>
+                <div class="col-4">
+                    <h3>DIFFICULTY:</h3>
+                    <p>{{ cocktail.cocktail_diff }}</p>
+                </div>
             </div>
-            <div class="col-md-10 mt-2">
-               <div class="cocktail-directions text-white">
-                  <h4 class="text-white">Instructions</h4>
-                  <hr>
-                  <ol>
-                     <li>{{ cocktail.cocktail_instructions }}</li>
-                  </ol>
-               </div>
+        </div>
+
+<!--Ingredients and instructions-->
+        <div class="shadow p-4 mb-5">
+                <div class="row">
+                    <div class="col-md-2 ">
+                    <div class="cocktail_ingredients">
+                        <h4>Ingredients</h4>
+                        <hr>
+                        <ul>
+                            <li class="cocktail_ingredient">{{ cocktail.cocktail_ingredients }}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-10 cocktail_instructions">
+                    <h4 >Instructions</h4>
+                    <hr>
+                    <div class="cocktail_step d-flex">
+                        <h4><i class="fas fa-cocktail"></i></h4>
+                        <p>{{ cocktail.cocktail_instructions }}</p>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-   </div>
-</section>
-<section>
-   <div class="container my-4">
-      <h4 class="text-center">You might also enjoy:</h4>
-      <hr class="my-4">
-      <!--Carousel Wrapper-->
-      <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-         <!--Controls-->
-         <div class="controls-top text-center">
-            <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-            <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>
-         </div>
-         <!--/.Controls-->
-         <!--Indicators-->
-         <ol class="carousel-indicators">
-            <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-            <li data-target="#multi-item-example" data-slide-to="1"></li>
-            <li data-target="#multi-item-example" data-slide-to="2"></li>
-         </ol>
-         <!--/.Indicators-->
-         <!--Slides-->
-         <div class="carousel-inner" role="listbox">
-            <!--First slide-->
-            <div class="carousel-item active">
-               <div class="row">
-                  <div class="col-md-4 col-sm-12 clearfix d-md-block d-sm-block">
-                     <div class="card mb-2">
-                        <img class="card-img" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
-                           alt="Card image cap">
-                        <div class="card-img-overlay">
-                           <h4 class="card-title">Card title</h4>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-4 clearfix col-sm-12 d-md-block">
-                     <div class="card mb-2">
-                        <img class="card-img" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
-                           alt="Card image cap">
-                        <div class="card-img-overlay">
-                           <h4 class="card-title">Card title</h4>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-4 clearfix col-sm-12 d-md-block">
-                     <div class="card mb-2">
-                        <img class="card-img" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
-                           alt="Card image cap">
-                        <div class="card-img-overlay">
-                           <h4 class="card-title">Card title</h4>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!--/.First slide-->
-            <!--Second slide-->
-            <div class="carousel-item">
-               <div class="row">
-                  <div class="col-md-4 col-sm-12 clearfix d-md-block d-sm-block">
-                     <div class="card mb-2">
-                        <img class="card-img" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
-                           alt="Card image cap">
-                        <div class="card-img-overlay">
-                           <h4 class="card-title">Card title</h4>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-4 col-sm-12 clearfix d-md-block d-sm-block">
-                     <div class="card mb-2">
-                        <img class="card-img" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
-                           alt="Card image cap">
-                        <div class="card-img-overlay">
-                           <h4 class="card-title">Card title</h4>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-4 col-sm-12 clearfix d-md-block d-sm-block">
-                     <div class="card mb-2">
-                        <img class="card-img" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
-                           alt="Card image cap">
-                        <div class="card-img-overlay">
-                           <h4 class="card-title">Card title</h4>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
+        </div>
+    </div>
 </section>
 {% endblock %}

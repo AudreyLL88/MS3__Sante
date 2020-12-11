@@ -380,3 +380,83 @@ footer a {
 .category-header{
     background:url('https://cdn.pixabay.com/photo/2016/04/01/14/35/drink-1300867_960_720.jpg') center center no-repeat;
 }
+
+/* Single cocktail page */
+
+.cocktail_name p {
+    font-size: 1rem;
+}
+
+.cocktail_name h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.cocktail_info {
+    padding-left: 10px;
+    padding-right: 10px;
+    background: #F7971E;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFD200, #F7971E);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFD200, #F7971E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */;
+}
+
+.cocktail_info h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-top: 30px;
+    word-wrap: break-word;
+}
+
+.cocktail_info p {
+    margin-bottom: 30px;
+}
+
+.cocktail_info .col-3 {
+    padding:5px;
+}
+
+.cocktail_description h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 1.2rem;
+    text-align: center;
+    color: black;
+}
+
+.cocktail_step {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 15px;
+}
+
+.cocktail_step h4 {
+    color: var(--first-color-darken);
+    flex: 0 0 60px;
+    max-width: 60px;
+    width: 60px;
+}
+
+@media (min-width: 768px) {
+    .cocktail_img {
+        min-height: 80vh;
+        max-height: 100vh;
+        max-width: 80vw;
+        width: auto;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .cocktail_img {
+        max-width: 80vw;
+        height: auto;
+        display: block;
+    }
+}
+
+
+
+
