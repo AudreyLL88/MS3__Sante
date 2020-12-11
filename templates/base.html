@@ -41,7 +41,7 @@
                   {% if session.user %}
                     <li class="nav__item"><a href="{{ url_for('profile', username=session['user']) }}" class="nav__link">Profile</a></li>
                     <li class="nav__item"><a href="{{ url_for('add_cocktail') }}" class="nav__link">New Recipes</a></li>
-                    <li class="nav__item"><a href="{{ url_for('logout') }}" class="nav__link">Log Out</a></li>
+                    <li class="nav__item"><a class="nav__link" data-toggle="modal" data-target="#logout">Log Out</a></li>
                     {% else %}
                     <li class="nav__item"><a href="{{ url_for('login') }}" class="nav__link">Log In</a></li>
                     <li class="nav__item"><a href="{{ url_for('register') }}" class="nav__link">Register</a></li>
@@ -50,6 +50,27 @@
             </div>
          </nav>
       </header>
+
+      <div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="logout" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered " role="document">
+            <div class="modal-content rounded-0">
+                <div class="modal-header">
+                    <h5 class="modal-title">Log Out?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to log out? Remember your username and password for next time !
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning text-white" data-dismiss="modal">Stay</button>
+                    <a href="{{ url_for('logout') }}" type="button"
+                            class="btn btn-danger"> Log Out</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
       <!-- Main content -->
       <main class="content-container">
