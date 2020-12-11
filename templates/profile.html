@@ -35,9 +35,9 @@
                                     </p>
                                 </div>
                                 <div class="text-center">
-                                <button class=" btn btn-small btn-warning text-white p-3 m-3" data-toggle="modal" data-target="#delete">Try</button>
+                                <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}" class=" btn btn-small btn-warning text-white p-3 m-3">Try</a>
                                 {% if session.user == 'admin' %}
-                                    <a  href="{{ url_for('delete_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-small btn-danger p-3 m-3">Delete</a>
+                                    <button class="btn btn-small btn-danger p-3 m-3" data-toggle="modal" data-target="#delete">Delete</button>
                                 {% endif %}
                                 {% if session.user|lower == cocktail.created_by|lower %}
                                     <button  class="btn btn-small btn-danger p-3 m-3" data-toggle="modal" data-target="#delete_cocktail">Delete</button>
