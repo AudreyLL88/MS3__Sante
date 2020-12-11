@@ -140,6 +140,7 @@ def edit_cocktail(cocktail_id):
             "cocktail_prep": request.form.get("cocktail_prep"),
             "cocktail_diff": request.form.get("cocktail_diff"),
             "cocktail_serv": request.form.get("cocktail_serv"),
+            "cocktail_img_cred": request.form.get("cocktail_img_cred"),
             "created_by": session["user"]
         }
         mongo.db.cocktails.update({"_id": ObjectId(cocktail_id)}, submit)
