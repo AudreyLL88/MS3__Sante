@@ -118,6 +118,7 @@ def add_cocktail():
             "cocktail_prep": request.form.get("cocktail_prep"),
             "cocktail_diff": request.form.get("cocktail_diff"),
             "cocktail_serv": request.form.get("cocktail_serv"),
+            "cocktail_img_cred": request.form.get("cocktail_img_cred"),
             "created_by": session["user"]
         }
         mongo.db.cocktails.insert_one(cocktail)
@@ -162,7 +163,33 @@ def edit_cocktail(cocktail_id):
 @app.route('/cocktail/<cocktail_id>')
 def get_cocktail(cocktail_id):
     cocktail = mongo.db.cocktails.find_one({"_id": ObjectId(cocktail_id)})
-    return render_template("cocktail.html", cocktail=cocktail)
+    num_likes = len(cocktail["cocktail_like"])
+    is_liked = False
+    if "user" in session:
+        user = session["user"].lower()
+        print(user)
+        if user in cocktail["cocktail_like"]:
+            is_liked = True
+
+    return render_template(
+        "cocktail.html", cocktail=cocktail,
+        is_liked=is_liked, num_likes=num_likes)
+
+
+@app.route('/like_cocktail/<cocktail_id>', methods=["GET", "POST"])
+def like_cocktail(cocktail_id):
+    if "user" in session:
+        user = session["user"].lower()
+    cocktail = mongo.db.cocktails.find_one({"_id": ObjectId(cocktail_id)})
+    num_likes = len(cocktail["cocktail_like"])
+    if user not in cocktail["cocktail_like"]:
+        mongo.db.cocktails.update({
+            "_id": ObjectId(cocktail_id)}, {"$push": {"cocktail_like": user}})
+        num_likes += 1
+
+    return render_template(
+        "cocktail.html", cocktail=cocktail,
+        is_liked=True, num_likes=num_likes)
 
 
 @app.route("/delete_cocktail/<cocktail_id>")
@@ -195,6 +222,7 @@ def delete_category(category_id):
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
     flash("Category Successfully Deleted")
     return redirect(url_for("get_categories"))
+
 
 
 if __name__ == "__main__":

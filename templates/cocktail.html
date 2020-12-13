@@ -25,15 +25,15 @@
         <div class="cocktail_description m-3 pt-2">
             <h6>{{ cocktail.cocktail_description }}</h6>
         </div>
+        {% if is_liked == false %}
         <div class="ratings text-center mb-3">
-            <p>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-            </p>
+            <a href="{{ url_for('like_cocktail', cocktail_id=cocktail._id)}}"><i class="fas fa-heart"></i> {{ num_likes }} Likes</a>
         </div>
+        {% else %}
+        <div class="ratings text-center mb-3">
+            <a><i class="fas fa-heart"></i> {{ num_likes }} Likes</a>
+        </div>
+        {% endif %}
         {% if session.user|lower == cocktail.created_by|lower %}
         <div class="pb-3 text-center">
            <button class="btn btn-small btn-danger p-3 m-3" data-toggle="modal" data-target="#delete_cocktail">Delete</button>
