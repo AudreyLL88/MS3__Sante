@@ -433,7 +433,7 @@ footer a {
     margin-bottom: 15px;
 }
 
-.cocktail_step h4 {
+.cocktail_step i {
     color: var(--first-color-darken);
     flex: 0 0 60px;
     max-width: 60px;

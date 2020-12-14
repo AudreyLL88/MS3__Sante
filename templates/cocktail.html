@@ -61,21 +61,26 @@
 <!--Ingredients and instructions-->
         <div class="shadow p-4 mb-5">
                 <div class="row">
-                    <div class="col-md-2 ">
+                    <div class="col-md-2 mt-2">
                     <div class="cocktail_ingredients">
                         <h4>Ingredients</h4>
                         <hr>
+                         {% for line in cocktail.cocktail_ingredients.splitlines() %}
                         <ul>
-                            <li class="cocktail_ingredient">{{ cocktail.cocktail_ingredients }}</li>
+                            <li class="cocktail_ingredient">{{ line }}</li>
                         </ul>
+                        {% endfor %}
                     </div>
                 </div>
-                <div class="col-md-10 cocktail_instructions">
+                <div class="col-md-10 cocktail_instructions mt-2">
                     <h4 >Instructions</h4>
                     <hr>
                     <div class="cocktail_step d-flex">
-                        <h4><i class="fas fa-cocktail"></i></h4>
-                        <p>{{ cocktail.cocktail_instructions }}</p>
+                        <ul>
+                            {% for line in cocktail.cocktail_instructions.splitlines() %}
+                            <li><i class="fas fa-cocktail"></i> {{ line }}</li>
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
             </div>

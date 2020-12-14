@@ -119,7 +119,8 @@ def add_cocktail():
             "cocktail_diff": request.form.get("cocktail_diff"),
             "cocktail_serv": request.form.get("cocktail_serv"),
             "cocktail_img_cred": request.form.get("cocktail_img_cred"),
-            "created_by": session["user"]
+            "created_by": session["user"],
+            "cocktail_like": request.form.get("cocktail_like")
         }
         mongo.db.cocktails.insert_one(cocktail)
         return redirect(url_for("get_cocktails"))
@@ -142,7 +143,8 @@ def edit_cocktail(cocktail_id):
             "cocktail_diff": request.form.get("cocktail_diff"),
             "cocktail_serv": request.form.get("cocktail_serv"),
             "cocktail_img_cred": request.form.get("cocktail_img_cred"),
-            "created_by": session["user"]
+            "created_by": session["user"],
+            "cocktail_like": request.form.get("cocktail_like")
         }
         mongo.db.cocktails.update({"_id": ObjectId(cocktail_id)}, submit)
 
@@ -222,7 +224,6 @@ def delete_category(category_id):
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
     flash("Category Successfully Deleted")
     return redirect(url_for("get_categories"))
-
 
 
 if __name__ == "__main__":
