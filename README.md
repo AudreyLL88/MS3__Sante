@@ -120,7 +120,16 @@ View my wireframes [here]().
 <a name="features"></a>
 ## Features ## 
 ---
-Features for all users (guest/registered/admin)
+
+<a name="developed"></a>
+### Implemented Features ###
+
+*Features for all users (guest/registered/admin)*
+
+**Navigation bar**
+
+* The navigation bar is completely responsive.
+* The Navigation Bar displays the logo of the website and the options "Home", "Cocktail Recipes", "Log In" and "Register" when the user is not logged in.
 
 **Animated landing page**
 
@@ -140,43 +149,152 @@ Features for all users (guest/registered/admin)
 
 * This feature is an introduction to some of the cocktail recipes showcased on the website and are cocktail recipes created in the database by the admin only.
 
-**Recipes**
+**Cocktail Recipes**
 
-* The recipe page showcases all the recipes submitted by the registered users and the admin. All recipes are displayed in responsive cards including a picture 
+* The recipe page showcases all the recipes submitted by the registered users and the admin. All recipes are displayed in responsive cards including a picture, a category, a short description and a name all submitted by the user/author of the recipe.
+* If the user is the author of the recipe or the admin and is logged in, the buttons "edit and "delete" appears. They are not visbible if the author or admin is not logged in.
 
-<a name="developed"></a>
-### Implemented Features ###
+**Search box**
+
+* This feature allows the user to search through keywords specific cocktails in the Cocktails.html.
+* When no results match the search, the text "No Result Found" is displayed.
 
 
+**Individual Recipe Page**
 
-* 
+* This page allows the user to view a custom recipe including
+    - Cocktail Name 
+    - Category Name
+    - Cocktail Description 
+    - Cocktail Image 
+    - Cocktail Image Credentials 
+    - Cocktail Preparation Time 
+    - Cocktail Difficulty 
+    - Cocktail Ingredients 
+    - Cocktail Instructions
+    - Cocktail Date Submission
+    - Cocktail Likes
+    - Cocktail Author's Name
+
+* The user needs to be registered to "like" a recipe
+
+
+**Register**
+
+* The registration form takes the informations of the user to create an account : 
+    - the user's email address,
+    - The user's username,
+    - The user's password,
+    - The user's picture,
+    - The user's description.
+* The passwords  are hashed and protected using the import "generate_password_hash, check_password_hash" from werkzeug security.
+* As Santé! is promoting alcohol beverages, the user must confirm that he/she/is over 18.
+
+**Log In**
+
+* When a user is already registered, he/she/them uses the log in form to access their account. The user needs their password and username to log in.
+
+*Features visible for registered users*
+
+**Navigation bar**
+
+* The navigation bar is completely responsive.
+* The Navigation Bar displays the logo of the website and the options "Home", "Cocktail Recipes", "Profile" and "Log Out" when the user is not logged in.
+
+**Profile**
+
+* The user's profile showcases their personal informations.
+* The section "Your cocktails" displays the cocktail recipes submitted by the user. The user can also create a recipe by clicking on a specified button next to the recipe cards.
+* Each recipe card has 3 buttons : View, Edit, Delete.
+
+
+**Add a Cocktail**
+
+* This feature allows the user to submit a custom recipe through a form including the following required blank fields and options:
+    - Cocktail name (blank)
+    - Category (option)
+    - Cocktail Description (blank)
+    - Cocktail Image (blank)
+    - Cocktail Image Credentials (blank)
+    - Cocktail Preparation Time (blank)
+    - Cocktail Difficulty (option)
+    - Cocktail Ingredients (blank)
+    - Cocktail Instructions (blank)
+
+* After clicking on the submit button, the user can see the new recipe page topped with a validation flash message. The recipe will then appear in the user's profile.
+*This feature is accessible through the navigation bar and the user's profile.
+
+**Edit a Cocktail**
+
+* The user can edit the choosen recipe only when logged in.
+* The form passes the informations previously submitted for more clarity and can all be changed.
+* To submit these new information, the user needs to click on the "submit" button at the bottom of the page.
+* The edit  functionnality can be accessed through the recipe cards on the cocktails.html page, profile.html and the specific cocktail/cocktail_id.html.
+
+**Delete a Cocktail**
+
+* The user can delete the choosen recipe only when logged in.
+* The delete functionnality can be accessed through the recipe cards on the cocktails.html page, profile.html and the specific cocktail/cocktail_id.html.
+*  When the delete button is clicked, it throws a modal asking confirmation to prevent the user from accidentally delenting the recipe.
+* If confirmed, tge recipe is deleted forever.
+
+**Like a Cocktail**
+
+* The user can only like a recipe when logged in.
+* The user can only like a recipe once.
+* When clicked the recipe page reloads and adds to the like count.
+* A message on top of the recipe confirms the "like" to the user.
+
+**Log Out**
+
+* The user can access this functionnality through the navigation bar.
+* When clicked, a modal appears and ask for confirmation.
+* If confirmed, the user is redirected towards the landing page.
+
+*Features only for the admin (all of the above plus the following)*
+
+**Manage Categories**
+
+* The admin can edit, delete and view all cocktail categories through buttons displayed on the category cards.
+* The admin can access the Categories through their profile.
+
+**Profile**
+
+* All recipes are displayed on the admin dashboard.
+* The admin can view and delete any of the recipe. 
+* The admin cannot edit a recipe.
+
 <a name="implemented"></a>
 ### Future implemented features ###
 
-* 
-
-
 <a name="technologies"></a>
-## Technologies used ##
+## Technologies, libraries and tools used ##
 
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
-* [Javascript]()
-* [Python]()
-
-
-**Tools & Libraries**
-
-* [Bootstrap](https://getbootstrap.com/)
-* [Font-Awesome](https://fontawesome.com/icons?d=gallery)
+* [Javascript](https://www.javascript.com/)
+* [Python](https://www.python.org/)
+* [Bootstrap](https://bootstrap4.com/)
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+* [Jinja](https://jinja.palletsprojects.com/en/2.11.x/)
+* [Werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/)
+* [Heroku](https://dashboard.heroku.com/)
+* [MongoDB](https://www.mongodb.com/1)
+* [Font-Awesome](https://fontawesome.com/)
 * [Google fonts](https://fonts.google.com/)
 * [Git](https://git-scm.com/)
-* 
-* 
+* [Maya](https://www.autodesk.com/products/maya/overview)
+* [GSAP](https://greensock.com/gsap/)
+* [SCSS](https://sass-lang.com/)
+* [W3C HTML Validator](https://validator.w3.org/)
+* [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
+* [PEP8 online](http://pep8online.com/)
+* [JSHint](https://jshint.com/)
+
 
 <a name="testing"></a>
 
-## Testing ##
+## Feature Testing ##
 ---
 ![Testing]()
 
