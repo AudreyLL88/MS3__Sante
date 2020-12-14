@@ -8,11 +8,9 @@
                 {% with messages = get_flashed_messages() %}
                     {% if messages %}
                         {% for message in messages %}
-                            <div class="row text-center">
-                                <div class="col-12">
-                                    <h4 class="bg-warning text-white">{{ message }}</h4>
-                                </div>
-                            </div>
+                            <div class="alert alert-warning" role="alert">
+  {{message}}
+</div>
                         {% endfor %}
                     {% endif %}
                 {% endwith %}

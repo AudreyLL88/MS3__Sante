@@ -154,7 +154,7 @@ def edit_cocktail(cocktail_id):
         user = session["user"].lower()
         if user == session["user"].lower():
             return render_template(
-                "edit_cocktail.html", cocktail=cocktail, categories=categories)
+                "cocktail.html", cocktail=cocktail, categories=categories)
         else:
             return redirect(url_for("index"))
 
