@@ -49,7 +49,9 @@ def register():
 
         register = {
             "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(request.form.get("password")),
+            "user_img": request.form.get("user_img"),
+            "user_level": request.form.get("user_level")
         }
         mongo.db.users.insert_one(register)
 
@@ -83,8 +85,10 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
+    user_data = username = mongo.db.users.find_one(
+        {"username": session["user"]})
+    username = user_data["username"]
+    user_img = user_data["user_img"]
 
     if session["user"]:
         if session["user"] == "admin":
@@ -92,10 +96,13 @@ def profile(username):
         else:
             cocktails = list(
                 mongo.db.cocktails.find({"created_by": username.lower()}))
-        return render_template(
-            "profile.html", username=username, cocktails=cocktails)
 
-    return render_template("profile.html", username=username)
+        return render_template(
+            "profile.html", username=username,
+            cocktails=cocktails, user_img=user_img)
+
+    return render_template(
+        "profile.html", username=username)
 
 
 @app.route("/logout")
