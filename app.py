@@ -51,7 +51,8 @@ def register():
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password")),
             "user_img": request.form.get("user_img"),
-            "user_level": request.form.get("user_level")
+            "user_level": request.form.get("user_level"),
+            "user_loc": request.form.get("user_loc")
         }
         mongo.db.users.insert_one(register)
 
@@ -89,6 +90,8 @@ def profile(username):
         {"username": session["user"]})
     username = user_data["username"]
     user_img = user_data["user_img"]
+    user_level = user_data["user_level"]
+    user_loc = user_data["user_loc"]
 
     if session["user"]:
         if session["user"] == "admin":
@@ -99,7 +102,8 @@ def profile(username):
 
         return render_template(
             "profile.html", username=username,
-            cocktails=cocktails, user_img=user_img)
+            cocktails=cocktails, user_img=user_img,
+            user_level=user_level, user_loc=user_loc)
 
     return render_template(
         "profile.html", username=username)
