@@ -7,7 +7,7 @@
 	--first-color-dark: rgb(240, 181, 4);
 	--first-color-darken: rgb(228, 163, 0);
 	--white-color: #FFF;
-	--shadow-color: #D3D3D3
+	--shadow-color: #D3D3D3;
 	/* Font and typography */
 	--body-font:'Montserrat', sans-serif;
 	--big-font-size: 2.5rem;
@@ -130,16 +130,6 @@ h3 {
 		transition: .5s;
 	}
 }
-
-@media screen and (max-width: 768px) {
-     .home__data {
-		text-align: center;
-    }
-    .home__container {
-        min-height: 80vh;
-    }
-}
-
 
 .nav__close {
 	position: absolute;
@@ -285,6 +275,15 @@ h3 {
 	.home__img img {
 		width: 604px;
 	}
+}
+
+@media screen and (max-width: 768px) {
+     .home__data {
+		text-align: center;
+    }
+    .home__container {
+        min-height: 80vh;
+    }
 }
 
 
