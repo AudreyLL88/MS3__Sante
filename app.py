@@ -126,16 +126,6 @@ def add_cocktail():
         return redirect(url_for("get_cocktails"))
 
     categories = mongo.db.categories.find().sort("category_name", 1)
-    if "user" in session:
-        user = session["user"].lower()
-        if user == session["user"].lower():
-            return render_template(
-                "cocktail.html", cocktail=cocktail, categories=categories)
-        else:
-            return redirect(url_for("index"))
-
-    else:
-        return redirect(url_for("login"))
 
     return render_template("add_cocktail.html", categories=categories)
 
@@ -165,7 +155,7 @@ def edit_cocktail(cocktail_id):
         user = session["user"].lower()
         if user == session["user"].lower():
             return render_template(
-                "cocktail.html", cocktail=cocktail, categories=categories)
+                "edit_cocktail.html", cocktail=cocktail, categories=categories)
         else:
             return redirect(url_for("index"))
 
@@ -176,33 +166,12 @@ def edit_cocktail(cocktail_id):
 @app.route('/cocktail/<cocktail_id>')
 def get_cocktail(cocktail_id):
     cocktail = mongo.db.cocktails.find_one({"_id": ObjectId(cocktail_id)})
-    num_likes = len(cocktail["cocktail_like"])
-    is_liked = False
     if "user" in session:
         user = session["user"].lower()
         print(user)
-        if user in cocktail["cocktail_like"]:
-            is_liked = True
 
     return render_template(
-        "cocktail.html", cocktail=cocktail,
-        is_liked=is_liked, num_likes=num_likes)
-
-
-@app.route('/like_cocktail/<cocktail_id>', methods=["GET", "POST"])
-def like_cocktail(cocktail_id):
-    if "user" in session:
-        user = session["user"].lower()
-    cocktail = mongo.db.cocktails.find_one({"_id": ObjectId(cocktail_id)})
-    num_likes = len(cocktail["cocktail_like"])
-    if user not in cocktail["cocktail_like"]:
-        mongo.db.cocktails.update({
-            "_id": ObjectId(cocktail_id)}, {"$push": {"cocktail_like": user}})
-        num_likes += 1
-
-    return render_template(
-        "cocktail.html", cocktail=cocktail,
-        is_liked=True, num_likes=num_likes)
+        "cocktail.html", cocktail=cocktail,)
 
 
 @app.route("/delete_cocktail/<cocktail_id>")

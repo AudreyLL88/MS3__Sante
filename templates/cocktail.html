@@ -11,15 +11,14 @@
             <hr>
             <div class="text-muted text-center mb-4">
                 <p>Posted by: {{ cocktail.created_by }}</p>
-                <p> at DATE in category:
-                    CATEGORY</p>
+                <p> at DATE in {{ cocktail.category_name }} </p>
             </div>
         </div>
 
 <!-- Image -->
 
         <img class="cocktail_img d-block mx-auto" src="{{ cocktail.cocktail_img }}" alt="{{ cocktail.cocktail_name }}">
-
+        <figcaption class="figure-caption d-block mx-auto">{{ cocktail.cocktail_img_cred }}</figcaption>
 <!-- About -->
 
         <div class="cocktail_description m-3 pt-2">
@@ -27,11 +26,11 @@
         </div>
         {% if is_liked == false %}
         <div class="ratings text-center mb-3">
-            <a href="{{ url_for('like_cocktail', cocktail_id=cocktail._id)}}"><i class="fas fa-heart"></i> {{ num_likes }} Likes</a>
+            <a href="{{ url_for('like_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-warning btn-small text-white"><i class="fas fa-heart"></i> {{ num_likes }} Likes</a>
         </div>
         {% else %}
         <div class="ratings text-center mb-3">
-            <a><i class="fas fa-heart"></i> {{ num_likes }} Likes</a>
+            <a class="btn btn-warning btn-small text-white"><i class="fas fa-heart"></i> {{ num_likes }} Likes</a>
         </div>
         {% endif %}
         {% if session.user|lower == cocktail.created_by|lower %}
@@ -75,7 +74,7 @@
                 <div class="col-md-10 cocktail_instructions mt-2">
                     <h4 >Instructions</h4>
                     <hr>
-                    <div class="cocktail_step d-flex">
+                    <div class="cocktail_step d-flex lh-lg">
                         <ul>
                             {% for line in cocktail.cocktail_instructions.splitlines() %}
                             <li><i class="fas fa-cocktail"></i> {{ line }}</li>
