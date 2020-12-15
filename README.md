@@ -8,7 +8,6 @@
 * UX
     * [Project Goals](#project-goals)
     * [User Stories](#user-stories)
-    * [User Requirements and Expectations](#requirements)
     * [Design Choices](#design-choices)
         * [Fonts](#fonts)
         * [Icons](#icons)
@@ -18,7 +17,9 @@
     * [Features that have been developed](#developed)
     * [Features that will be implemented in the future](#implemented)
 * [Technologies](#technologies)
-* [Testing](#testing)
+* [Defensive Design](#defensive)
+    * [Feature Testing](#ftest)
+    * [Defensive Design Testing](#dtest)
 * [Issues](#issues)
 * [Deployment](#deployment)
 * [Credit](#credits)
@@ -292,13 +293,13 @@ View my wireframes [here]().
 * [JSHint](https://jshint.com/)
 
 
-<a name="testing"></a>
+<a name="defensive"></a>
 
-## Feature Testing ##
+## Defensive Design  ##
 ---
-![Testing]()
-
-* 
+### Feature Testing ###
+---
+<a name="ftest"></a>
 
 **Responsiveness**
 
@@ -418,6 +419,39 @@ View my wireframes [here]().
 
 * 
 
+<a name="dtest"></a>
+### Defensive Design Testing ###
+
+**Register and Log In**
+
+* If any field is left empty after the button is clicked, the form will request a valid entry.
+* It is impossible to register or log in without filling all the fields.
+* If the username already exists, the message "username already exists" will appear to prevent duplication.
+* All usernames and passwords must be minimum 5 characters or the form will require the user a valid entry.
+* In Log In specifically, if the user submit with the wrong password or username, the message "Incorrect password/username" will appear on the page.
+
+**Category**
+
+* Only the admin can access the category pages :
+    - categories.html
+    - add_category.html
+    - edit_category.html
+* When a guest user and/or a registered user try to access the pages by typing the url, they are directed to a custom 404 page redirecting them to the landing page.
+
+**Like a cocktail**
+
+* Only registered users can like a cocktail. a message "register/login to vote" appears if the user is not logged in/registered.
+* The registered user can only like a cocktail once. After visual confimation that the user voted, the Like button is not clickable anymore.
+
+**Recipes**
+
+* Only registered users can access these pages:
+    - add_cocktail.html
+    - edit_cocktail.html
+
+* When a guest user and/or a registered user try to access the pages by typing the url, they are directed to the login page.
+
+
 <a name="issues"></a>
 ## Issues ##
 ---
@@ -446,9 +480,12 @@ View my wireframes [here]().
 * When on the page, click on the "Code" button.
 * Copy the the |**HTTPS link**](https://github.com/AudreyLL88/MS3__Sante.git).
 * Open your IDE and in your terminal, type "git clone" and paste the [**HTTPS Link**](https://github.com/AudreyLL88/MS3__Sante.git).
-* Create an environement file called ".flaskenv" and add :
-    - FLASK_APP=run.py 
-    - FLASK_ENV=development
+* Create an environement file called ".env" and add :
+    - MONGO_URI=mongodb+srv://...
+    - SECRET_KEY=MyLittleSecret
+* Add your .env to .gitignore. to avoid it being uploaded.
+* In app.py, switch **debug=False** to **debug=True**
+* Upgrade pip locally with the command "pip install -U pip".
 * Install the modules used to run the application using "pip -r requirement.txt" in your terminal.
 * In parallel, create a MongoDB account and create a database called **"sante_project"**.
 * Add the following collections in the new database:
@@ -468,7 +505,7 @@ password:<string>
 
 ***cocktails***
 ```
-_id:5fd7340324e59fddee695828
+_id:<ObjectId>
 category_name:<string>
 cocktail_name:<string>
 cocktail_description:<string>
@@ -482,10 +519,28 @@ cocktail_img_cred:<string>
 created_by:<string>
 cocktail_like:<Array>
 ```
-
+* You can now run your application locally by typing the command "python3 app.py" in your terminal.
 
 ## Deploying on Heroku<hr>
-- 
+
+- Create a requirements.txt file using the command **pip3 freeze --local > requirements.txt** in your CLI.
+- Create a Procfile (always with an uppercase P) through the command **echo web: python app.py > Procfile**. Commit and Push.
+- Create an account on [**Heroku**](https://www.heroku.com/home).
+- Create a new app with **unique name**.
+- Select your **nearest region**.
+- Create a **new python project** within the project.
+- Link that project through your **Github repository** in the **deployment** section.
+- Navigate to Haroku Settings and set up the following in **Config Vars**
+
+```
+_IP = 0.0.0.0
+MONGO_DBNAME = [Name of DB]
+MONGO_URI = mongodb+srv://:@<cluster_name>-qtxun.mongodb.net/<database_name>?retryWrites=true&w=majority
+PORT = 5000
+SECRET_KEY = [Your Secret key]
+
+```
+* Go back to the Deploy section, select the master branch and deploy the project. 
 
 
 <a name="credits"></a>

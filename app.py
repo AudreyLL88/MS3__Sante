@@ -126,6 +126,17 @@ def add_cocktail():
         return redirect(url_for("get_cocktails"))
 
     categories = mongo.db.categories.find().sort("category_name", 1)
+    if "user" in session:
+        user = session["user"].lower()
+        if user == session["user"].lower():
+            return render_template(
+                "cocktail.html", cocktail=cocktail, categories=categories)
+        else:
+            return redirect(url_for("index"))
+
+    else:
+        return redirect(url_for("login"))
+
     return render_template("add_cocktail.html", categories=categories)
 
 
