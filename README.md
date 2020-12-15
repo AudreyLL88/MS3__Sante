@@ -429,19 +429,58 @@ View my wireframes [here]().
 
 
 # Deployment<hr>
-***Requirements:***
-- 
+
+***Requirements to deploy:***
+
+- An IDE: I used Gitpod but will use a IDE that is not online for my next project. I choose Gitpod as this is the recommended IDE at Code Institute.
+- Python3: In order to to run the application and use Flask.
+- PIP3: To install all application imports (such as Flask and OS).
+- A template folder: To link with the app routes.
+- A database: I choose MongoDB Atlas. 
 
 
 ## Local Deployment<hr>
-- 
 
-- 
+* Open browser od choice.
+* Copy/Paste the address of [**Santé! repository**](https://github.com/AudreyLL88/MS3__Sante) in your search box.
+* When on the page, click on the "Code" button.
+* Copy the the |**HTTPS link**](https://github.com/AudreyLL88/MS3__Sante.git).
+* Open your IDE and in your terminal, type "git clone" and paste the [**HTTPS Link**](https://github.com/AudreyLL88/MS3__Sante.git).
+* Create an environement file called ".flaskenv" and add :
+    - FLASK_APP=run.py 
+    - FLASK_ENV=development
+* Install the modules used to run the application using "pip -r requirement.txt" in your terminal.
+* In parallel, create a MongoDB account and create a database called **"sante_project"**.
+* Add the following collections in the new database:
 
 ***categories***
 ```
 _id:<ObjectId>
 category_name:<string>
+```
+
+***users***
+```
+_id:<ObjectId>
+username:<string>
+password:<string>
+```
+
+***cocktails***
+```
+_id:5fd7340324e59fddee695828
+category_name:<string>
+cocktail_name:<string>
+cocktail_description:<string>
+cocktail_img:<string>
+cocktail_ingredients:<string>
+cocktail_instructions:<string>
+cocktail_prep: <decimal128>
+cocktail_diff:<string>
+cocktail_serv:<decimal128>
+cocktail_img_cred:<string>
+created_by:<string>
+cocktail_like:<Array>
 ```
 
 
