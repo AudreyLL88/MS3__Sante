@@ -18,7 +18,7 @@
 <!-- Image -->
 
         <img class="cocktail_img d-block mx-auto" src="{{ cocktail.cocktail_img }}" alt="{{ cocktail.cocktail_name }}">
-        <figcaption class="figure-caption d-block mx-auto">{{ cocktail.cocktail_img_cred }}</figcaption>
+         <figcaption class="figure-caption text-center mx-auto">Credits: {{ cocktail.cocktail_img_cred }}</figcaption>
 <!-- About -->
 
         <div class="cocktail_description m-3 pt-2">
@@ -35,8 +35,8 @@
         {% endif %}
         {% if session.user|lower == cocktail.created_by|lower %}
         <div class="pb-3 text-center">
-           <button class="btn btn-small btn-danger p-3 m-3" data-toggle="modal" data-target="#delete_cocktail">Delete</button>
-            <a  href="{{ url_for('edit_cocktail', cocktail_id=cocktail._id)}}" class="btn  btn-small btn-success p-3 m-3">Edit</a>
+           <button class="btn btn-danger p-3 m-3" data-toggle="modal" data-target="#delete_cocktail">Delete</button>
+            <a  href="{{ url_for('edit_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-success p-3 m-3">Edit</a>
         </div>
         {% endif %}
 
