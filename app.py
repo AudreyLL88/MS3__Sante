@@ -134,11 +134,19 @@ def add_cocktail():
             "cocktail_like": request.form.get("cocktail_like")
         }
         mongo.db.cocktails.insert_one(cocktail)
+        flash("Merci for the new cocktail")
         return redirect(url_for("get_cocktails"))
 
-    categories = mongo.db.categories.find().sort("category_name", 1)
+    categories = mongo.db.categories.find()
+    if "user" in session:
+        user = session["user"].lower()
+        if user == session["user"].lower():
+            return render_template("add_cocktail.html", categories=categories)
+        else:
+            return redirect(url_for("about"))
 
-    return render_template("add_cocktail.html", categories=categories)
+    else:
+        return redirect(url_for("login"))
 
 
 @app.route("/edit_cocktail/<cocktail_id>", methods=["GET", "POST"])
@@ -159,6 +167,7 @@ def edit_cocktail(cocktail_id):
             "cocktail_like": request.form.get("cocktail_like")
         }
         mongo.db.cocktails.update({"_id": ObjectId(cocktail_id)}, submit)
+        flash("Merci for the updated cocktail!")
 
     cocktail = mongo.db.cocktails.find_one({"_id": ObjectId(cocktail_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
@@ -188,6 +197,7 @@ def get_cocktail(cocktail_id):
 @app.route("/delete_cocktail/<cocktail_id>")
 def delete_cocktail(cocktail_id):
     mongo.db.cocktails.remove({"_id": ObjectId(cocktail_id)})
+    flash("Adieu cocktail, see you never!")
     return redirect(url_for("get_cocktails"))
 
 
@@ -204,16 +214,24 @@ def edit_category(category_id):
             "category_name": request.form.get("category_name")
         }
         mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
+        flash("Another category added!")
         return redirect(url_for("get_categories"))
 
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
-    return render_template("edit_category.html", category=category)
+    if "user" in session:
+        user = session["user"].lower()
+        if user == "admin":
+            return render_template("edit_category.html", category=category)
+        else:
+            return redirect(url_for("index"))
+    else:
+        return redirect(url_for("login"))
 
 
 @app.route("/delete_category/<category_id>")
 def delete_category(category_id):
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
-    flash("Category Successfully Deleted")
+    flash("Adieu Category, see you never!")
     return redirect(url_for("get_categories"))
 
 
