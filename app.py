@@ -235,6 +235,24 @@ def delete_category(category_id):
     return redirect(url_for("get_categories"))
 
 
+@ app.route('/subscribe', methods=['POST'])
+def subscribe():
+    subscriptions = mongo.db.subscriptions
+    return_data = request.form.to_dict()
+    subscriptions.insert_one(return_data)
+    return redirect(request.referrer)
+
+
+@ app.errorhandler(404)
+def not_found(error):
+    return render_template('errors/404.html'), 404
+
+
+@ app.errorhandler(505)
+def internal(error):
+    return render_template('errors/404.html'), 505
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
