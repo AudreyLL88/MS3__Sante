@@ -4,20 +4,6 @@
     <!--Main container -->
     <section id="bg-cover" class="min-vh-100">
         <div id="cover-caption">
-
-            <!--Flash message-->
-            <div class="container">
-            {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                        {% for message in messages %}
-                            <div class="row text-center">
-                                <div class="col-12">
-                                    <h4 class="bg-warning text-white">{{ message }}</h4>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    {% endif %}
-            {% endwith %}
             
             <!--Register form-->
             <div class="row text-white">

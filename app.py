@@ -81,17 +81,13 @@ def login():
         else:
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login"))
+
     return render_template("login.html")
 
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    user_data = username = mongo.db.users.find_one(
-        {"username": session["user"]})
-    username = user_data["username"]
-    user_img = user_data["user_img"]
-    user_level = user_data["user_level"]
-    user_loc = user_data["user_loc"]
+    user = mongo.db.users.find_one({"username": username.lower()})
 
     if session["user"]:
         if session["user"] == "admin":
@@ -100,13 +96,31 @@ def profile(username):
             cocktails = list(
                 mongo.db.cocktails.find({"created_by": username.lower()}))
 
-        return render_template(
-            "profile.html", username=username,
-            cocktails=cocktails, user_img=user_img,
-            user_level=user_level, user_loc=user_loc)
+        return render_template("profile.html", user=user, cocktails=cocktails)
 
     return render_template(
-        "profile.html", username=username)
+        "profile.html", user=user, cocktails=cocktails)
+
+
+@app.route("/edit_profile/<username>", methods=["GET", "POST"])
+def edit_profile(username):
+    user = mongo.db.users.find_one({"username": username.lower()})
+    if request.method == "POST":
+        submit = {
+            "username": user["username"],
+            "password": user["password"],
+            "user_img": request.form.get("user_img"),
+            "user_level": request.form.get("user_level"),
+            "user_loc": request.form.get("user_loc"),
+        }
+        mongo.db.users.update({"username": username.lower()}, submit)
+        flash("Voila! All new!")
+        return redirect(url_for("profile", username=username))
+
+    if "user" in session:
+        return render_template("edit_profile.html", user=user)
+
+    return redirect(url_for("login"))
 
 
 @app.route("/delete_profile/<username>")
@@ -177,6 +191,7 @@ def edit_cocktail(cocktail_id):
         }
         mongo.db.cocktails.update({"_id": ObjectId(cocktail_id)}, submit)
         flash("Merci for the updated cocktail!")
+        return redirect(url_for("get_cocktail", cocktail_id=cocktail_id))
 
     cocktail = mongo.db.cocktails.find_one({"_id": ObjectId(cocktail_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
@@ -200,7 +215,7 @@ def get_cocktail(cocktail_id):
         print(user)
 
     return render_template(
-        "cocktail.html", cocktail=cocktail,)
+        "cocktail.html", cocktail=cocktail)
 
 
 @app.route("/delete_cocktail/<cocktail_id>")
