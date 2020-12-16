@@ -175,7 +175,7 @@ h3 {
 }
 
 .home__container {
-	height: calc(80vh - var(--header-height));
+    height: auto;
 	grid-template-rows: repeat(2, max-content);
 	row-gap: 1.5rem;
 }
@@ -242,7 +242,7 @@ h3 {
 		margin-bottom: 0;
 	}
 	.home__container {
-		height: 100vh;
+		min-height: auto;
 		grid-template-columns: repeat(2, max-content);
 		grid-template-rows: 1fr;
 		row-gap: 0;
@@ -265,6 +265,7 @@ h3 {
 		margin-right: auto;
 	}
 	.home__container {
+        height: 80vh;
 		justify-content: initial;
 		column-gap: 4.5rem;
 	}
@@ -282,7 +283,7 @@ h3 {
 		text-align: center;
     }
     .home__container {
-        min-height: 100vh;
+        min-height: auto;
     }
 }
 
