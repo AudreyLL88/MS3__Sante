@@ -152,7 +152,7 @@ def add_cocktail():
         if user == session["user"].lower():
             return render_template("add_cocktail.html", categories=categories)
         else:
-            return redirect(url_for("about"))
+            return redirect(url_for("index"))
 
     else:
         return redirect(url_for("login"))
@@ -233,6 +233,26 @@ def edit_category(category_id):
             return render_template("edit_category.html", category=category)
         else:
             return redirect(url_for("index"))
+    else:
+        return redirect(url_for("login"))
+
+
+@app.route("/add_category", methods=["GET", "POST"])
+def add_category():
+    if request.method == "POST":
+        category = {
+            "category_name": request.form.get("category_name"),
+        }
+        mongo.db.categories.insert_one(category)
+        flash("Merci for the new category")
+        return redirect(url_for("get_categories"))
+
+    categories = mongo.db.categories.find()
+    if "user" in session:
+        user = session["user"].lower()
+        if user == "admin".lower():
+            return render_template("add_category.html", categories=categories)
+
     else:
         return redirect(url_for("login"))
 
