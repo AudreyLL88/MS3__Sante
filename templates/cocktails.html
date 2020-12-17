@@ -8,18 +8,50 @@
    </div>
    <hr class="mb-2">
 
+   <div class="row mt-2 mb-2">
+       <div class="col-12">
+           <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">Shaken</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('get_cocktails', category_name='Frozen') }}">Stirred</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Non-alcoholic</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sour</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Highball</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Stiff</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Fizz</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Frozen</a>
+                </li>
+            </ul>
+       </div>
+   </div>
   
     <!-- Search box -->
    <div class="row mt-4">
-      <form action="{{ url_for('search') }}" method="post" class="col-12 col-lg-4 align-item-center">
-         <div class="input-group">
-                <input type="search" name="query" class="query form-control" placeholder="Search cocktail">
-                <span class="input-group-btn">
-                    <button class="btn btn-warning text-white" type="submit"><i class="fa fa-search"></i></button>
-                </span>
-         </div>
-      </form>
-   </div>
+       <div class="col-12 col-lg-4">
+            <form action="{{ url_for('search') }}" method="post" class="align-item-center">
+                <div class="input-group">
+                    <input type="search" name="query" class="query form-control" placeholder="Search cocktail">
+                    <span class="input-group-btn">
+                        <button class="btn btn-warning text-white" type="submit"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </form>
+            </div>
+        </div>
                               
     <!-- Cocktail card -->
    {% if cocktails|length > 0 %}
@@ -31,12 +63,7 @@
                                     <img src="{{ cocktail.cocktail_img }}" alt="" class="cocktail-img rounded">
                                     <h4 class="card-cocktail-title py-2 px-3">{{ cocktail.cocktail_name }}</h4>
                                     <p>{{ cocktail.category_name }}</p>
-                                    <small class="card-cocktail-description px-3">"{{ cocktail.cocktail_description }}"</small>
-                                    <p>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </p>
+                                    <small class="card-cocktail-description px-3"><i class="fas fa-user mx-1"></i> {{ cocktail.created_by }}</small>
                                 </div>
                                 <div class="text-center mb-3">
                                 <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-small btn-warning text-white">Try</a>

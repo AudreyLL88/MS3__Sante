@@ -64,7 +64,8 @@ Registered user
 
 Admin
 
-* As an admin of Santé! I want all of the above options but I would also be able to access and delete all the recipes from other users, as well as their profile.
+* As an admin of Santé! I want all of the above options but I would also be able to access and delete all the recipes from other users.
+* As an admin of Santé! I want to be able to create, edit and delete cocktail categories.
 
 <a name="requirements"></a>
 
@@ -72,7 +73,7 @@ Admin
 
 * To create Santé! I researched several popular Food and Beverages websites such as [**Epicurious**](https://www.epicurious.com/), [**Delish**](https://www.delish.com/) and [**Cocktail Flow**](https://cocktailflow.com/).
 * I also checked which website had the most interesting cocktail recipes (classics and originals) and my choice went to:
-* Most of these websites usually include a story around the cocktail and I decided to turn it only in a small description as I as a user usually skip most of the text and prefer to have the ingredients right away.
+* Most of these websites usually include a story around the cocktail and I decided to turn it only in a small description as I as a user usually skip most of the text and prefer to have the ingredients right away. I did a small poll among my friends on **Instagram** about the Story vs. No Story topic on recipe website and results showed 89% (on 145 people) in favor of No Story. The people have spoken, No story it is.
 
 <a name="design-choices"></a>
 
@@ -83,22 +84,22 @@ Admin
 
 ### Frameworks ###
 
-* Bootstrap 4. I used the [**Small Business Template**](https://startbootstrap.com/template/small-business) for the landing page structure as well as the [**Business Template**](https://startbootstrap.com/template/business-frontpage) for the profile page.
+* Bootstrap 4. I used the [**Small Business Template**](https://startbootstrap.com/template/small-business) for the landing page structure as well as the [**Business Template**](https://startbootstrap.com/template/business-frontpage) for the profile page. I wanted to learn more about Bootstrap and its classes. I tried to implement these as much as possible.
 * [**Flask**](https://flask.palletsprojects.com/en/1.1.x/)
-* [**GSAP**](https://greensock.com/gsap/)
 
 <a name="fonts"></a>
 
 ### Fonts ###
 
-* For the titles and the website logo I decided to go for the [**Goggle Fonts**](https://fonts.google.com/) cursive "Lobster" for a playful and sophisticated look and paired it my all-time favourite sans-serif Google fonts 'Montserrat' for readability.
+* For the titles and the website logo I decided to go for the [**Goggle Fonts**](https://fonts.google.com/) cursive "Lobster" for a playful and sophisticated look and paired it with my all-time favourite sans-serif Google fonts 'Montserrat' for readability on all other elements.
 
 <a name="icons"></a>
 
 ### Icons and Images ###
 
 * All icons used on this website are taken from [**Font Awesome**](https://fontawesome.com/).
-* I have decided to choose icons for the buttons Edit/View/Delete on the cocktail cards in the profile and in the instructions field of the recipe template.
+* I have decided to choose icons for the buttons Edit/View/Delete on the cocktail cards in the profile and in recipe template for a better user understanding.
+
 
 <a name="colors"></a>
 
@@ -106,6 +107,7 @@ Admin
 
 * I choose to work with a very momocromatic color scheme of light and dark yellows. 
 * I choose yellow because it is a color that increase cheerfulness and stimulate the user mentally. This website is all about a positive and fun message in these pretty dark times, and I thought yellow was the right amount of playfulness.
+* The buttons have their own color code: Red for all delete functionnalities, Green for all Edit functionnalities, Yellow for the Add functionnalities as well as the View cocktail buttons. Only the admin has a blue "Add Category" button as this is a functionnality only the Admin has.
 ![Color Scheme]() 
 
 
@@ -129,7 +131,7 @@ View my wireframes [here]().
 
 **Navigation bar**
 
-* The navigation bar is completely responsive.
+* The navigation bar is completely responsive and is not made with Bootstrap as this is part of a [**Youtube tutorial by Bedimcode**](https://www.youtube.com/watch?v=Lf6zONwYeec).
 * The Navigation Bar displays the logo of the website and the options "Home", "Cocktail Recipes", "Log In" and "Register" when the user is not logged in.
 
 **Animated landing page**
@@ -144,7 +146,7 @@ View my wireframes [here]().
 
 **Newsletter**
 
-* This feature allows the user no matter if he is registered or not to subscribe to the website's newsletter. The email given by the user is registered in the database in a collection called "subscriptions" and is separate from users.
+* This feature allows the user, no matter if he is registered or not, to subscribe to the website's newsletter. The email given by the user is registered in the database in a collection called "subscriptions" and is separate from the "users" collection.
 
 **Featured Recipes**
 
@@ -170,7 +172,7 @@ View my wireframes [here]().
     - Cocktail Image 
     - Cocktail Image Credentials 
     - Cocktail Preparation Time 
-    - Cocktail Difficulty 
+    - Cocktail Level 
     - Cocktail Ingredients 
     - Cocktail Instructions
     - Cocktail Date Submission
@@ -187,7 +189,8 @@ View my wireframes [here]().
     - The user's username,
     - The user's password,
     - The user's picture,
-    - The user's description.
+    - The user's location,
+    - The user's level.
 * The passwords  are hashed and protected using the import "generate_password_hash, check_password_hash" from werkzeug security.
 * As Santé! is promoting alcohol beverages, the user must confirm that he/she/is over 18.
 
@@ -204,10 +207,23 @@ View my wireframes [here]().
 
 **Profile**
 
-* The user's profile showcases their personal informations.
+* The user's profile showcases their personal informations: username, profile picture, level and location.
 * The section "Your cocktails" displays the cocktail recipes submitted by the user. The user can also create a recipe by clicking on a specified button next to the recipe cards.
 * Each recipe card has 3 buttons : View, Edit, Delete.
 
+**Edit Profile**
+
+* The user can edit their profile informations by clicking on the green "Edit" button in the dedicated profile card.
+* This feature allows the user to edit their picture, level and location. The user cannot edit their username and password (yet)
+* The user needs to click on the yellow "Submit" button to edit the changes.
+* After clicking on the button the user will be redirected towards their updated profile page with an alert confirming the changes made.
+
+**Delete Profile**
+
+* The user can delete their profile by clicking on the red "Delete" button in the dedicated profile card.
+* This feature allows the user to permanently delete their profile.
+* When the button is clicked a modal will ask for confirmation to avoid any unfortunate mistake to be made.
+* If the confirmation button is clicked, the profile is permanently deleted and the now guest user will be redirected to the registration page with an alert confirming the changes.
 
 **Add a Cocktail**
 
@@ -217,27 +233,28 @@ View my wireframes [here]().
     - Cocktail Description (blank)
     - Cocktail Image (blank)
     - Cocktail Image Credentials (blank)
-    - Cocktail Preparation Time (blank)
-    - Cocktail Difficulty (option)
+    - Cocktail Preparation Time (option)
+    - Cocktail Level (option)
     - Cocktail Ingredients (blank)
     - Cocktail Instructions (blank)
 
 * After clicking on the submit button, the user can see the new recipe page topped with a validation flash message. The recipe will then appear in the user's profile.
-*This feature is accessible through the navigation bar and the user's profile.
+* This feature is accessible through the navigation bar and the user's profile.
 
 **Edit a Cocktail**
 
 * The user can edit the choosen recipe only when logged in.
 * The form passes the informations previously submitted for more clarity and can all be changed.
 * To submit these new information, the user needs to click on the "submit" button at the bottom of the page.
+* After clicking on the submit button, the user can see the updated recipe page topped with a validation flash message. The recipe will be updated in the user's profile.
 * The edit  functionnality can be accessed through the recipe cards on the cocktails.html page, profile.html and the specific cocktail/cocktail_id.html.
 
 **Delete a Cocktail**
 
 * The user can delete the choosen recipe only when logged in.
 * The delete functionnality can be accessed through the recipe cards on the cocktails.html page, profile.html and the specific cocktail/cocktail_id.html.
-*  When the delete button is clicked, it throws a modal asking confirmation to prevent the user from accidentally delenting the recipe.
-* If confirmed, tge recipe is deleted forever.
+* When the delete button is clicked, a modal asks confirmation to prevent the user from accidentally deleting the recipe.
+* If confirmed, the recipe is deleted forever.
 
 **Like a Cocktail**
 
@@ -250,7 +267,7 @@ View my wireframes [here]().
 
 * The user can access this functionnality through the navigation bar.
 * When clicked, a modal appears and ask for confirmation.
-* If confirmed, the user is redirected towards the landing page.
+* If confirmed, the user is redirected towards the landing page with an alert confirming that the user is logged out.
 
 *Features only for the admin (all of the above plus the following)*
 
@@ -259,11 +276,17 @@ View my wireframes [here]().
 * The admin can edit, delete and view all cocktail categories through buttons displayed on the category cards.
 * The admin can access the Categories through their profile.
 
+**Add Category**
+
+* This feature allows the admin  to Add a category to the "Manage Category" dashboard.
+* This feature can be accessed by clicking on the blue "Add category" button on the admin profile page.
+
 **Profile**
 
 * All recipes are displayed on the admin dashboard.
 * The admin can view and delete any of the recipe. 
 * The admin cannot edit a recipe.
+* The admin can edit their profile information like a registered user.
 
 <a name="implemented"></a>
 ### Future implemented features ###
@@ -302,24 +325,20 @@ View my wireframes [here]().
 <a name="ftest"></a>
 
 **Responsiveness**
-
-* **Implementation** 
+ 
 
 * 
 
-**GSAP Animation**
+**GSAP Animation and Navigation Bar**
 
 ![GSAP]()
 
-* **Implementation** 
+*  
 
-* 
 
 **Featured Cocktails**
 
 ![featured]()
-
-* **Implementation** 
 
 * 
 
@@ -327,63 +346,78 @@ View my wireframes [here]().
 
 ![all]()
 
-* **Implementation**
-
 * 
 
 **Cocktail Recipe**
 
 ![recipe]
 
-* **Implementation**
-
 * 
 
-**Search bar**
+**Search box**
 
 ![search]() 
 
-* **Implementation**
-
 * 
 
-**Log In**
+**Log In and Profile**
 
 ![login]()
 
-* **Implementation**
-
-* 
+* If the user is already registered, access the Login page through the navigation bar.
+* Is the login form and background correctly rendered ?
+* Try to submit an empty form. Is the bootstrap form validation tooltip shows in the empty fields?
+* Try to fill the fields with a password and username under 5 characters or above 15 characters. Is the Bootstrap form validation tooltip showing in the incorrectly filled fields?
+* Try to fill the form with a wrong password/username. Is an alert informing you that your password/username is incorrect?
+* Fill the form with correct password/username. Is your profile page displayed correctly ?
+* Is your profile card displaying your profile picture, username, level and location ?
+* Is the dashboard correctly displaying the "Your cocktails" with its content and "Add cocktail" sections?
+* Click on the green "Edit Profile" button. Is the Edit Profile template rendered correctly ?
+* Make one change in one of the fields and click submit. Are you redirected towards your profile page?
+* Is the alert present ?
+* Is the change made in your profile displayed ?
+* Click the red "Delete profile". Is the modal rendered? 
+* Click the "Cancel" modal button. Are you back on your profile page?
+* Reclick on "Delete Profile". On the modal, click the "Delete" button. Is the register page rendered?
+* Is the delete alert present?
 
 **Register**
 
 ![register]()
 
-* **Implementation**
+* Navigate to the Register page through the navigation bar and click. Is the registration form and its background correctly rendered?
+* Try to submit an empty form. Is the bootstrap form validation tooltip shows in the empty fields?
+* Try to fill the fields with a password and username under 5 characters or above 15 characters. Is the Bootstrap form validation tooltip showing in the incorrectly filled fields?
+* Try to fill the form with an already existing username. Is an alert informing you that the username already exists?
+* Fill the form correctly and click on the "Register" button. Is the Profile page correctly rendered ?
+* Is the "Your cocktail" section empty?
 
-* 
-
-**Profile**
+**Your cocktails**
 
 ![profile]()
 
-* **Implementation**
+* In your profile page, is the "Your cocktail" section displayed?
+* If you haven't submitted any recipe yet, is the message "Wow, such empty." showing ?
+* As a registered user, if you have submitted recipe previously, are the cocktail cards showing ?
+* Are the buttons "View"(yellow), "Edit"(green), and "Delete"(red) displayed ?
+* Is the picture, name and category of the cocktal showing ?
+* As an admin, are your cocktails as well as all registered user cocktails showing in "Your cocktail" section?
+* As an admin, do you haven "View","Edit" and "Delete" buttons on your recipes and "View" and "Delete" buttons for other users recipes?
 
-* 
-
-**Submit a cocktail**
+**Submit a cocktail (Admin/Registered user)**
 
 ![submit]()
 
-* **Implementation**
-
-* 
+* Navigate to the form through your profile page. Is the yellow button "Add a cocktail" rendered ?
+* Click on the button, is the "Add a cocktail" form correctly ?
+* Are all fields empty, except for the option fields?
+* Try to submit the form with empty fields. Is the Bootstrap form validation tooltip showing ?
+* Fill the form accordingly and respecting the instruction. Click on the submit button. Is the cocktail page rendered correctly?
+* Is the alert present ?
 
 **Edit a cocktail**
 
-![submit]()
-
-* **Implementation**
+![Edit]()
 
 * 
 
@@ -391,15 +425,11 @@ View my wireframes [here]().
 
 ![delete]()
 
-* **Implementation**
-
 * 
 
 **Manage Category**
 
 ![manage]()
-
-* **Implementation**
 
 * 
 
@@ -407,15 +437,11 @@ View my wireframes [here]().
 
 ![rate]()
 
-* **Implementation**
-
 * 
 
 **Share a cocktail**
 
 ![submit]()
-
-* **Implementation**
 
 * 
 
@@ -436,14 +462,14 @@ View my wireframes [here]().
     - categories.html
     - add_category.html
     - edit_category.html
-* When a guest user and/or a registered user try to access the pages by typing the url, they are directed to a custom 404 page redirecting them to the landing page.
+* When a guest user and/or a registered user try to access the pages by typing the url, they are redirected to the "Login" page.
 
 **Like a cocktail**
 
 * Only registered users can like a cocktail. a message "register/login to vote" appears if the user is not logged in/registered.
 * The registered user can only like a cocktail once. After visual confimation that the user voted, the Like button is not clickable anymore.
 
-**Recipes**
+**Cocktail Recipes**
 
 * Only registered users can access these pages:
     - add_cocktail.html
@@ -451,6 +477,9 @@ View my wireframes [here]().
 
 * When a guest user and/or a registered user try to access the pages by typing the url, they are directed to the login page.
 
+**Delete Profile/Cocktail/Category**
+
+* The registered user/admin cannot delete any of these features without confirming it before on the defensive modal.
 
 <a name="issues"></a>
 ## Issues ##
@@ -494,6 +523,11 @@ View my wireframes [here]().
 ```
 _id:<ObjectId>
 category_name:<string>
+```
+***subscriptions***
+```
+_id:<ObjectId>
+sub_email:<string>
 ```
 
 ***users***
