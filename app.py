@@ -52,7 +52,8 @@ def register():
             "password": generate_password_hash(request.form.get("password")),
             "user_img": request.form.get("user_img"),
             "user_level": request.form.get("user_level"),
-            "user_loc": request.form.get("user_loc")
+            "user_loc": request.form.get("user_loc"),
+            "liked_cocktail": []
         }
         mongo.db.users.insert_one(register)
 
@@ -112,6 +113,7 @@ def edit_profile(username):
             "user_img": request.form.get("user_img"),
             "user_level": request.form.get("user_level"),
             "user_loc": request.form.get("user_loc"),
+            "liked_cocktail": user["liked_cocktail"]
         }
         mongo.db.users.update({"username": username.lower()}, submit)
         flash("Voila! All new!")
@@ -154,7 +156,7 @@ def add_cocktail():
             "cocktail_serv": request.form.get("cocktail_serv"),
             "cocktail_img_cred": request.form.get("cocktail_img_cred"),
             "created_by": session["user"],
-            "cocktail_like": request.form.get("cocktail_like")
+            "cocktail_like": 0
         }
         mongo.db.cocktails.insert_one(cocktail)
         flash("Merci for the new cocktail")
@@ -174,6 +176,7 @@ def add_cocktail():
 
 @app.route("/edit_cocktail/<cocktail_id>", methods=["GET", "POST"])
 def edit_cocktail(cocktail_id):
+    cocktail_data = mongo.db.cocktails.find_one({"_id": ObjectId(cocktail_id)})
     if request.method == "POST":
         submit = {
             "category_name": request.form.get("category_name"),
@@ -187,7 +190,7 @@ def edit_cocktail(cocktail_id):
             "cocktail_serv": request.form.get("cocktail_serv"),
             "cocktail_img_cred": request.form.get("cocktail_img_cred"),
             "created_by": session["user"],
-            "cocktail_like": request.form.get("cocktail_like")
+            "cocktail_like": cocktail_data["cocktail_like"]
         }
         mongo.db.cocktails.update({"_id": ObjectId(cocktail_id)}, submit)
         flash("Merci for the updated cocktail!")
@@ -210,12 +213,35 @@ def edit_cocktail(cocktail_id):
 @app.route('/cocktail/<cocktail_id>')
 def get_cocktail(cocktail_id):
     cocktail = mongo.db.cocktails.find_one({"_id": ObjectId(cocktail_id)})
+    is_liked = False
     if "user" in session:
         user = session["user"].lower()
-        print(user)
+        user_data = mongo.db.users.find_one({"username": user})
+        if cocktail_id in user_data["liked_cocktail"]:
+            is_liked = True
 
     return render_template(
-        "cocktail.html", cocktail=cocktail)
+        "cocktail.html", cocktail=cocktail,
+        is_liked=is_liked)
+
+
+@app.route('/liked/<cocktail_id>', methods=["GET", "POST"])
+def update_like(cocktail_id):
+    cocktail = mongo.db.cocktails.find_one({"_id": ObjectId(cocktail_id)})
+    user = session["user"].lower()
+    user_data = mongo.db.users.find_one({"username": user})
+    if cocktail_id not in user_data["liked_cocktail"]:
+        mongo.db.cocktails.update({
+                "_id": ObjectId(cocktail_id)},
+                {"$set": {"cocktail_like": cocktail["cocktail_like"] + 1}})
+        mongo.db.users.update({
+                "username": user},
+                {"$push": {"liked_cocktail": cocktail_id}})
+        cocktail = mongo.db.cocktails.find_one({"_id": ObjectId(cocktail_id)})
+
+    return render_template(
+        "cocktail.html", cocktail=cocktail,
+        is_liked=True)
 
 
 @app.route("/delete_cocktail/<cocktail_id>")

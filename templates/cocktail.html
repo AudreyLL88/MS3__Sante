@@ -25,14 +25,20 @@
             <h6>"{{ cocktail.cocktail_description }}"</h6>
             <div class="addthis_inline_share_toolbox"></div>
         </div>
-        {% if is_liked == false %}
-        <div class="ratings text-center mb-3">
-            <a href="{{ url_for('like_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-warning btn-small text-white"><i class="fas fa-heart"></i> {{ num_likes }} Likes</a>
-        </div>
+        {% if session.user|lower %}
+            {% if is_liked == true %}
+                <div class="ratings text-center mb-3">
+                    <a href="" class="btn btn-dark btn-small text-white disabled"><i class="fas fa-heart"></i> {{ cocktail.cocktail_like }} Likes</a>
+                </div>
+            {% else %}
+                <div class="ratings text-center mb-3">
+                    <a href="{{ url_for('update_like', cocktail_id=cocktail._id)}}" class="btn btn-outline-secondary btn-small"><i class="fas fa-heart"></i> {{ cocktail.cocktail_like }} Likes</a>
+                </div>
+            {% endif %}
         {% else %}
-        <div class="ratings text-center mb-3">
-            <a class="btn btn-warning btn-small text-white"><i class="fas fa-heart"></i> {{ num_likes }} Likes</a>
-        </div>
+                <div class="ratings text-center mb-3">
+                    <a href="{{ url_for('login')}}" class="btn btn-outline-secondary btn-small"><i class="fas fa-heart"></i> {{ cocktail.cocktail_like }} Likes</a>
+                </div>
         {% endif %}
         {% if session.user|lower == cocktail.created_by|lower %}
         <div class="pb-3 text-center">
