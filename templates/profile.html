@@ -102,10 +102,10 @@
                 <hr>
                 <a class="btn btn-warning text-white btn-lg mb-3" href="{{ url_for('add_cocktail')}}">Create New &raquo;</a>
                  {% if session.user == 'admin' %}
-                <h2>Manage Categories</h2>
+                <h2 class="mt-3">Manage Categories</h2>
                 <hr>
-                <a class="btn btn-success text-white btn-lg" href="{{ url_for('get_categories')}}">Check it &raquo;</a>
-                <a class="btn btn-primary text-white btn-lg" href="{{ url_for('add_category')}}">Add Category &raquo;</a>
+                <a class="btn btn-success text-white btn-lg mt-1" href="{{ url_for('get_categories')}}">Check it &raquo;</a>
+                <a class="btn btn-primary text-white btn-lg mt-1" href="{{ url_for('add_category')}}">Add Category &raquo;</a>
                  {% endif %}
             </div>
         </div>
