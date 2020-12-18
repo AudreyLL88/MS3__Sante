@@ -6,38 +6,7 @@
    <div class="cocktail-headline text-center">
       <h2>All Cocktails</h2>
    </div>
-   <hr class="mb-2">
-
-   <div class="row mt-2 mb-2">
-       <div class="col-12">
-           <ul class="nav justify-content-center">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Shaken</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('get_cocktails', category_name='Frozen') }}">Stirred</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Non-alcoholic</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Sour</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Highball</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Stiff</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Fizz</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Frozen</a>
-                </li>
-            </ul>
-       </div>
-   </div>
+   <hr class="mb-2">  
   
     <!-- Search box -->
    <div class="row mt-4">
@@ -50,6 +19,9 @@
                     </span>
                 </div>
             </form>
+            {% for category in categories %}
+                <a href="{{url_for('search_category', category_name=category.category_name )}}" class="href">{{ category.category_name }}</a>
+            {% endfor %}
             </div>
         </div>
                               

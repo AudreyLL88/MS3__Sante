@@ -27,14 +27,27 @@ def index():
 @app.route("/get_cocktails")
 def get_cocktails():
     cocktails = list(mongo.db.cocktails.find())
-    return render_template("cocktails.html", cocktails=cocktails)
+    categories = list(mongo.db.categories.find())
+
+    return render_template(
+        "cocktails.html", cocktails=cocktails, categories=categories)
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
     cocktails = list(mongo.db.cocktails.find({"$text": {"$search": query}}))
-    return render_template("cocktails.html", cocktails=cocktails)
+
+    return render_template(
+        "cocktails.html", cocktails=cocktails)
+
+
+@app.route("/search/<category_name>", methods=["GET"])
+def search_category(category_name):
+    cocktails = list(mongo.db.cocktails.find({"category_name": category_name}))
+
+    return render_template(
+        "cocktails.html", cocktails=cocktails)
 
 
 @app.route("/register", methods=["GET", "POST"])
