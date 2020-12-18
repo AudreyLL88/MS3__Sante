@@ -333,32 +333,104 @@ View my wireframes [here]().
 
 ![GSAP]()
 
-*  
-
+*  As any user, navigate to the landing page of Santé! Is the "index" template correctly rendered ?
+*  Are all text elements and images appearing on the screen ?
+* Move the cursor of your mouse over the navigation bar links. Are the images in the hero section moving?
+* Move the cursor of your mouse over the hero image. Is the image moving in 3D ?
 
 **Featured Cocktails**
 
 ![featured]()
 
-* 
+* As any user, scroll down to the bottom of the index page, are the "Featured cocktails" cards rendered ?
+* Are the pictures, name, category and username rendered ?
+* If yes, click on the yellow "try" button, is the cocktail template correctly rendered?
+* Are all informations displayed on the page ?
 
 **All Cocktails**
 
 ![all]()
 
-* 
+* As a guest user, navigate to the "All cocktail" page through the navigation bar. Is the all cocktail template rendered correctly?
+* Is the search box and the Category dropdown present ?
+* Are all cocktail cards rendered correctly and display these informations:
+    - the cocktail picture
+    - the cocktail name
+    - the cocktail category
+    - the cocktail author.
+* If yes, log into your account as an admin or registered user and re-navigate to the All cocktails page.
+* Is the search box and the Category dropdown present ?
+* Are all cocktail cards rendered correctly and display these informations:
+    - the cocktail picture
+    - the cocktail name
+    - the cocktail category
+    - the cocktail author.
+* On the cocktails you have previously created, are the "edit" and "delete" icons present ?
 
 **Cocktail Recipe**
 
 ![recipe]
 
-* 
+* As a guest user, select a cocktail card from the All Cocktails page and click on the "try" button. Is the cocktail template rendered correctly ?
+* Are all these informations rendered correctly:
+    - the cocktail name
+    - the cocktail author
+    - the Date
+    - the category name
+    - the cocktail picture
+    - the cocktail picture credits
+    - the cocktail description
+    - the like button
+    - the preparation time
+    - the servings
+    - the level
+    - the instructions
+    - the ingredients.
+* As a registered user, select a cocktail card from the All Cocktails page and click on the "try" button. Is the cocktail template rendered correctly ?
+* Are all these informations rendered correctly:
+    - the cocktail name
+    - the cocktail author
+    - the Date
+    - the category name
+    - the cocktail picture
+    - the cocktail picture credits
+    - the cocktail description
+    - the like button
+    - the preparation time
+    - the servings
+    - the level
+    - the instructions
+    - the ingredients.
+* Are the "Delete" and "Edit" buttons displayed and clickable ?
+* As a registered user, select one of your cocktail card from your profile page and click on the "try" button. Is the cocktail template rendered correctly ?
+* Are all these informations rendered correctly:
+    - the cocktail name
+    - the cocktail author
+    - the Date
+    - the category name
+    - the cocktail picture
+    - the cocktail picture credits
+    - the cocktail description
+    - the like button
+    - the preparation time
+    - the servings
+    - the level
+    - the instructions
+    - the ingredients.
+* Are the "Delete" and "Edit" buttons displayed and clickable ?
 
-**Search box**
+**Search box and Category serach dropdown**
 
 ![search]() 
 
-* 
+* As any user, navigate to the All cocktail page through the navigation bar. Is the All cocktails template rendered correctly?
+* If yes, is the search box present?
+* Enter a word in the search box and click on the yellow search button. Is the result of your search showing in the card section?
+* If no result was found, is the next "No result found" showing?
+* Reset your search. Is the All cocktails template rendered correctly?
+* Click on the yellow Category dropdown button. Are all categories displayed?
+* If yes, select a category. Is the result of the search correctly displayed?
+* If no result was found, is the text "No result found" displayed?
 
 **Log In and Profile**
 
@@ -398,11 +470,11 @@ View my wireframes [here]().
 
 * In your profile page, is the "Your cocktail" section displayed?
 * If you haven't submitted any recipe yet, is the message "Wow, such empty." showing ?
-* As a registered user, if you have submitted recipe previously, are the cocktail cards showing ?
+* As a registered user, if you have submitted cocktails previously, are the cocktail cards showing ?
 * Are the buttons "View"(yellow), "Edit"(green), and "Delete"(red) displayed ?
 * Is the picture, name and category of the cocktal showing ?
 * As an admin, are your cocktails as well as all registered user cocktails showing in "Your cocktail" section?
-* As an admin, do you haven "View","Edit" and "Delete" buttons on your recipes and "View" and "Delete" buttons for other users recipes?
+* As an admin, do you haven "View","Edit" and "Delete" buttons on your cocktail recipes and "View" and "Delete" buttons for other users cocktail recipes?
 
 **Submit a cocktail (Admin/Registered user)**
 
@@ -412,38 +484,114 @@ View my wireframes [here]().
 * Click on the button, is the "Add a cocktail" form correctly ?
 * Are all fields empty, except for the option fields?
 * Try to submit the form with empty fields. Is the Bootstrap form validation tooltip showing ?
-* Fill the form accordingly and respecting the instruction. Click on the submit button. Is the cocktail page rendered correctly?
+* Fill the form accordingly and respecting the instructions. Click on the submit button. Is the cocktail page rendered correctly?
 * Is the alert present ?
+* Are all informations previously entered displayed?
 
 **Edit a cocktail**
 
 ![Edit]()
 
-* 
+*Method 1*
+* When logged in, go to your profile. If the cocktail cards are correctly rendered, is the green "Edit" icon correctly rendered?
+* If yes, click on it. Is the "Edit your cocktail" template correctly rendered ?
+* Are all fields filled with previous informations about the cocktail ?
+* If yes, try to make a change and click on "Save Changes". Is the cocktail template correctly rendered ?
+* Is the confirmation alert present ?
+* Did the change occur ?
+
+*Method 2*
+
+* When logged in go to the "All cocktails" page through the navigation bar. Is the "All Cocktails" template correctly rendered?
+* If all cocktail cards are rendered, is the green "Edit" Icon present ?
+* If yes, click on it. Is the "Edit your cocktail" template correctly rendered ?
+* Are all fields filled with previous informations about the cocktail ?
+* If yes, try to make a change and click on "Save Changes". Is the cocktail template correctly rendered ?
+* Is the confirmation alert present ?
+* Did the change occur ?
+
+*Method 3*
+
+* When logged in go to the "All cocktails" page through the navigation bar. Is the "All Cocktails" template correctly rendered?
+* If all cocktail cards are rendered, select one of your cocktail and click on the try button. Is the cocktail correctly rendered ?
+* If yes, is the green "Edit" button rendered ?
+* If yes, click on it. Is the "Edit your cocktail" template correctly rendered ?
+* Are all fields filled with previous informations about the cocktail ?
+* If yes, try to make a change and click on "Save Changes". Is the cocktail template correctly rendered ?
+* Is the confirmation alert present ?
+* Did the change occur ?
 
 **Delete a cocktail**
 
 ![delete]()
 
-* 
+*Method 1*
+* When logged in, go to your profile. If the cocktail cards are correctly rendered, is the red "Delete" icon correctly rendered?
+* If yes, click on it. Is the modal "Delete your cocktail" correctly rendered ?
+* If yes, click on cancel. Did the nodal disappear and no change happened ?
+* Click again on the red "Delete" Icon. Is the modal correctly rendered?
+* If yes, click on delete. Is the "all cocktail" template correctly rendered ?
+* If yes, is the confirmation alert present ?
+* Did the cocktail disappear ?
 
-**Manage Category**
+*Method 2*
+
+* When logged in go to the "All cocktails" page through the navigation bar. Is the "All Cocktails" template correctly rendered?
+* If all cocktail cards are rendered, is the red "Delete" Icon present ?
+* If yes, click on it. Is the modal "Delete your cocktail" correctly rendered ?
+* If yes, click on cancel. Did the nodal disappear and no change happened ?
+* Click again on the red "Delete" Icon. Is the modal correctly rendered?
+* If yes, click on delete. Is the "all cocktail" template correctly rendered ?
+* If yes, is the confirmation alert present ?
+* Did the cocktail disappear ?
+
+*Method 3*
+
+* When logged in go to the "All cocktails" page through the navigation bar. Is the "All Cocktails" template correctly rendered?
+* If all cocktail cards are rendered, select one of your cocktail and click on the try button. Is the cocktail template correctly rendered ?
+* Is the red "Delete" button rendered ?
+* If yes, click on it. Is the modal "Delete your cocktail" correctly rendered ?
+* If yes, click on cancel. Did the nodal disappear and no change happened ?
+* Click again on the red "Delete" Icon. Is the modal correctly rendered?
+* If yes, click on delete. Is the "all cocktail" template correctly rendered ?
+* If yes, is the confirmation alert present ?
+* Did the cocktail disappear ?
+
+**Manage Category (Admin only)**
 
 ![manage]()
 
-* 
+* As an admin, log into your profile. Is the profile template rendered ?
+* If yes, is the "Manage category" section present?
+* If yes, click on the green "Check it" button. is the "Categories" template correctly rendered ?
+* Are all category cards displayed including name and "Edit" / "delete" buttons ?
+* If yes click on "Edit". Is the "Edit Category" template rendered correctly?
+* Is the previous category name present ?
+* Change the name and click on "save changes". Is the "Categories" template correctly rendered?
+* Is the confirmation alert present ?
+* Did the change occur in the selected cotegory card ?
+* If yes, select another category card and click on the red "Delete" button. Is the modal correctly rendered ?
+* If yes, click on cancel. Did the modal disappear and no change happened ?
+* Click again on the red "Delete" Icon. Is the modal correctly rendered?
+* If yes, click on delete. Is the "categories" template correctly rendered ?
+* If yes, is the confirmation alert present ?
+* Did the category disappear ?
 
-**Rate a cocktail**
+
+**Like a cocktail (View for all/ Action only for registered user and Admin**
 
 ![rate]()
 
-* 
-
-**Share a cocktail**
-
-![submit]()
-
-* 
+* As a guest user, navigate to the "All cocktails" page through the navigation bar and select a cocktail of your choice. Is the cocktail template rendered correctly ?
+* Scroll down, is the grey outline "like" button with like count rendered correctly?
+* Try to click on it, are you correctly redirected to the login page ?
+* Is the form displayed correctly?
+* As a registered user or Admin,  navigate to the "All cocktails" page through the navigation bar and select a cocktail of your choice. Is the cocktail template rendered correctly ?
+* Scroll down, is the grey outline "like" button with like count rendered correctly?
+* Click on it. Is the cocktail template refreshed correctly?
+* Is the confirmation alert present ?
+* Is the like count updated with your vote ?
+* Is the click function disabled?
 
 <a name="dtest"></a>
 ### Defensive Design Testing ###
@@ -535,6 +683,11 @@ sub_email:<string>
 _id:<ObjectId>
 username:<string>
 password:<string>
+user_img:<string>
+user_level:<string>
+user_loc:<string>
+liked_cocktail:<Array>
+
 ```
 
 ***cocktails***
@@ -551,7 +704,7 @@ cocktail_diff:<string>
 cocktail_serv:<decimal128>
 cocktail_img_cred:<string>
 created_by:<string>
-cocktail_like:<Array>
+cocktail_like:<decimal128>
 ```
 * You can now run your application locally by typing the command "python3 app.py" in your terminal.
 
