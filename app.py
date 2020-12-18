@@ -252,6 +252,7 @@ def update_like(cocktail_id):
                 {"$push": {"liked_cocktail": cocktail_id}})
         cocktail = mongo.db.cocktails.find_one({"_id": ObjectId(cocktail_id)})
 
+    flash("Merci for le like!")
     return render_template(
         "cocktail.html", cocktail=cocktail,
         is_liked=True)
