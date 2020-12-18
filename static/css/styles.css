@@ -52,7 +52,7 @@ ul {
 }
 
 a {
-	text-decoration: none;
+	text-decoration: none !important;
 }
 
 img {
@@ -502,5 +502,14 @@ footer a:hover{
     font-weight: bold;
 }
 
+.menu_cocktail {
+    color: black;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.menu_cocktail:hover{
+    color: var(--first-color-dark);
+}
 
 

@@ -2,15 +2,16 @@
 {% block content %}
 
  <!-- Main container/Page Title -->
-<section class="container cocktail-section">
+<section class="container cocktail-section mt-3">
    <div class="cocktail-headline text-center">
       <h2>All Cocktails</h2>
    </div>
    <hr class="mb-2">  
+
   
     <!-- Search box -->
    <div class="row mt-4">
-       <div class="col-12 col-lg-4">
+       <div class="col-12 col-lg-4 mb-2">
             <form action="{{ url_for('search') }}" method="post" class="align-item-center">
                 <div class="input-group">
                     <input type="search" name="query" class="query form-control" placeholder="Search cocktail">
@@ -19,11 +20,23 @@
                     </span>
                 </div>
             </form>
-            {% for category in categories %}
-                <a href="{{url_for('search_category', category_name=category.category_name )}}" class="href">{{ category.category_name }}</a>
-            {% endfor %}
-            </div>
         </div>
+         <div class="col-12 col-lg-4">
+            <div class="dropdown">
+                <button class="btn btn-warning text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                Search category
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    {% for category in categories %}
+                        <li>
+                            <a href="{{url_for('search_category', category_name=category.category_name )}}" class="mx-3 menu_cocktail">{{ category.category_name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div> 
+        </div> 
+    </div>
+
                               
     <!-- Cocktail card -->
    {% if cocktails|length > 0 %}
@@ -33,16 +46,17 @@
                             <div class="cocktail-card shadow my-3">
                                 <div class="cocktail-body text-center">
                                     <img src="{{ cocktail.cocktail_img }}" alt="" class="cocktail-img rounded">
-                                    <h4 class="card-cocktail-title py-2 px-3">{{ cocktail.cocktail_name }}</h4>
+                                    <h4 class="card-cocktail-title mx-3 my-2">{{ cocktail.cocktail_name }}
+                                        {% if session.user|lower == cocktail.created_by|lower %}
+                                            <a class="m-1 text-danger" data-toggle="modal" data-target="#delete_cocktail_{{cocktail._id}}"><i class="fas fa-trash"></i></a>
+                                            <a  href="{{ url_for('edit_cocktail', cocktail_id=cocktail._id)}}" class="m-1 text-success"><i class="fas fa-edit"></i></a>
+                                            {% endif %}
+                                    </h4>
                                     <p>{{ cocktail.category_name }}</p>
-                                    <small class="card-cocktail-description px-3"><i class="fas fa-user mx-1"></i> {{ cocktail.created_by }}</small>
+                                    <small class="card-cocktail-description px-3"><i class="fas fa-user m-2"></i> {{ cocktail.created_by }}</small>
                                 </div>
                                 <div class="text-center mb-3">
-                                <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-small btn-warning text-white">Try</a>
-                                {% if session.user|lower == cocktail.created_by|lower %}
-                                    <button class="btn btn-small btn-danger" data-toggle="modal" data-target="#delete_cocktail_{{cocktail._id}}">Delete</button>
-                                    <a  href="{{ url_for('edit_cocktail', cocktail_id=cocktail._id)}}" class="btn  btn-small btn-success">Edit</a>
-                                {% endif %}
+                                <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-lg d-block btn-warning text-white mx-2">Try</a>
                                 </div>
                             </div>
                         </div>
@@ -73,7 +87,9 @@
      
        <!-- No results -->
       {% else %}
-         <h2>No result found</h2>
+      <div class="vh-100">
+         <h2 class="mt-3">No result found</h2>
+     </div>
    {% endif %}
   
 </section>
