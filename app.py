@@ -35,19 +35,32 @@ def get_cocktails():
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
-    query = request.form.get("query")
-    cocktails = list(mongo.db.cocktails.find({"$text": {"$search": query}}))
+    cursor = []
 
+    if request.method == 'POST':
+        # parse values from form
+        search = request.form.get('search', None)
+        select = request.form.get('select', None)
+        print('Method is posted')
+        # perform mongo with search only
+        if search and select == 'All Categories':
+            cursor = mongo.db.cocktails.find({'$text': {'$search': search}})
+        # perform mongo with select only
+        elif select != 'All Categories' and not search:
+            cursor = mongo.db.cocktails.find({'category_name': select})
+        elif search and select != 'All Categories':
+            cursor = mongo.db.cocktails.find(
+                {'$and':  [{'category_name': select},
+                 {'$text': {'$search': search}}]})
+        # if no search and no filter
+        else:
+            cursor = mongo.db.cocktails.find({})
+
+    cocktails = list(cursor)
+    categories = list(mongo.db.categories.find())
     return render_template(
-        "cocktails.html", cocktails=cocktails)
-
-
-@app.route("/search/<category_name>", methods=["GET"])
-def search_category(category_name):
-    cocktails = list(mongo.db.cocktails.find({"category_name": category_name}))
-
-    return render_template(
-        "cocktails.html", cocktails=cocktails)
+        "cocktails.html",
+        cursor=cursor, cocktails=cocktails, categories=categories)
 
 
 @app.route("/register", methods=["GET", "POST"])

@@ -37,10 +37,9 @@
                </div>
                <ul class="nav__list">
                   <li class="nav__item"><a href="{{ url_for('index') }}" class="nav__link">Home</a></li>
-                  <li class="nav__item"><a href="{{ url_for('get_cocktails') }}" class="nav__link">Recipes</a></li>
+                  <li class="nav__item"><a href="{{ url_for('get_cocktails') }}" class="nav__link">All Cocktails</a></li>
                   {% if session.user %}
                     <li class="nav__item"><a href="{{ url_for('profile', username=session['user']) }}" class="nav__link">Profile</a></li>
-                    <li class="nav__item"><a href="{{ url_for('add_cocktail') }}" class="nav__link">New Recipes</a></li>
                     <li class="nav__item"><a class="nav__link" data-toggle="modal" data-target="#logout">Log Out</a></li>
                     {% else %}
                     <li class="nav__item"><a href="{{ url_for('login') }}" class="nav__link">Log In</a></li>
@@ -89,7 +88,7 @@
       </main>
 
       <!-- Footer -->
-      <footer class="py-5">
+      <footer class="py-5 mt-2 fixed-bottom">
          <div class="container">
             <div class="row">
                <div class="col-md-12 py-3">

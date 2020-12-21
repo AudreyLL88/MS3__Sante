@@ -11,30 +11,22 @@
   
     <!-- Search box -->
    <div class="row mt-4">
-       <div class="col-12 col-lg-4 mb-2">
-            <form action="{{ url_for('search') }}" method="post" class="align-item-center">
+       <div class="col-12 col-lg-5 mb-2">
+            <form action="{{ url_for('search') }}" method="POST" class="align-item-center">
                 <div class="input-group">
-                    <input type="search" name="query" class="query form-control" placeholder="Search cocktail">
+                    <input type="search" name="search" class="search form-control" placeholder="Search cocktail">
+                    <select required name="select" id="select" class="form-control mx-1">
+                        <option value="All Categories" selected>All Categories</option>
+                        {% for category in categories %}
+                            <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                        {% endfor %}
+                     </select>
                     <span class="input-group-btn">
                         <button class="btn btn-warning text-white" type="submit"><i class="fa fa-search"></i></button>
                     </span>
                 </div>
             </form>
         </div>
-         <div class="col-12 col-lg-4">
-            <div class="dropdown">
-                <button class="btn btn-warning text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                Search category
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    {% for category in categories %}
-                        <li>
-                            <a href="{{url_for('search_category', category_name=category.category_name )}}" class="mx-3 menu_cocktail">{{ category.category_name }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div> 
-        </div> 
     </div>
 
                               
