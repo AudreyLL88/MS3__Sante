@@ -462,21 +462,16 @@ footer a:hover{
     width: 60px;
 }
 
-@media (min-width: 768px) {
-    .cocktail_img {
-        min-height: 80vh;
-        max-height: 100vh;
-        max-width: 80vw;
-        width: auto;
-    }
+figure .wrap_img {
+    max-height: 100vh;
+    max-width: 80vh;
+    display: block;
 }
 
-@media (max-width: 767.98px) {
-    .cocktail_img {
-        max-width: 80vw;
-        height: auto;
-        display: block;
-    }
+.cocktail_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* Profile */

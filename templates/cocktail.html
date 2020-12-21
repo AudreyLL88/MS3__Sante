@@ -22,9 +22,10 @@
         </div>
 
 <!-- Image -->
-
-        <img class="cocktail_img d-block mx-auto rounded" src="{{ cocktail.cocktail_img }}" alt="{{ cocktail.cocktail_name }}">
-         <figcaption class="figure-caption text-center mx-auto"><i class="fas fa-camera mx-1"></i> Credits: {{ cocktail.cocktail_img_cred }}</figcaption>
+        <figure class="wrap_img">
+            <img class="cocktail_img mx-auto rounded" src="{{ cocktail.cocktail_img }}" alt="{{ cocktail.cocktail_name }}">
+            <figcaption class="figure-caption text-center mx-auto"><i class="fas fa-camera mx-1"></i> Credits: {{ cocktail.cocktail_img_cred }}</figcaption>
+         </figure>
 <!-- About -->
 
         <div class="cocktail_description m-3 pt-2">
