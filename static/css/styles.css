@@ -293,6 +293,11 @@ h3 {
 
 footer {
     background-color: var(--first-color);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }
 
 footer p,
