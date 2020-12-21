@@ -5,6 +5,7 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from math import ceil
 if os.path.exists("env.py"):
     import env
 
@@ -26,11 +27,24 @@ def index():
 
 @app.route("/get_cocktails")
 def get_cocktails():
-    cocktails = list(mongo.db.cocktails.find())
     categories = list(mongo.db.categories.find())
+    cocktails_collection = mongo.db.cocktails
+
+    # get the page number from request or set the page 1 if first page
+    page = int(request.args.get('page') or 1)
+    # results limit to find
+    num = 1
+    # count documents to calculate number of pagination options
+    # if there is a remainder, add an extra page with ceil
+    count = ceil(int(cocktails_collection.count_documents({}) / num))
+    # page - 1 ensures that the first items can be found
+    # multiply the page number  by the item limit for current page results
+    cocktails = list(
+        cocktails_collection.find({}).skip((page - 1) * num).limit(num))
 
     return render_template(
-        "cocktails.html", cocktails=cocktails, categories=categories)
+        "cocktails.html", cocktails=cocktails,
+        categories=categories, page=page, count=count, search=False)
 
 
 @app.route("/search", methods=["GET", "POST"])
