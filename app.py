@@ -33,7 +33,7 @@ def get_cocktails():
     # get the page number from request or set the page 1 if first page
     page = int(request.args.get('page') or 1)
     # results limit to find
-    num = 1
+    num = 2
     # count documents to calculate number of pagination options
     # if there is a remainder, add an extra page with ceil
     count = ceil(int(cocktails_collection.count_documents({}) / num))

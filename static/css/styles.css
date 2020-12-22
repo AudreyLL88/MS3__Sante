@@ -120,7 +120,7 @@ h3 {
 }
 
 .nav__logo:hover {
-	color: var(--first-color-dark);
+	color: #ffff;
 }
 
 @media screen and (max-width: 768px) {
@@ -160,7 +160,7 @@ h3 {
 }
 
 .nav__link:hover {
-	color: var(--first-color-dark);
+	color: #ffff;
 }
 
 .nav__toggle {

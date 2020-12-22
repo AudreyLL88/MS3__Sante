@@ -30,7 +30,7 @@
                 </div>
             </div>
             <!-- Modal -->
-            <div class="modal fade" id="delete_category_{{category._id}}" tabindex="-1" role="dialog" aria-labelledby="delete_category" aria-hidden="true">
+            <div class="modal fade" id="delete_category_{{category._id}}" tabindex="-1" role="dialog" aria-labelledby="delete_category_{{category._id}}" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered " role="document">
                     <div class="modal-content rounded-0">
                         <div class="modal-header">
@@ -44,7 +44,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-warning text-white" data-dismiss="modal">Cancel</button>
-                            <a href="{{ url_for('delete_category', category_id=category._id) }}" type="button"
+                            <a href="{{ url_for('delete_category', category_id=category._id) }}" 
                                     class="btn btn-danger">Delete</a>
                         </div>
                     </div>

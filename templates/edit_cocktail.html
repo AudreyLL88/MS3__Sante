@@ -12,7 +12,7 @@
             <!--Cocktail name input -->
             <div class="form-group">
                 <label for="cocktail_name">Cocktail Name</label>
-                <input required value="{{ cocktail.cocktail_name }}" type="text" class="form-control" id="cocktail_name" name="cocktail_name" aria-describedby="cocktail name"
+                <input required value="{{ cocktail.cocktail_name }}" type="text" class="form-control" id="cocktail_name" name="cocktail_name" aria-describedby="cocktail_name"
                     maxlength="45">
             </div>
 
@@ -35,7 +35,7 @@
             <div class="form-group">
                 <label for="cocktail_description">Description</label>
                 <input required type="text" class="form-control" id="cocktail_description" name="cocktail_description"
-                value="{{- cocktail.cocktail_description -}}" aria-describedby="cocktail description" maxlength="130">
+                value="{{- cocktail.cocktail_description -}}" aria-describedby="cocktail_description" maxlength="130">
                 <small class="form-text text-muted"></small>
             </div>
 
@@ -43,15 +43,15 @@
             <div class="form-group">
                 <label for="cocktail_img">Image Url</label>
                 <input required type="text" class="form-control" name="cocktail_img" id="cocktail_img"
-                value="{{ cocktail.cocktail_img }}"  aria-describedby="image">
-                <small type="url" class="form-text text-muted">Visual of the cocktail</small>
+                value="{{ cocktail.cocktail_img }}"  aria-describedby="cocktail_img">
+                <small class="form-text text-muted">Visual of the cocktail</small>
             </div>
 
             <div class="form-group">
                 <label for="cocktail_img_cred">Image Credentials</label>
                 <input required type="text" class="form-control" name="cocktail_img_cred" id="cocktail_img_cred"
-                value="{{ cocktail.cocktail_img_cred }}"  aria-describedby="credentials">
-                <small type="url" class="form-text text-muted">Original website or artist name </small>
+                value="{{ cocktail.cocktail_img_cred }}"  aria-describedby="cocktail_img_cred">
+                <small class="form-text text-muted">Original website or artist name </small>
             </div>
 
 
@@ -61,7 +61,7 @@
                     <div class="form-group">
                         <label for="cocktail_prep">Prep time</label>
                         <select required id="cocktail_prep" name="cocktail_prep" class="form-control">
-                            <option selected disabled value="{{ cocktail.cocktail_prep }}" >{{ cocktail.cocktail_prep }}</option>
+                            <option selected value="{{ cocktail.cocktail_prep }}" >{{ cocktail.cocktail_prep }}</option>
                             <option>Fast</option>
                             <option>Steady</option>
                             <option>Long</option>
@@ -74,7 +74,7 @@
                     <div class="form-group">
                         <label for="cocktail_serv">Servings</label>
                         <input required type="text" class="form-control" name="cocktail_serv" id="cocktail_serv"
-                            value="{{ cocktail.cocktail_serv }}" aria-describedby="servings">
+                            value="{{ cocktail.cocktail_serv }}" aria-describedby="cocktail_serv">
                     </div>
                 </div>
 

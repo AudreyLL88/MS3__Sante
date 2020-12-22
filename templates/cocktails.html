@@ -15,8 +15,8 @@
             <form action="{{ url_for('search') }}" method="POST" class="align-item-center">
                 <div class="input-group">
                     <input type="search" name="search" class="search form-control" placeholder="Search cocktail">
-                    <select required name="select" id="select" class="form-control mx-1">
-                        <option value="All Categories" selected>All Categories</option>
+                    <select required name="select" id="select" class="form-control mx-1" multiple>
+                        <option value="All Categories">All Categories</option>
                         {% for category in categories %}
                             <option value="{{ category.category_name }}">{{ category.category_name }}</option>
                         {% endfor %}
@@ -71,7 +71,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-warning text-white" data-dismiss="modal">Cancel</button>
-                                        <a href="{{ url_for('delete_cocktail', cocktail_id=cocktail._id)}}" type="button"
+                                        <a href="{{ url_for('delete_cocktail', cocktail_id=cocktail._id)}}" 
                                                 class="btn btn-danger">Delete</a>
                                     </div>
                                 </div>

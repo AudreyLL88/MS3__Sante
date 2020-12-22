@@ -49,7 +49,7 @@
         {% endif %}
 
         <div class="cocktail_info text-center bg-warning rounded">
-            <div class="row text-white">
+            <div class="row btn-color">
                 <div class="col-4">
                     <h3>PREP TIME: </h3>
                     <p>{{ cocktail.cocktail_prep }}</p>
@@ -110,7 +110,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-warning text-white" data-dismiss="modal">Cancel</button>
-                <a href="{{ url_for('delete_cocktail', cocktail_id=cocktail._id)}}" type="button"
+                <a href="{{ url_for('delete_cocktail', cocktail_id=cocktail._id)}}"
                         class="btn btn-danger">Delete</a>
             </div>
         </div>

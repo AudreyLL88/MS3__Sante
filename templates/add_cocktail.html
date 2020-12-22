@@ -12,7 +12,7 @@
    <form method="POST" class="pb-5 cocktail-form" action="{{ url_for('add_cocktail') }}">
       <div class="form-group">
          <label for="cocktail_name">Cocktail Title</label>
-         <input required type="text" class="form-control" id="cocktail_name" name="cocktail_name" aria-describedby="cocktail name"
+         <input required type="text" class="form-control" id="cocktail_name" name="cocktail_name" aria-describedby="cocktail_name"
             maxlength="45">
       </div>
 
@@ -20,7 +20,7 @@
       <div class="form-group">
          <label for="category_name">Category</label>
          <select required name="category_name" id="category_name" class="form-control">
-            <option selected disabled>Select Category</option>
+            <option value="" selected disabled>Select Category</option>
             {% for category in categories %}
             <option value="{{ category.category_name }}">{{ category.category_name }}</option>
             {% endfor %}
@@ -31,7 +31,7 @@
       <div class="form-group">
          <label for="cocktail_description">Description</label>
          <input required type="text" class="form-control" id="cocktail_description" name="cocktail_description"
-            aria-describedby="cocktail description" maxlength="130">
+            aria-describedby="cocktail_description" maxlength="130">
          <small class="form-text text-muted">Short description</small>
       </div>
 
@@ -39,16 +39,16 @@
       <div class="form-group">
          <label for="cocktail_img">Image Url</label>
          <input required type="text" class="form-control" name="cocktail_img" id="cocktail_img"
-            aria-describedby="cocktail description">
-         <small type="url" class="form-text text-muted">Cocktail Picture hosted on a website</small>
+            aria-describedby="cocktail_img">
+         <small class="form-text text-muted">Cocktail Picture hosted on a website</small>
       </div>
 
        <!--Cocktail image credentials -->
        <div class="form-group">
             <label for="cocktail_img_cred">Image Credentials</label>
             <input required type="text" class="form-control" name="cocktail_img_cred" id="cocktail_img_cred"
-                 aria-describedby="credentials">
-            <small type="url" class="form-text text-muted">Original website or artist name </small>
+                 aria-describedby="cocktail_img_cred">
+            <small class="form-text text-muted">Original website or artist name </small>
         </div>
 
       <!--Cocktail prep time input -->
@@ -57,7 +57,7 @@
                 <div class="form-group">
                     <label for="cocktail_prep">Prep time</label>
                     <select required id="cocktail_prep" name="cocktail_prep" class="form-control">
-                            <option selected disabled >Select option</option>
+                            <option value="" selected disabled>Select option</option>
                             <option>Fast</option>
                             <option>Steady</option>
                             <option>Long</option>
@@ -72,7 +72,7 @@
             <div class="form-group">
                 <label for="cocktail_serv">Servings</label>
                 <input required type="text" class="form-control" name="cocktail_serv" id="cocktail_serv"
-                    aria-describedby="servings" placeholder="Ex:2 servings">
+                    aria-describedby="cocktail_serv" placeholder="Ex:2">
             </div>
         </div>
         
@@ -83,7 +83,7 @@
                 <div class="form-group">
                     <label for="cocktail_diff">Level</label>
                     <select required id="cocktail_diff" name="cocktail_diff" class="form-control">
-                        <option selected disabled>Select level</option>
+                        <option value="" selected disabled>Select option</option>
                         <option>Easy</option>
                         <option>Medium</option>
                         <option>Hard</option>
