@@ -6,7 +6,7 @@
 	--first-color: #FFD400;
 	--first-color-dark: rgb(240, 181, 4);
 	--first-color-darken: rgb(228, 163, 0);
-	--white-color: #FFF;
+	--text-color: #524400;
 	--shadow-color: #D3D3D3;
 	/* Font and typography */
 	--body-font:'Montserrat', sans-serif;
@@ -76,7 +76,11 @@ h6 {
 h1,
 h3 {
     font-family: "Lobster", cursive;
-    color: #ffff;
+    color: var(--text-color);
+}
+
+.btn-color {
+    color: var(--text-color);
 }
 
 
@@ -130,7 +134,7 @@ h3 {
 		width: 70%;
 		height: 100%;
 		padding: 3.5rem 1.5rem 0;
-		background: rgba(255, 255, 255, .3);
+		background: rgba(245, 210, 12, 0.712);
 		backdrop-filter: blur(10px);
 		transition: .5s;
 	}
@@ -152,7 +156,7 @@ h3 {
 .nav__link,
 .nav__logo,
 .nav__toggle {
-	color: var(--white-color);
+	color: var(--text-color);
 }
 
 .nav__link:hover {
@@ -200,7 +204,7 @@ h3 {
 }
 
 .home__data {
-	color: var(--white-color);
+	color: var(--text-color);
 }
 
 .home__title {
@@ -216,7 +220,7 @@ h3 {
 .home__button {
 	display: inline-block;
 	background-color: var(--first-color-dark);
-	color: var(--white-color);
+	color: var(--text-color);
 	padding: 1.125rem 2rem;
 	border-radius: .5rem;
 }
@@ -309,7 +313,7 @@ footer {
 
 footer p,
 footer a {
-    color: var(--white-color);
+    color: var(--text-color);
     text-decoration: none;
 }
 

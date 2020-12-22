@@ -58,7 +58,7 @@
                 <div class="col-lg-5">
                     <h2 class="mb-3 text-center">It's Apéro time!</h2>
                     <p>L'Apé-what? L'apéro in french is an after-work drink that you share with your co-worker. As we are all working from home now and the bars are closed, It is important to learn to socialize in a different way. With Santé! No need for a bartender, make your own drink and call your friends from the safety and comfort of your own home!</p>
-                    <a class="text-center btn btn-warning text-white mt-3" href="{{ url_for('get_cocktails') }}">CHECK OUR RECIPES!</a>
+                    <a class="text-center btn btn-warning btn-color mt-3" href="{{ url_for('get_cocktails') }}">CHECK OUR RECIPES!</a>
                 </div>
             </div>
 
@@ -68,7 +68,6 @@
                         <div class="col-12 text-center subscribe-body">
                             <div class="subscribe-title">
                                 <h3 class="mb-3">Subscribe to our Newsletter</h3>
-                                <p>Get the freshest ideas!</p>
                                 <form class="input-group" method="POST" action="{{url_for('subscribe')}}" name="subscriber_form">
                                     <input type="email" class="form-control" placeholder="Enter your email"
                                         name="subscriber_email" id="subscriber_email" required>
@@ -104,7 +103,7 @@
                                         <small class="card-cocktail-description px-3"><i class="fas fa-user m-2"></i> {{ cocktail.created_by }}</small>
                                     </div>
                                     <div class="text-center mb-3">
-                                    <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-lg d-block btn-warning text-white mx-2">Try</a>
+                                    <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-lg d-block btn-warning btn-color mx-2">Try</a>
                                     </div>
                                 </div>
                             </div>  

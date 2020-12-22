@@ -51,7 +51,7 @@
                                         <small class="card-cocktail-description px-3"><i class="fas fa-user m-2"></i> {{ cocktail.created_by }}</small>
                                     </div>
                                     <div class="text-center mb-3">
-                                    <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-lg d-block btn-warning text-white mx-2">Try</a>
+                                    <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-lg d-block btn-warning btn-color mx-2">Try</a>
                                     </div>
                                 </div>
                             </div>
@@ -95,9 +95,9 @@
             {% for i in range(0, count) %} 
                 <li class="page-item">
                     {% if i+1 == page %}
-                        <a class="page-link active">
+                        <a class="page-link active btn-color">
                     {% else %}
-                        <a class="page-link" href="{{ url_for('get_cocktails', page=i+1) }}">
+                        <a class="page-link btn-color" href="{{ url_for('get_cocktails', page=i+1) }}">
                     {% endif %}
                         {{ i + 1  }}
                     </a>

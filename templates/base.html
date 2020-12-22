@@ -72,8 +72,10 @@
             </div>
         </div>
     </div>
-
-     <section>
+        
+      <!-- Main content -->
+      <main class="content-container">
+        <section>
           {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
             <div class="row mx-auto mt-5">
                 <div class="alert alert-warning mx-auto" role="alert">
@@ -82,9 +84,6 @@
             </div>
             {% endfor %} {% endif %} {% endwith %}
         </section>
-        
-      <!-- Main content -->
-      <main class="content-container">
          {% block content %}
          {% endblock %}
       </main>
@@ -110,7 +109,7 @@
                   </div>
                </div>
             </div>
-            <p class="m-0 text-center text-white">Copyright &copy; Audrey Lloancy 2020</p>
+            <p class="m-0 text-center btn-color">Copyright &copy; Audrey Lloancy 2020</p>
          </div>
       </footer>
 
