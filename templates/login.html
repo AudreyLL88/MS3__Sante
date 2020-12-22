@@ -1,17 +1,18 @@
 {% extends "base.html"%}
 {% block content %}
 
-    <!--Main container -->
+    <!--Main container and Background -->
     <section id="bg_cover" class="min-vh-100">
-        <div id="cover_caption">
+        <main id="cover_caption">
             <div class="container">
+
                 <!--Title -->
                 <div class="row text-white">
                     <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
                         <h1 class="display-4 py-3 text-truncate">Log In</h1>
-                        <div class="px-2">
 
-                            <!--Login form -->
+                        <!--Login form -->
+                        <div class="px-2">
                             <form id="register_form" class="justify-content-center" method="POST" action="{{ url_for('login') }}">
                                 <div class="form-group">
                                     <label for="username" class="sr-only">Username</label>
@@ -39,7 +40,7 @@
                     </div>
                 </div> 
             </div>
-        </div>
+        </main>
     </section>
 
 {% endblock %}

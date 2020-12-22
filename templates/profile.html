@@ -23,7 +23,7 @@
                 </div>
         </header>
 
-        <!-- Modal -->
+        <!-- Modal "Delete Profile" -->
         <div class="modal fade" id="delete_profile" tabindex="-1" role="dialog" aria-labelledby="delete_profile" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered " role="document">
                 <div class="modal-content rounded-0">
@@ -58,23 +58,22 @@
                                     <div class="cocktail-body text-center">
                                         <img src="{{ cocktail.cocktail_img }}" alt="" class="cocktail-img rounded">
                                         <h4 class="card-cocktail-title py-2 px-3">{{ cocktail.cocktail_name }}</h4>
-                                         <p>{{ cocktail.category_name }}</p>
-                                         <div class="text-center">
-                                        <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}" class=" btn btn-small btn-warning btn-color  m-2"><i class="fas fa-eye"></i></a>
-                                        {% if session.user == 'admin' or session.user|lower == cocktail.created_by|lower %}
-                                            <button class="btn btn-small btn-danger  m-2" data-toggle="modal" data-target="#delete_cocktail_{{cocktail._id}}"><i class="fas fa-trash"></i></button>
-                                        {% endif %}
-                                        {% if session.user|lower == cocktail.created_by|lower %}
-                                            <a  href="{{ url_for('edit_cocktail', cocktail_id=cocktail._id)}}" class="btn  btn-small btn-success m-2"><i class="fas fa-edit"></i></a>
-                                        {% endif %}
-                                    </div>
-                                
-                                        
+                                        <p>{{ cocktail.category_name }}</p>
+                                        <div class="text-center">
+                                            <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}" class=" btn btn-small btn-warning btn-color  m-2"><i class="fas fa-eye"></i></a>
+                                                {% if session.user == 'admin' or session.user|lower == cocktail.created_by|lower %}
+                                                    <button class="btn btn-small btn-danger  m-2" data-toggle="modal" data-target="#delete_cocktail_{{cocktail._id}}"><i class="fas fa-trash"></i></button>
+                                                {% endif %}
+                                                {% if session.user|lower == cocktail.created_by|lower %}
+                                                    <a  href="{{ url_for('edit_cocktail', cocktail_id=cocktail._id)}}" class="btn  btn-small btn-success m-2"><i class="fas fa-edit"></i></a>
+                                                {% endif %}
+                                        </div>      
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Modal -->
+
+                        <!-- Modal "Delete Cocktail"-->
                         <div class="modal fade" id="delete_cocktail_{{cocktail._id}}" tabindex="-1" role="dialog" aria-labelledby="delete_cocktail_{{cocktail._id}}" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered " role="document">
                                 <div class="modal-content rounded-0">
@@ -105,10 +104,10 @@
                 <hr>
                 <a class="btn btn-warning btn-color btn-lg mb-3" href="{{ url_for('add_cocktail')}}">Create New &raquo;</a>
                  {% if session.user == 'admin' %}
-                <h2 class="mt-3">Manage Categories</h2>
-                <hr>
-                <a class="btn btn-success text-white btn-lg mt-1" href="{{ url_for('get_categories')}}">Check it &raquo;</a>
-                <a class="btn btn-primary text-white btn-lg mt-1" href="{{ url_for('add_category')}}">Add Category &raquo;</a>
+                    <h2 class="mt-3">Manage Categories</h2>
+                    <hr>
+                    <a class="btn btn-success text-white btn-lg mt-1" href="{{ url_for('get_categories')}}">Check it &raquo;</a>
+                    <a class="btn btn-primary text-white btn-lg mt-1" href="{{ url_for('add_category')}}">Add Category &raquo;</a>
                  {% endif %}
             </div>
         </div>

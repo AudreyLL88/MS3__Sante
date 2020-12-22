@@ -1,12 +1,12 @@
 {% extends "base.html"%}
 {% block content %}
 
- <!-- Main container -->
+ <!-- Main Container -->
 <section id="cocktail_recipe">
    <div class="container">
 
-<!-- Title -->
-         <div class="cocktail_name text-center">
+    <!-- Cocktail Title, Informations and EDIT/DELETE Buttons -->
+        <div class="cocktail_name text-center">
             <h2>{{ cocktail.cocktail_name }}</h2>
             <hr>
             <div class="text-muted text-center mb-4">
@@ -16,18 +16,18 @@
             {% if session.user|lower == cocktail.created_by|lower %}
                 <div class="pb-3 text-center">
                 <button class="btn btn-sm btn-danger p-3 m-2" data-toggle="modal" data-target="#delete_cocktail">Delete</button>
-                    <a  href="{{ url_for('edit_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-sm btn-success p-3 m-2">Edit</a>
+                <a  href="{{ url_for('edit_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-sm btn-success p-3 m-2">Edit</a>
                 </div>
             {% endif %}
         </div>
 
-<!-- Image -->
+        <!-- Image and Credentials -->
         <figure class="wrap_img">
             <img class="cocktail_img mx-auto rounded" src="{{ cocktail.cocktail_img }}" alt="{{ cocktail.cocktail_name }}">
             <figcaption class="figure-caption text-center mx-auto"><i class="fas fa-camera mx-1"></i> Credits: {{ cocktail.cocktail_img_cred }}</figcaption>
          </figure>
-<!-- About -->
 
+        <!-- Cocktail Description and Like Button -->
         <div class="cocktail_description m-3 pt-2">
             <h6>"{{ cocktail.cocktail_description }}"</h6>
             <div class="addthis_inline_share_toolbox"></div>
@@ -48,6 +48,7 @@
                 </div>
         {% endif %}
 
+        <!-- Cocktail Preparation/Servings/Level -->
         <div class="cocktail_info text-center bg-warning rounded">
             <div class="row btn-color">
                 <div class="col-4">
@@ -59,13 +60,13 @@
                     <p>{{ cocktail.cocktail_serv }}</p>
                 </div>
                 <div class="col-4">
-                    <h3>DIFFICULTY:</h3>
+                    <h3>Level:</h3>
                     <p>{{ cocktail.cocktail_diff }}</p>
                 </div>
             </div>
         </div>
 
-<!--Ingredients and instructions-->
+        <!-- Cocktail Ingredients and Instructions-->
         <div class="shadow p-4 mb-5">
                 <div class="row">
                     <div class="col-md-2 mt-2">
@@ -95,7 +96,7 @@
     </div>
 </section>
 
-<!-- Modal -->
+<!-- Modal "Delete Cocktail" -->
 <div class="modal fade" id="delete_cocktail" tabindex="-1" role="dialog" aria-labelledby="delete_cocktail" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content rounded-0">
