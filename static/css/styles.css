@@ -26,6 +26,10 @@
 
 /* BASE */
 
+html{
+    position: relative;
+    min-height: 100%;
+}
 *,
 ::before,
 ::after {
@@ -288,15 +292,19 @@ h3 {
     }
 }
 
+.content-container {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+}
 
 /* Footer */
 
 footer {
     background-color: var(--first-color);
-    left: 0;
-    bottom: 0;
     width: 100%;
     text-align: center;
+    position: absolute;
 }
 
 footer p,
@@ -308,7 +316,6 @@ footer a {
 footer a:hover{
     color: orange;
 }
-
 
 /* Subscription card */
 
