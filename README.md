@@ -6,7 +6,7 @@
 ---
 
 * UX
-    * [Project Goals](#project-goals)
+    * [Project Summary](#project-summary)
     * [User Stories](#user-stories)
     * [Design Choices](#design-choices)
         * [Fonts](#fonts)
@@ -26,12 +26,11 @@
 
 ## UX (User Experience) ##
 ---
-<a name="project-goals"></a>
-### Project Goals ###
+<a name="project-summary"></a>
+### Project Summary ###
 
 * Santé! is a collaborative platform where registered users can share cocktail recipes from all around the world, discover new cocktails and upgrade their knowledge and skills about mixology.
 * Santé! is also accessible to guest users without to possibility to post their own recipe or "like" a cocktail recipe.
-
 
 <a name="user-stories"></a>
 ### User Stories ### 
@@ -85,7 +84,7 @@ Admin
 ### Frameworks ###
 
 * Bootstrap 4. I used the [**Small Business Template**](https://startbootstrap.com/template/small-business) for the landing page structure as well as the [**Business Template**](https://startbootstrap.com/template/business-frontpage) for the profile page. I wanted to learn more about Bootstrap and its classes. I tried to implement these as much as possible.
-* [**Flask**](https://flask.palletsprojects.com/en/1.1.x/)
+* Micro framework [**Flask**](https://flask.palletsprojects.com/en/1.1.x/), to build the backend.
 
 <a name="fonts"></a>
 
@@ -160,7 +159,12 @@ View my wireframes [here]().
 **Search box**
 
 * This feature allows the user to search through keywords specific cocktails in the Cocktails.html.
+* It allows the user to search through text and/or categories combined.
 * When no results match the search, the text "No Result Found" is displayed.
+
+**Pagination**
+
+* This feature helps to display the cocktail cards on several pages to avoid crowding the page with too much content.
 
 
 **Individual Recipe Page**
@@ -180,7 +184,6 @@ View my wireframes [here]().
     - Cocktail Author's Name
 
 * The user needs to be registered to "like" a recipe
-
 
 **Register**
 
@@ -281,6 +284,7 @@ View my wireframes [here]().
 * This feature allows the admin  to Add a category to the "Manage Category" dashboard.
 * This feature can be accessed by clicking on the blue "Add category" button on the admin profile page.
 
+
 **Profile**
 
 * All recipes are displayed on the admin dashboard.
@@ -290,6 +294,12 @@ View my wireframes [here]().
 
 <a name="implemented"></a>
 ### Future implemented features ###
+
+* "Unlike" functionnality
+* Comment section for registered user
+* Functionnality to consult other member profiles for registered user
+* Suggestions of recipes on the cocktail.html pages.
+* Share recipe functionnality.
 
 <a name="technologies"></a>
 ## Technologies, libraries and tools used ##
@@ -310,10 +320,10 @@ View my wireframes [here]().
 * [Maya](https://www.autodesk.com/products/maya/overview)
 * [GSAP](https://greensock.com/gsap/)
 * [SCSS](https://sass-lang.com/)
-* [W3C HTML Validator](https://validator.w3.org/)
-* [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
+* [W3C HTML Validator](https://validator.w3.org/) (all pages passed validator)
+* [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) (css file passed validator)
 * [PEP8 online](http://pep8online.com/)
-* [JSHint](https://jshint.com/)
+* [JSHint](https://jshint.com/) (JS file passed validator)
 
 
 <a name="defensive"></a>
@@ -367,6 +377,15 @@ View my wireframes [here]().
     - the cocktail author.
 * On the cocktails you have previously created, are the "edit" and "delete" icons present ?
 
+**Pagination**
+
+* As a guest/registered user, navigate to the All cocktails page. Is the template remdered correctly ?
+* Is there 9 cocktail cards on the page ?
+* Go to the bottom of the page. Is the pagination section correctly rendered ?
+* Click on all pages. Are the cocktail cards correctly rendered?
+* Is there 9 cocktail cards per pages?
+
+
 **Cocktail Recipe**
 
 ![recipe]
@@ -419,7 +438,7 @@ View my wireframes [here]().
     - the ingredients.
 * Are the "Delete" and "Edit" buttons displayed and clickable ?
 
-**Search box and Category serach dropdown**
+**Search box**
 
 ![search]() 
 
@@ -428,8 +447,11 @@ View my wireframes [here]().
 * Enter a word in the search box and click on the yellow search button. Is the result of your search showing in the card section?
 * If no result was found, is the next "No result found" showing?
 * Reset your search. Is the All cocktails template rendered correctly?
-* Click on the yellow Category dropdown button. Are all categories displayed?
+* Select an option in the category option menu. Are all categories displayed?
 * If yes, select a category. Is the result of the search correctly displayed?
+* If no result was found, is the text "No result found" displayed?
+* Reset your search. Is the All cocktails template rendered correctly?
+* Type a word in the search text box and select a category in the menu and click on the search button. Is the result of the search correctly displayed?
 * If no result was found, is the text "No result found" displayed?
 
 **Log In and Profile**
@@ -591,6 +613,7 @@ View my wireframes [here]().
 * Click on it. Is the cocktail template refreshed correctly?
 * Is the confirmation alert present ?
 * Is the like count updated with your vote ?
+* Did the button changed color ?
 * Is the click function disabled?
 
 <a name="dtest"></a>
@@ -612,32 +635,37 @@ View my wireframes [here]().
     - edit_category.html
 * When a guest user and/or a registered user try to access the pages by typing the url, they are redirected to the "Login" page.
 
-**Like a cocktail**
-
-* Only registered users can like a cocktail. a message "register/login to vote" appears if the user is not logged in/registered.
-* The registered user can only like a cocktail once. After visual confimation that the user voted, the Like button is not clickable anymore.
-
-**Cocktail Recipes**
-
-* Only registered users can access these pages:
-    - add_cocktail.html
-    - edit_cocktail.html
-
-* When a guest user and/or a registered user try to access the pages by typing the url, they are directed to the login page.
-
-**Delete Profile/Cocktail/Category**
-
-* The registered user/admin cannot delete any of these features without confirming it before on the defensive modal.
-
 <a name="issues"></a>
 ## Issues ##
 ---
 
 **During development**
 
-* 
+**Errors in console**
 
+* Since I am only using on Javascript file, the console was showing a few error message when the user is not on index.html because the hero animation isn't used on any other page.
+* I fixed my problem by using and if window.location statement for the animation functions.
 
+**Accessibility**
+
+* The theme of the website is pretty monochromatic (except for the delete/edit button). I liked the white text on bright yellow background. Unfortunately it didn't pass the accessibility test.
+* I then changed the white text color for a dark yellow-brown to meet the standards.
+
+**Search box**
+
+* Initially my search function was only allowing text search and wasn't returning categories as a result.
+* I upgraded the search text box with a category option menu and fixed my search function to allow separate and combined search.
+
+**Footer**
+
+* My footer refused to stick to the bottom. I tried to fix it with the fixed-footer Bootstrap class. It sticked to the bottom but then covered any content at the bottom of the page.
+* I then fixed the height of the body and html tags in CSS. I removed the Bootstrap class and attempted a fixed position with a bottom of 0 with no luck. It was still covering my content.
+* As a quick fix I removed the bottom of 0 and gave the wrapping section of each page a minimum width of 100vh.
+
+**Modal button**
+
+* My delete cocktail/category function is linked to a confirmation modal. At first that modal was displaying as many buttons as there was category/cocktail cards when clicked.
+* I fixed it by including the modal in the for loop and it now generates just two buttons as it is supposed to.
 
 # Deployment<hr>
 
