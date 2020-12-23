@@ -10,6 +10,9 @@ if os.path.exists("env.py"):
     import env
 
 
+# ======== CONFIGURATION ======== #
+
+
 app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
@@ -21,12 +24,18 @@ mongo = PyMongo(app)
 # ======== INDEX PAGE ======== #
 
 
-# Display cocktails in index page
+# index cocktails
 @app.route('/')
 def index():
+
     """
-        Returns the list of all cocktails in cocktail collection from database
-        to be rendered in the template index.html
+        Display cocktails in index page.
+
+        Fetch all cocktail data from MongoDB cocktails collection.
+
+        Returns:
+        template: index.html.
+
     """
 
     cocktails = list(mongo.db.cocktails.find())
@@ -36,9 +45,16 @@ def index():
 # Subscribe box
 @ app.route('/subscribe', methods=['POST'])
 def subscribe():
+
     """
-        Fetch data to database and stores in collection
-        for future use.
+        Allows user to enter email address for subscription to newsletter.
+
+        Fetch string data from website to MongoDB subscriptions collection.
+        Insert a new entry in the MongoDB collection.
+
+        Returns:
+        template: redirect to index.html.
+
     """
 
     subscriptions = mongo.db.subscriptions
@@ -51,26 +67,33 @@ def subscribe():
 # ======== COCKTAIL PAGE ======== #
 
 
-# Get all cocktails from database
+# cocktails
 @app.route("/get_cocktails")
 def get_cocktails():
+
     """
+        Get all cocktails from database displayed on several pages.
+
+        Fetch categories from MongoDB categories collection.
+        Fetch all cocktails options from MongoDB cocktail collection.
         Add pagination from page 1 to avoid content excess on page template.
-        Fetch all cocktails options from database.
-        Renders cocktails vith pagination options.
+
+        Returns:
+        template: cocktails.html.
+
     """
 
     categories = list(mongo.db.categories.find())
     cocktails_collection = mongo.db.cocktails
 
-    # get the page number from request or set the page 1 if first page
+    # fetch the page number from request / set the page 1
     page = int(request.args.get('page') or 1)
     num = 2
 
-    # count documents to calculate number of pagination options
+    # count documents for of pagination options
     count = ceil(int(cocktails_collection.count_documents({}) / num))
 
-    # page - 1 ensures that the first items can be found
+    # page - 1 checks that the first items can be found
     cocktails = list(
         cocktails_collection.find({}).skip((page - 1) * num).limit(num))
 
@@ -82,12 +105,19 @@ def get_cocktails():
 # search box in cocktail.html
 @app.route("/search", methods=["GET", "POST"])
 def search():
+
     """
-       Allows the user to search cocktails by:
-        - just text input
-        - text input and category
-        - just category
-       Returns filtered results
+       Allows the user to search for filtered options on cocktail.html template
+
+       4 options possible:
+        - search by text input.
+        - search by categories only.
+        - search by text and categories.
+        - neither (blank search)
+
+       Returns:
+       template: cocktail.html with filtered results
+
     """
 
     cursor = []
@@ -115,6 +145,7 @@ def search():
         else:
             cursor = mongo.db.cocktails.find({})
 
+    # parse filtered results
     cocktails = list(cursor)
     categories = list(mongo.db.categories.find())
 
@@ -126,26 +157,35 @@ def search():
 # ======== REGISTER PAGE ======== #
 
 
-# Displays register page
+# register
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    """
-        Allows new user to register to access profile page.
-        Prevents multiplication of username.
-        Stores informations to database.
-        Redirects to profile page.
-    """
 
+    """
+        Displays register page to guest user and allows to create an account.
+
+        Prevents duplication of username by checking users
+        collection field "username".
+        Stores informations from website form to MongoDB.
+        Inserts a new entry in the users collection.
+
+        Returns:
+        template: redirect to profile.html if registration successful.
+
+    """
+    # if form is submitted
     if request.method == "POST":
 
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
+        # prevent username multiplication
         if existing_user:
             flash("Username already exists")
 
             return redirect(url_for("register"))
 
+        # grabs data from form to users collection
         register = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password")),
@@ -156,6 +196,7 @@ def register():
         }
         mongo.db.users.insert_one(register)
 
+        # inform user of successful registration
         session["user"] = request.form.get("username").lower()
         flash("Registration successful!")
 
@@ -167,15 +208,22 @@ def register():
 # ======== LOGIN PAGE ======== #
 
 
-# Displays log in page
+# log in
 @app.route("/login", methods=["GET", "POST"])
 def login():
+
     """
-        Allows registered user to access profile page through username.
+        Displays log in page and allows user to log into account.
+
+        Checks if the username exists in MongoDB users collection.
         Protect password confidentiality.
-        Informs user if incorrect entry.
-        Fetch all previous informations linked to user.
-        Redirects to profile page.
+        Informs user if registration is successful or not through
+        flash messages.
+
+        Returns:
+        template: profile.html if the registration is successful.
+        template: login.html if registration unsuccessful.
+
     """
 
     if request.method == "POST":
@@ -183,22 +231,20 @@ def login():
         existing_user = mongo.db.users.find_one(
           {"username": request.form.get("username").lower()})
 
+        # grants profile page access to user
         if existing_user:
 
             if check_password_hash(
-                  existing_user["password"], request.form.get("password")):
+                    existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
 
                     return redirect(url_for(
                         "profile", username=session["user"]))
 
+            # inform user if log in not successful
             else:
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("login"))
-
-        else:
-            flash("Incorrect Username and/or Password")
-            return redirect(url_for("login"))
 
     return render_template("login.html")
 
@@ -211,6 +257,8 @@ def login():
 def logout():
 
     flash("You have been logged out")
+
+    # removes session cookies
     session.pop("user")
 
     return redirect(url_for("login"))
@@ -222,14 +270,26 @@ def logout():
 # Displays profile page
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+
     """
-        Fetches all user informations through username, including previously
-        submited cocktails and renders on profile page.
-        Allows admin to access category data.
+        Displays profile page with user informations to logged user.
+
+        Fetch all user informations from MongoDB users collection.
+        Checks previously submitted cocktails through username
+        in cocktail collection.
+        Grants access to all cocktail data to admin.
+
+        Parameter:
+        string: username from user collection field "username".
+
+        Returns:
+        template: profile.html.
+
     """
 
     user = mongo.db.users.find_one({"username": username.lower()})
 
+    # check for cocktails created by user / grant all access to admin
     if session["user"]:
         if session["user"] == "admin":
             cocktails = list(mongo.db.cocktails.find())
@@ -246,19 +306,33 @@ def profile(username):
 # ======== EDIT PROFILE PAGE ======== #
 
 
-# Displays edit profile page
+# edit profile
 @app.route("/edit_profile/<username>", methods=["GET", "POST"])
 def edit_profile(username):
 
     """
-        If the user has logged in
-       Fetch all user information and displays it in a form,
-       Allows modifications.
-       If user is not logged in, redirect to login page
+        Allows the user to edit their profile through a form.
+
+        Checks for username field in MongoDB field collection
+        for editing rights.
+        Displays (password, email and username not included)
+        previously submitted data of the user.
+        Fetch all new entries to database and update the fields
+        when submitted.
+
+        Parameter:
+        string: username from users collection.
+
+        Returns:
+        template: edit_profile.html before changes if the user is logged in.
+        template: profile.html after changes if the user is logged in.
+        template: login.html if user not logged in.
+
     """
 
     user = mongo.db.users.find_one({"username": username.lower()})
 
+    # update new field entries to database
     if request.method == "POST":
         submit = {
             "username": user["username"],
@@ -273,14 +347,15 @@ def edit_profile(username):
 
         return redirect(url_for("profile", username=username))
 
+    # check if user is logged in for security
     if "user" in session:
         return render_template("edit_profile.html", user=user)
 
     return redirect(url_for("login"))
 
 
-# Allows user to delete account.
-# Removes all data from database
+# Allows user to delete account when in session
+# Removes all user data from database
 @app.route("/delete_profile/<username>")
 def delete_profile(username):
     mongo.db.users.remove({"username": username.lower()})
@@ -293,19 +368,29 @@ def delete_profile(username):
 # ======== ADD COCKTAIL PAGE ======== #
 
 
-# Displays add cocktail page
+# add cocktail
 @app.route("/add_cocktail", methods=["GET", "POST"])
 def add_cocktail():
 
     """
-        If the cocktail was submitted by the registered user:
-        Allows registered user to access change previous cocktail data entries.
-        Fetch all previous informations linked to cocktail.
-        Redirects to cocktails page.
+        Allows registered user to submit a cocktail to the website through
+        a form.
+
+        Allows all form fields to be sent to the MongoDB cocktail collection
+        and category collection.
+        Inserts a new entry in the previously mentionned collections.
+        Prevents non-registered to have access to the page for security.
+
+        Returns:
+        template: add_cocktails.html before changes if the user is logged in.
+        template: cocktails.html after changes if user is logged in.
+        template: login.html is user is not logged in.
+
     """
 
     if request.method == "POST":
 
+        # send form data to cocktails collection
         cocktail = {
             "category_name": request.form.get("category_name"),
             "cocktail_name": request.form.get("cocktail_name"),
@@ -327,17 +412,18 @@ def add_cocktail():
 
     categories = mongo.db.categories.find()
 
+    # check if the user is logged in
     if "user" in session:
         user = session["user"].lower()
 
         if user == session["user"].lower():
             return render_template("add_cocktail.html", categories=categories)
 
-        #prevent other registered user to submit changes
+        # prevent other registered user access
         else:
             return redirect(url_for("index"))
 
-    #prevent guest user to submit changes
+    # prevent guest user access
     else:
         return redirect(url_for("login"))
 
@@ -348,10 +434,31 @@ def add_cocktail():
 # Displays edit cocktail pages
 @app.route("/edit_cocktail/<cocktail_id>", methods=["GET", "POST"])
 def edit_cocktail(cocktail_id):
+
+    """
+        Allows the user to edit their submitted cocktails through a form.
+
+        Checks for cocktail ID field in MongoDB to fetch all data.
+        Displays allpreviously submitted data of the cocktail by the user.
+        Fetch all new entries to database and update the fields
+        when submitted in cocktail collection.
+        Checks if the user in session is the author of the entry.
+
+        Parameter:
+        ObjectId: cocktail_id from the cocktail collection ObjectId field.
+
+        Returns:
+        template: edit_cocktail.html before changes if the user is logged in.
+        template: cocktails.html after changes if the user is logged in.
+        template: index.html if the user is logged in but not the author.
+        template: login.html if user not logged in.
+
+    """
     cocktail_data = mongo.db.cocktails.find_one({"_id": ObjectId(cocktail_id)})
 
     if request.method == "POST":
 
+        # send form data to MongoDB and update fields
         submit = {
             "category_name": request.form.get("category_name"),
             "cocktail_name": request.form.get("cocktail_name"),
@@ -374,6 +481,7 @@ def edit_cocktail(cocktail_id):
     cocktail = mongo.db.cocktails.find_one({"_id": ObjectId(cocktail_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
 
+    # check if user in session is the author of the previous entries
     if "user" in session:
         user = session["user"].lower()
 
@@ -391,15 +499,32 @@ def edit_cocktail(cocktail_id):
 # ======== COCKTAIL PAGE ======== #
 
 
-# Display cocktail recipe page
+# cocktail recipe
 @app.route('/cocktail/<cocktail_id>')
 def get_cocktail(cocktail_id):
+
+    """
+        Displays the data from cocktail collection to all users
+        and display like button.
+
+        Search through ObjectId field in MongoDB cocktail collection
+        to fetch corresponding data.
+        Checks if the logged in user has previously liked the cocktail
+        through the user collection.
+
+        Parameter:
+        ObjectId: cocktail_id from the cocktail collection ObjectId field.
+
+        Returns:
+        template: cocktail.html
+
+    """
 
     cocktail = mongo.db.cocktails.find_one({"_id": ObjectId(cocktail_id)})
     is_liked = False
 
+    # checks if cocktail was liked by registered user
     if "user" in session:
-
         user = session["user"].lower()
         user_data = mongo.db.users.find_one({"username": user})
         if cocktail_id in user_data["liked_cocktail"]:
@@ -410,14 +535,33 @@ def get_cocktail(cocktail_id):
         is_liked=is_liked)
 
 
-# Allows like button functionnality
+# like button
 @app.route('/liked/<cocktail_id>', methods=["GET", "POST"])
 def update_like(cocktail_id):
+
+    """
+        Allows registered user only  to use the like functionnality
+        on the cocktail recipe page.
+
+        Checks if the cocktail id was added to the liked_cocktail field
+        in users collection to allow the access to like.
+        Update the users and cocktail collections to keep like count and
+        remove access to like to the user.
+
+        Parameter:
+        ObjectId: cocktail_id from the cocktail collection ObjectId field.
+
+        Returns:
+        template: cocktail.html when the button is clicked.
+
+    """
 
     cocktail = mongo.db.cocktails.find_one({"_id": ObjectId(cocktail_id)})
     user = session["user"].lower()
     user_data = mongo.db.users.find_one({"username": user})
 
+    # allows to update users and cocktail collection
+    # when like button is clicked
     if cocktail_id not in user_data["liked_cocktail"]:
         mongo.db.cocktails.update({
                 "_id": ObjectId(cocktail_id)},
@@ -437,7 +581,7 @@ def update_like(cocktail_id):
 # ======== DELETE COCKTAIL ======== #
 
 
-# delete cocktail
+# Allows the user(author/admin) to delete cocktail
 @app.route("/delete_cocktail/<cocktail_id>")
 def delete_cocktail(cocktail_id):
     mongo.db.cocktails.remove({"_id": ObjectId(cocktail_id)})
@@ -449,9 +593,19 @@ def delete_cocktail(cocktail_id):
 # ======== CATEGORY PAGE ======== #
 
 
-# Displays categories page
+# categories
 @app.route("/get_categories")
 def get_categories():
+
+    """
+        Display all categories for the admin only
+
+        Fetch the list of all categories in the MongoDB categories collection
+
+        Returns:
+        template: categories.html
+
+    """
     categories = list(mongo.db.categories.find().sort("category_name", 1))
 
     return render_template("categories.html", categories=categories)
@@ -460,21 +614,46 @@ def get_categories():
 # ======== EDIT CATEGORY PAGE ======== #
 
 
-# Displays edit category page
+# edit category
 @app.route("/edit_category/<category_id>", methods=["GET", "POST"])
 def edit_category(category_id):
 
+    """
+        Allows the admin to edit a category through a form.
+
+        Checks for category ID field in MongoDB to fetch relative data.
+        Displays previously submitted data regarding the category by admin.
+        Fetch changes to database and update the fields
+        when submitted in category collection.
+        Checks if the user in session is the admin.
+
+        Parameter:
+        ObjectId: category_id from the category collection ID field.
+
+        Returns:
+        template: edit_categories.html for the admin
+        before submitting changes
+        template: categories.html after submitting changes
+        if the user is the admin.
+        template: index.html if the user is logged in but not the admin.
+        template: login.html if user not logged in.
+
+    """
+
     if request.method == "POST":
+        # send form data to MongoDB collection and update the field
         submit = {
             "category_name": request.form.get("category_name")
         }
         mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
-        flash("Another category added!")
+        flash("Voila! All new!")
 
         return redirect(url_for("get_categories"))
 
+    # find category id in category collection
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
 
+    # allow access to admin and protect access from other users
     if "user" in session:
         user = session["user"].lower()
 
@@ -490,12 +669,30 @@ def edit_category(category_id):
 
 # ======== ADD CATEGORY PAGE ======== #
 
-# Displays add category page
+
+# add category
 @app.route("/add_category", methods=["GET", "POST"])
 def add_category():
 
+    """
+        Allows admin to submit a category to the website through
+        a form.
+
+        Allows the form field to be sent to the MongoDB category collection
+        Inserts a new entry in the previously mentionned collection.
+        Prevents non-registered to have access to the page for security.
+
+        Returns:
+        template: add_categories.html if user is admin
+        before submitting.
+        template: categories.html after submitting if user is admin
+        template: login.html if user is not admin.
+
+    """
+
     if request.method == "POST":
 
+        # send form data to MongoDB collection and insert new entry
         category = {
             "category_name": request.form.get("category_name"),
         }
@@ -506,6 +703,7 @@ def add_category():
 
     categories = mongo.db.categories.find()
 
+    # grants access to admin and protect from other user access
     if "user" in session:
         user = session["user"].lower()
 
@@ -519,7 +717,7 @@ def add_category():
 # ======== DELETE CATEGORY ======== #
 
 
-# delete category
+# allows admin to a delete category forever
 @app.route("/delete_category/<category_id>")
 def delete_category(category_id):
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
