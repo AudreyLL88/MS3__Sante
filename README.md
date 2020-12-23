@@ -772,10 +772,11 @@ SECRET_KEY = [Your Secret key]
 
 **Many thanks to:**
 
-* My mentor **Ignatius Ukwuoma** for his patience and kindness
-* **Kasia** for her very inspiring ReadME
-* **Code Institute Slack community** for the technical and emotional support
-* **Ivar Dahlberg**, for all the beautiful designs he created and his assistance
-* **Mesaicos Stockholm LandHockey team** for cutting me some slack for not being very alert (and I am the goalkeeper...)
+* My mentor **Ignatius Ukwuoma** for his patience and kindness.
+* **Kasia** for her very inspiring ReadME.
+* **Sean** who will dislike being mentionned but his time was precious.
+* **Anthony and Jim** for their advice on use of doctstring and comments.
+* **Code Institute Slack community** for the technical and emotional support.
+* **Ivar Dahlberg**, for all the beautiful designs he created and his assistance.
 
 **Site for educational purposes only!** (for now)
