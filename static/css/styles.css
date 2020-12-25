@@ -107,54 +107,62 @@ ul {
 
 /****  NAVIGATION BAR  ****/
 
-.nav {
-    align-items: center;
-    display: flex;
-    height: var(--header-height);
-	justify-content: space-between;
+/*  NAV  */
+.nav{
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav__logo {
-	font-family: "Lobster", cursive;
+    font-family: "Lobster", cursive;
     font-size: 2rem;
 }
 
-.nav__logo:hover {
-	color: #ffff;
+@media screen and (max-width: 768px){
+  .nav__menu{
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100%;
+    padding: 3.5rem 1.5rem 0;
+    background: rgba(245, 210, 12, 0.712);
+    backdrop-filter: blur(10px);
+    transition: .5s;
+  }
 }
 
-.nav__close {
-    cursor: pointer;
-    font-size: 1.5rem;
-    position: absolute;
-    right: 1rem;
-    top: .75rem;
+.nav__close{
+  position: absolute;
+  top: .75rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
-.nav__item {
-	margin-bottom: 2rem;
+.nav__item{
+  margin-bottom: 2rem;
 }
 
-.nav__close,
-.nav__link,
-.nav__logo,
-.nav__toggle {
-	color: var(--text-color);
+.nav__close, .nav__link, .nav__logo, .nav__toggle{
+  color: var(--white-color);
 }
 
-.nav__link:hover {
-	color: #ffff;
+.nav__link:hover{
+  color: var(--first-color-dark);
 }
 
-.nav__toggle {
-    cursor: pointer;
-	font-size: 1.5rem;
+.nav__toggle{
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
-.show {
-	right: 0;
+/* Show menu */
+.show{
+  right: 0;
 }
-
 /**** INDEX HERO  ****/
 
 .home {
@@ -487,7 +495,7 @@ figure .wrap_img {
 }
 
 @media screen and (max-width: 768px) {
-     .home__data {
+    .home__data {
 		text-align: center;
     }
     .home__container {
@@ -495,17 +503,6 @@ figure .wrap_img {
     }
     .l-header {
 		position: fixed;
-	}
-	.nav__menu {
-        backdrop-filter: blur(10px);
-        background: rgba(245, 210, 12, 0.712);
-		height: 100%;
-        padding: 3.5rem 1.5rem 0;
-        position: fixed;
-        right: -100%;
-        transition: .5s;
-        top: 0;
-        width: 70%;
 	}
 }
 

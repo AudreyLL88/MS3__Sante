@@ -1,19 +1,15 @@
-/*jshint esversion: 6 */
-
-// Navbar const
-
-const navMenu = document.getElementById('nav-menu');
-    toggleMenu = document.getElementById('nav-toggle');
-    closeMenu = document.getElementById('nav-close');
+const navMenu = document.getElementById('nav-menu'),
+    toggleMenu = document.getElementById('nav-toggle'),
+    closeMenu = document.getElementById('nav-close')
 
 // Toggle Navbar on mobile
 
 toggleMenu.addEventListener('click', ()=>{
-    navMenu.classList.toggle('show'); // Open navbar on click
+    navMenu.classList.toggle('show')
 }); 
 
 closeMenu.addEventListener('click', ()=>{
-    navMenu.classList.remove('show'); // Close navbar on click
+    navMenu.classList.remove('show') 
 });
 
 // If statement to prevent errors on the console 
