@@ -16,7 +16,7 @@
                 <div class="input-group">
                     <input type="search" name="search" class="search form-control" placeholder="Search cocktail">
                     <select required name="select" id="select" class="form-control mx-1" multiple>
-                        <option value="All Categories">All Categories</option>
+                        <option value="All Categories" selected>All Categories</option>
                         {% for category in categories %}
                             <option value="{{ category.category_name }}">{{ category.category_name }}</option>
                         {% endfor %}

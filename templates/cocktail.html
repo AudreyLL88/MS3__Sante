@@ -11,7 +11,7 @@
             <hr>
             <div class="text-muted text-center mb-4">
                 <p>Posted by: <i class="fas fa-user mx-1"></i> {{ cocktail.created_by }}</p>
-                <p> on <i class="fas fa-calendar-plus mx-1"></i>12/12/2020 in <i class="fas fa-folder-open mx-1"></i> {{ cocktail.category_name }} </p>
+                <p> on <i class="fas fa-calendar-plus mx-1"></i>{{ cocktail.cocktail_date }} in <i class="fas fa-folder-open mx-1"></i> {{ cocktail.category_name }} </p>
             </div>
             {% if session.user|lower == cocktail.created_by|lower %}
                 <div class="pb-3 text-center">

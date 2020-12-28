@@ -107,7 +107,7 @@ ul {
 
 /****  NAVIGATION BAR  ****/
 
-/*  NAV  */
+
 .nav{
   height: var(--header-height);
   display: flex;
@@ -147,7 +147,7 @@ ul {
 }
 
 .nav__close, .nav__link, .nav__logo, .nav__toggle{
-  color: var(--white-color);
+  color: var(--text-color);
 }
 
 .nav__link:hover{

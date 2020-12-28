@@ -1,4 +1,5 @@
 import os
+import datetime
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -391,6 +392,8 @@ def add_cocktail():
 
     if request.method == "POST":
 
+        date = str(datetime.date.today())
+        print(date)
         # send form data to cocktails collection
         cocktail = {
             "category_name": request.form.get("category_name"),
@@ -404,7 +407,8 @@ def add_cocktail():
             "cocktail_serv": request.form.get("cocktail_serv"),
             "cocktail_img_cred": request.form.get("cocktail_img_cred"),
             "created_by": session["user"],
-            "cocktail_like": 0
+            "cocktail_like": 0,
+            "cocktail_date": date
         }
         mongo.db.cocktails.insert_one(cocktail)
         flash("Merci for the new cocktail")
@@ -472,7 +476,8 @@ def edit_cocktail(cocktail_id):
             "cocktail_serv": request.form.get("cocktail_serv"),
             "cocktail_img_cred": request.form.get("cocktail_img_cred"),
             "created_by": session["user"],
-            "cocktail_like": cocktail_data["cocktail_like"]
+            "cocktail_like": cocktail_data["cocktail_like"],
+            "cocktail_date": cocktail_data["cocktail_date"]
         }
         mongo.db.cocktails.update({"_id": ObjectId(cocktail_id)}, submit)
         flash("Merci for the updated cocktail!")
