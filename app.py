@@ -64,7 +64,7 @@ def subscribe():
     return redirect(request.referrer)
 
 
-# ======== COCKTAIL PAGE ======== #
+# ======== COCKTAILS PAGE ======== #
 
 
 # cocktails
@@ -88,10 +88,10 @@ def get_cocktails():
 
     # fetch the page number from request / set the page 1
     page = int(request.args.get('page') or 1)
-    num = 2
+    num = 9
 
     # count documents for of pagination options
-    count = ceil(int(cocktails_collection.count_documents({}) / num))
+    count = ceil(float(cocktails_collection.count_documents({}) / num))
 
     # page - 1 checks that the first items can be found
     cocktails = list(
