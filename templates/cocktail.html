@@ -69,7 +69,7 @@
         <!-- Cocktail Ingredients and Instructions-->
         <div class="shadow p-4 mb-5">
                 <div class="row">
-                    <div class="col-md-2 mt-2">
+                    <div class="col-md-4 mt-2">
                     <div class="cocktail_ingredients">
                         <h4>Ingredients</h4>
                         <hr>
@@ -80,13 +80,13 @@
                         {% endfor %}
                     </div>
                 </div>
-                <div class="col-md-10 cocktail_instructions mt-2">
+                <div class="col-md-8 cocktail_instructions mt-2">
                     <h4 >Instructions</h4>
                     <hr>
                     <div class="cocktail_step d-flex lh-lg">
                         <ul>
                             {% for line in cocktail.cocktail_instructions.splitlines() %}
-                            <li><i class="fas fa-cocktail"></i> {{ line }}</li>
+                            <li><i class="fas fa-cocktail"></i>{{ line }}</li>
                             {% endfor %}
                         </ul>
                     </div>
