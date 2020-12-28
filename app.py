@@ -38,7 +38,8 @@ def index():
 
     """
 
-    cocktails = list(mongo.db.cocktails.find())
+    cocktails = list(
+                mongo.db.cocktails.find({"created_by": "admin"}).limit(6))
     return render_template("index.html", cocktails=cocktails)
 
 
