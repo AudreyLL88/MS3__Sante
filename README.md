@@ -149,7 +149,7 @@ View my wireframes [here]().
 
 **Featured Recipes**
 
-* This feature is an introduction to some of the cocktail recipes showcased on the website and are cocktail recipes created in the database by the admin only.
+* This feature is an introduction to some of the cocktail recipes showcased on the website and are cocktail recipes created in the database by the admin only. (6 firsts only)
 
 **Cocktail Recipes**
 
@@ -165,6 +165,7 @@ View my wireframes [here]().
 **Pagination**
 
 * This feature helps to display the cocktail cards on several pages to avoid crowding the page with too much content.
+* Each page displays 9 cocktail cards maximum per page
 
 
 **Individual Recipe Page**
@@ -172,6 +173,7 @@ View my wireframes [here]().
 * This page allows the user to view a custom recipe including
     - Cocktail Name 
     - Category Name
+    - Cocktail date
     - Cocktail Description 
     - Cocktail Image 
     - Cocktail Image Credentials 
@@ -241,6 +243,7 @@ View my wireframes [here]().
     - Cocktail Ingredients (blank)
     - Cocktail Instructions (blank)
 
+* The date is automatically generated through the Python import datetime and is not to be selected in the form.
 * After clicking on the submit button, the user can see the new recipe page topped with a validation flash message. The recipe will then appear in the user's profile.
 * This feature is accessible through the navigation bar and the user's profile.
 
@@ -250,6 +253,7 @@ View my wireframes [here]().
 * The form passes the informations previously submitted for more clarity and can all be changed.
 * To submit these new information, the user needs to click on the "submit" button at the bottom of the page.
 * After clicking on the submit button, the user can see the updated recipe page topped with a validation flash message. The recipe will be updated in the user's profile.
+* The user cannot edit the date on which the recipe was created.
 * The edit  functionnality can be accessed through the recipe cards on the cocktails.html page, profile.html and the specific cocktail/cocktail_id.html.
 
 **Delete a Cocktail**
@@ -394,7 +398,7 @@ View my wireframes [here]().
 * Are all these informations rendered correctly:
     - the cocktail name
     - the cocktail author
-    - the Date
+    - the date
     - the category name
     - the cocktail picture
     - the cocktail picture credits
@@ -733,6 +737,7 @@ cocktail_serv:<decimal128>
 cocktail_img_cred:<string>
 created_by:<string>
 cocktail_like:<decimal128>
+cocktail_date:<string>
 ```
 * You can now run your application locally by typing the command "python3 app.py" in your terminal.
 
