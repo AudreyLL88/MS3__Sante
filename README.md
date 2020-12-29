@@ -98,7 +98,7 @@ Admin
 
 * All icons used on this website are taken from [**Font Awesome**](https://fontawesome.com/).
 * I have decided to choose icons for the buttons Edit/View/Delete on the cocktail cards in the profile and in recipe template for a better user understanding.
-
+* The Favicon used for this website is from [Favicon.io](https://favicon.io/).
 
 <a name="colors"></a>
 
@@ -303,28 +303,38 @@ View my wireframes [here]().
 * Share recipe functionnality.
 
 <a name="technologies"></a>
+
 ## Technologies, libraries and tools used ##
 
-* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
-* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
-* [Javascript](https://www.javascript.com/)
-* [Python](https://www.python.org/)
+**Front-End**
 * [Bootstrap](https://bootstrap4.com/)
-* [Flask](https://flask.palletsprojects.com/en/1.1.x/)
-* [Jinja](https://jinja.palletsprojects.com/en/2.11.x/)
-* [Werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/)
-* [Heroku](https://dashboard.heroku.com/)
-* [MongoDB](https://www.mongodb.com/1)
+* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 * [Font-Awesome](https://fontawesome.com/)
 * [Google fonts](https://fonts.google.com/)
-* [Git](https://git-scm.com/)
-* [Maya](https://www.autodesk.com/products/maya/overview)
 * [GSAP](https://greensock.com/gsap/)
+* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+* [Javascript](https://www.javascript.com/)
+* [Maya](https://www.autodesk.com/products/maya/overview)
 * [SCSS](https://sass-lang.com/)
+
+**Back-end**
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+* [Jinja](https://jinja.palletsprojects.com/en/2.11.x/)
+* [MongoDB](https://www.mongodb.com/1)
+* [Python](https://www.python.org/)
+* [Werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/)
+
+**Deployment**
+* [Heroku](https://dashboard.heroku.com/)
+* [Git](https://git-scm.com/)
+* [Github](https://github.com/)
+* [Gitpod](https://gitpod.io/)
+
+**Testing**
+* [JSHint](https://jshint.com/) (JS file passed validator)
+* [PEP8 online](http://pep8online.com/)
 * [W3C HTML Validator](https://validator.w3.org/) (all pages passed validator)
 * [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) (css file passed validator)
-* [PEP8 online](http://pep8online.com/)
-* [JSHint](https://jshint.com/) (JS file passed validator)
 
 
 <a name="defensive"></a>
