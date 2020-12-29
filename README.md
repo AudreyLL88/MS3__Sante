@@ -769,11 +769,25 @@ SECRET_KEY = [Your Secret key]
 
 **Text Credits:**
 
-* 
+* All cocktail recipes are taken from the following websites:
+    - [**The Spruce Eats**](https://www.thespruceeats.com/)
+    - [**Goop**](https://goop.com/)
+    - [**Liquor**](https://www.liquor.com/)
+    - [**Ties**](https://www.ties.com/)
 
 **Image Credits:**
 
-* 
+* * All cocktail recipe images are taken from the following websites:
+    - [**The Spruce Eats**](https://www.thespruceeats.com/)
+    - [**Goop**](https://goop.com/)
+    - [**Liquor**](https://www.liquor.com/)
+    - [**Ties**](https://www.ties.com/)
+    - [**Pexel**]
+
+* All images used in the **It's Apero Time** index.html section are from [**Pixabay**](https://pixabay.com/)
+* The elements used on the hero section of index.html are all made by **Ivar Dahlberg**.
+* The image used for the profile picture of Audrey88 is my portrait.
+* The image used for the profile picture of LeBarman and Admin are from [**Pexel**](https://www.pexels.com/)
 
 **Many thanks to:**
 
