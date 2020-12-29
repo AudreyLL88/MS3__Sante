@@ -83,7 +83,7 @@ Admin
 
 ### Frameworks ###
 
-* Bootstrap 4. I used the [**Small Business Template**](https://startbootstrap.com/template/small-business) for the landing page structure as well as the [**Business Template**](https://startbootstrap.com/template/business-frontpage) for the profile page. I wanted to learn more about Bootstrap and its classes. I tried to implement these as much as possible.
+* Bootstrap 4 to build the front-end. I used the [**Small Business Template**](https://startbootstrap.com/template/small-business) for the landing page structure as well as the [**Business Template**](https://startbootstrap.com/template/business-frontpage) for the profile page. I wanted to learn more about Bootstrap and its classes. I tried to implement these as much as possible.
 * Micro framework [**Flask**](https://flask.palletsprojects.com/en/1.1.x/), to build the backend.
 
 <a name="fonts"></a>
@@ -141,20 +141,23 @@ View my wireframes [here]().
 **It's Apero Time**
 
 * This feature is a pretty straightforward section of the website explaining the goal and concept of Santé!. 
-* I added a Bootstrap carousel that display images on demand or automatically to for a visually more engaging user experience.
+* I added a Bootstrap carousel that display images on demand or automatically for a visually more engaging user experience.
 
 **Newsletter**
 
 * This feature allows the user, no matter if he is registered or not, to subscribe to the website's newsletter. The email given by the user is registered in the database in a collection called "subscriptions" and is separate from the "users" collection.
+* The user needs to enter a valid email address for the registration.
 
 **Featured Recipes**
 
 * This feature is an introduction to some of the cocktail recipes showcased on the website and are cocktail recipes created in the database by the admin only. (6 firsts only)
+* The recipes are displayed on responsive cards with a hover effect (not available on mobile).
 
 **Cocktail Recipes**
 
-* The recipe page showcases all the recipes submitted by the registered users and the admin. All recipes are displayed in responsive cards including a picture, a category, a short description and a name all submitted by the user/author of the recipe.
+* The recipe page showcases all the recipes submitted by the registered users and the admin. All recipes are displayed in responsive cards including a picture, a category and a name all submitted by the user/author of the recipe.
 * If the user is the author of the recipe or the admin and is logged in, the buttons "edit and "delete" appears. They are not visbible if the author or admin is not logged in.
+* The recipes are displayed on responsive cards with a hover effect (not available on mobile).
 
 **Search box**
 
@@ -165,8 +168,7 @@ View my wireframes [here]().
 **Pagination**
 
 * This feature helps to display the cocktail cards on several pages to avoid crowding the page with too much content.
-* Each page displays 9 cocktail cards maximum per page
-
+* Each page displays 9 cocktail cards maximum per page.
 
 **Individual Recipe Page**
 
@@ -185,6 +187,7 @@ View my wireframes [here]().
     - Cocktail Likes
     - Cocktail Author's Name
 
+* All the data is stored in collections on MongoDB Atlas database and passed thropugh HTML using flask.
 * The user needs to be registered to "like" a recipe
 
 **Register**
@@ -197,7 +200,7 @@ View my wireframes [here]().
     - The user's location,
     - The user's level.
 * The passwords  are hashed and protected using the import "generate_password_hash, check_password_hash" from werkzeug security.
-* As Santé! is promoting alcohol beverages, the user must confirm that he/she/is over 18.
+* All that data is stored in the collection "users" on MongoDB Atlas database.
 
 **Log In**
 
@@ -216,21 +219,21 @@ View my wireframes [here]().
 * The section "Your cocktails" displays the cocktail recipes submitted by the user. The user can also create a recipe by clicking on a specified button next to the recipe cards.
 * Each recipe card has 3 buttons : View, Edit, Delete.
 
-**Edit Profile**
+**Edit Profile (CRUD)**
 
 * The user can edit their profile informations by clicking on the green "Edit" button in the dedicated profile card.
 * This feature allows the user to edit their picture, level and location. The user cannot edit their username and password (yet)
 * The user needs to click on the yellow "Submit" button to edit the changes.
 * After clicking on the button the user will be redirected towards their updated profile page with an alert confirming the changes made.
 
-**Delete Profile**
+**Delete Profile (CRUD)**
 
 * The user can delete their profile by clicking on the red "Delete" button in the dedicated profile card.
 * This feature allows the user to permanently delete their profile.
 * When the button is clicked a modal will ask for confirmation to avoid any unfortunate mistake to be made.
 * If the confirmation button is clicked, the profile is permanently deleted and the now guest user will be redirected to the registration page with an alert confirming the changes.
 
-**Add a Cocktail**
+**Add a Cocktail (CRUD)**
 
 * This feature allows the user to submit a custom recipe through a form including the following required blank fields and options:
     - Cocktail name (blank)
@@ -247,7 +250,7 @@ View my wireframes [here]().
 * After clicking on the submit button, the user can see the new recipe page topped with a validation flash message. The recipe will then appear in the user's profile.
 * This feature is accessible through the navigation bar and the user's profile.
 
-**Edit a Cocktail**
+**Edit a Cocktail (CRUD)**
 
 * The user can edit the choosen recipe only when logged in.
 * The form passes the informations previously submitted for more clarity and can all be changed.
@@ -256,14 +259,14 @@ View my wireframes [here]().
 * The user cannot edit the date on which the recipe was created.
 * The edit  functionnality can be accessed through the recipe cards on the cocktails.html page, profile.html and the specific cocktail/cocktail_id.html.
 
-**Delete a Cocktail**
+**Delete a Cocktail (CRUD)**
 
 * The user can delete the choosen recipe only when logged in.
 * The delete functionnality can be accessed through the recipe cards on the cocktails.html page, profile.html and the specific cocktail/cocktail_id.html.
 * When the delete button is clicked, a modal asks confirmation to prevent the user from accidentally deleting the recipe.
 * If confirmed, the recipe is deleted forever.
 
-**Like a Cocktail**
+**Like a Cocktail (CRUD)**
 
 * The user can only like a recipe when logged in.
 * The user can only like a recipe once.
@@ -278,16 +281,10 @@ View my wireframes [here]().
 
 *Features only for the admin (all of the above plus the following)*
 
-**Manage Categories**
+**Manage Categories (CRUD)**
 
 * The admin can edit, delete and view all cocktail categories through buttons displayed on the category cards.
 * The admin can access the Categories through their profile.
-
-**Add Category**
-
-* This feature allows the admin  to Add a category to the "Manage Category" dashboard.
-* This feature can be accessed by clicking on the blue "Add category" button on the admin profile page.
-
 
 **Profile**
 
