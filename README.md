@@ -671,6 +671,11 @@ View my wireframes [here]().
 * My delete cocktail/category function is linked to a confirmation modal. At first that modal was displaying as many buttons as there was category/cocktail cards when clicked.
 * I fixed it by including the modal in the for loop and it now generates just two buttons as it is supposed to.
 
+**Pagination**
+
+* My first pagination function was not displaying the last page if it wasn't full.
+* I fixed it by changing the interger value to a float to get the decimal.
+
 # Deployment<hr>
 
 ***Requirements to deploy:***
@@ -782,7 +787,7 @@ SECRET_KEY = [Your Secret key]
     - [**Goop**](https://goop.com/)
     - [**Liquor**](https://www.liquor.com/)
     - [**Ties**](https://www.ties.com/)
-    - [**Pexel**]
+    - [**Pexel**](https://www.pexels.com/)
 
 * All images used in the **It's Apero Time** index.html section are from [**Pixabay**](https://pixabay.com/)
 * The elements used on the hero section of index.html are all made by **Ivar Dahlberg**.
