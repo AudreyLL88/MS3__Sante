@@ -2,7 +2,7 @@
 {% block content %}
 
  <!-- Main container/Page Title -->
-<section class="container cocktail-section min-vh-100">
+<section class="container cocktail-section min-vh-100 pt-3">
    <div class="cocktail-headline text-center">
       <h2>All Cocktails</h2>
    </div>
@@ -15,7 +15,7 @@
             <form action="{{ url_for('search') }}" method="POST" class="align-item-center">
                 <div class="input-group">
                     <input type="search" name="search" class="search form-control" placeholder="Search cocktail">
-                    <select required name="select" id="select" class="form-control mx-1" multiple>
+                    <select required name="select" id="select" class="form-control mx-1">
                         <option value="All Categories" selected>All Categories</option>
                         {% for category in categories %}
                             <option value="{{ category.category_name }}">{{ category.category_name }}</option>
