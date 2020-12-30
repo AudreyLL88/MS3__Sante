@@ -104,10 +104,12 @@ Admin
 
 ### Colors ###
 
-* I choose to work with a very momocromatic color scheme of light and dark yellows. 
+* I choose to work with a very momocromatic color scheme of light and dark yellows, inspired by the palette below. 
+* The **warning** Bootstrap color class fits perfectly with that color scheme, so I used it for the buttons and some titles.
 * I choose yellow because it is a color that increase cheerfulness and stimulate the user mentally. This website is all about a positive and fun message in these pretty dark times, and I thought yellow was the right amount of playfulness.
 * The buttons have their own color code: Red for all delete functionnalities, Green for all Edit functionnalities, Yellow for the Add functionnalities as well as the View cocktail buttons. Only the admin has a blue "Add Category" button as this is a functionnality only the Admin has.
-![Color Scheme]() 
+* The gradients used for the background of the Newsletter section, the detail section of the cocktail recipe pages and the category section is the **Citrus Peel** gradient from [**UiGradients**](https://uigradients.com/).
+![Color Scheme](static/img/readme/color_scheme.png) 
 
 
 <a name="wireframing"></a>
