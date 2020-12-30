@@ -353,6 +353,9 @@ def edit_profile(username):
     return redirect(url_for("login"))
 
 
+# ======== DELETE PROFILE ======== #
+
+
 # Allows user to delete account when in session
 # Removes all user data from database
 @app.route("/delete_profile/<username>")
@@ -765,6 +768,18 @@ def users_list():
                 "users_list.html", users=users, user_count=len(users)-1)
 
     return redirect(url_for("index"))
+
+# ======== DELETE USER ======== #
+
+
+# Allows user to delete account when in session
+# Removes all user data from database
+@app.route("/delete_user/<username>")
+def delete_user(username):
+    mongo.db.users.remove({"username": username.lower()})
+    flash("Adieu user!")
+
+    return redirect(url_for("users_list"))
 
 
 # ======== ERROR PAGES ======== #
