@@ -77,8 +77,8 @@
       <main class="content-container">
         <section>
           {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
-            <div class="row mx-auto mt-5">
-                <div class="alert alert-warning mx-auto" role="alert">
+            <div class="row mx-auto">
+                <div class="alert alert-warning mx-auto mt-5" role="alert">
                     {{message}}
                 </div>
             </div>
