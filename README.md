@@ -134,6 +134,7 @@ View my wireframes [here]().
 * The Navigation Bar displays the logo of the website and the options "Home", "Cocktail Recipes", "Log In" and "Register" when the user is not logged in.
 
 **Animated landing page**
+
 ![Hero animation](static/img/readme/hero_animation.gif)
 
 * For this feature I coded along and adapted this [**Youtube tutorial by Bedimcode**](https://www.youtube.com/watch?v=Lf6zONwYeec). I made my own elements to animate using [**Maya**](). You can see in my CSS/HTML/JS files that I have credited the owner of the tutorial as well as I've left the CSS and SASS classes  as they are in the tutorial.
@@ -145,18 +146,21 @@ View my wireframes [here]().
 * I added a Bootstrap carousel that display images on demand or automatically for a visually more engaging user experience.
 
 **Newsletter**
+
 ![newsletter](static/img/readme/newsletter.png)
 
 * This feature allows the user, no matter if he is registered or not, to subscribe to the website's newsletter. The email given by the user is registered in the database in a collection called "subscriptions" and is separate from the "users" collection.
 * The user needs to enter a valid email address for the registration.
 
 **Featured Recipes**
+
 ![featured](static/img/readme/featured.png)
 
 * This feature is an introduction to some of the cocktail recipes showcased on the website and are cocktail recipes created in the database by the admin only. (6 firsts only)
 * The recipes are displayed on responsive cards with a hover effect (not available on mobile).
 
 **Cocktail Recipes**
+
 ![Cocktails](static/img/readme/cocktails.gif)
 
 * The recipe page showcases all the recipes submitted by the registered users and the admin. All recipes are displayed in responsive cards including a picture, a category and a name all submitted by the user/author of the recipe.
@@ -164,6 +168,7 @@ View my wireframes [here]().
 * The recipes are displayed on responsive cards with a hover effect (not available on mobile).
 
 **Search box**
+
 ![Search Box](static/img/readme/search_box.png)
 
 * This feature allows the user to search through keywords specific cocktails in the Cocktails.html.
@@ -171,12 +176,14 @@ View my wireframes [here]().
 * When no results match the search, the text "No Result Found" is displayed.
 
 **Pagination**
+
 ![pagination](static/img/readme/pagination.png)
 
 * This feature helps to display the cocktail cards on several pages to avoid crowding the page with too much content.
 * Each page displays 9 cocktail cards maximum per page.
 
 **Individual Recipe Page**
+
 ![cocktail](static/img/readme/cocktail.gif)
 
 * This page allows the user to view a custom recipe including
@@ -216,6 +223,7 @@ View my wireframes [here]().
 *Features visible for registered users*
 
 **Profile**
+
 ![Profile](static/img/readme/profile.png)
 
 * The user's profile showcases their personal informations: username, profile picture, level and location.
@@ -223,6 +231,7 @@ View my wireframes [here]().
 * Each recipe card has 3 buttons : View, Edit, Delete.
 
 **Edit Profile (CRUD)**
+
 ![Edit Profilew](static/img/readme/edit_profile.png)
 
 * The user can edit their profile informations by clicking on the green "Edit" button in the dedicated profile card.
@@ -231,6 +240,7 @@ View my wireframes [here]().
 * After clicking on the button the user will be redirected towards their updated profile page with an alert confirming the changes made.
 
 **Delete Profile (CRUD)**
+
 ![Delete Profile](static/img/readme/delete_profile.png)
 
 * The user can delete their profile by clicking on the red "Delete" button in the dedicated profile card.
@@ -239,6 +249,7 @@ View my wireframes [here]().
 * If the confirmation button is clicked, the profile is permanently deleted and the now guest user will be redirected to the registration page with an alert confirming the changes.
 
 **Add a Cocktail (CRUD)**
+
 ![Add Cocktail](static/img/readme/add_cocktail.png)
 
 * This feature allows the user to submit a custom recipe through a form including the following required blank fields and options:
@@ -257,6 +268,7 @@ View my wireframes [here]().
 * This feature is accessible through the navigation bar and the user's profile.
 
 **Edit a Cocktail (CRUD)**
+
 ![Edit Cocktail](static/img/readme/edit_cocktail.png)
 
 * The user can edit the choosen recipe only when logged in.
@@ -267,6 +279,7 @@ View my wireframes [here]().
 * The edit  functionnality can be accessed through the recipe cards on the cocktails.html page, profile.html and the specific cocktail/cocktail_id.html.
 
 **Delete a Cocktail (CRUD)**
+
 ![Delete Cocktail](static/img/readme/delete_cocktail.png)
 
 * The user can delete the choosen recipe only when logged in.
@@ -275,6 +288,7 @@ View my wireframes [here]().
 * If confirmed, the recipe is deleted forever.
 
 **Like a Cocktail (CRUD)**
+
 ![Like](static/img/readme/like_button.gif)
 
 * The user can only like a recipe when logged in.
@@ -283,6 +297,7 @@ View my wireframes [here]().
 * A message on top of the recipe confirms the "like" to the user.
 
 **Log Out**
+
 ![Logout](static/img/readme/logout.png)
 
 * The user can access this functionnality through the navigation bar.
@@ -292,6 +307,7 @@ View my wireframes [here]().
 *Features only for the admin (all of the above plus the following)*
 
 **Manage Categories (CRUD)**
+
 ![category](static/img/readme/categories.png)
 ![Add Catergory](static/img/readme/add_category.png)
 ![Edit Category](static/img/readme/edit_category.png)
@@ -365,8 +381,6 @@ View my wireframes [here]().
 * 
 
 **GSAP Animation and Navigation Bar**
-
-![GSAP]()
 
 *  As any user, navigate to the landing page of Santé! Is the "index" template correctly rendered ?
 *  Are all text elements and images appearing on the screen ?
