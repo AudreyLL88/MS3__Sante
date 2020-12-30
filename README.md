@@ -1,6 +1,6 @@
 # Santé! #
 ---
-![Hero Screenshot]
+![Hero Screenshot](static/img/readme/hero.png)
 
 ## Contents ##
 ---
@@ -134,6 +134,7 @@ View my wireframes [here]().
 * The Navigation Bar displays the logo of the website and the options "Home", "Cocktail Recipes", "Log In" and "Register" when the user is not logged in.
 
 **Animated landing page**
+![Hero animation](static/img/readme/hero_animation.gif)
 
 * For this feature I coded along and adapted this [**Youtube tutorial by Bedimcode**](https://www.youtube.com/watch?v=Lf6zONwYeec). I made my own elements to animate using [**Maya**](). You can see in my CSS/HTML/JS files that I have credited the owner of the tutorial as well as I've left the CSS and SASS classes  as they are in the tutorial.
 * I wanted to implement this feature because I wanted to learn a bit more about the GSAP library and I really enjoyed coding along this tutorial.
@@ -144,33 +145,39 @@ View my wireframes [here]().
 * I added a Bootstrap carousel that display images on demand or automatically for a visually more engaging user experience.
 
 **Newsletter**
+![newsletter](static/img/readme/newsletter.png)
 
 * This feature allows the user, no matter if he is registered or not, to subscribe to the website's newsletter. The email given by the user is registered in the database in a collection called "subscriptions" and is separate from the "users" collection.
 * The user needs to enter a valid email address for the registration.
 
 **Featured Recipes**
+![featured](static/img/readme/featured.png)
 
 * This feature is an introduction to some of the cocktail recipes showcased on the website and are cocktail recipes created in the database by the admin only. (6 firsts only)
 * The recipes are displayed on responsive cards with a hover effect (not available on mobile).
 
 **Cocktail Recipes**
+![Cocktails](static/img/readme/cocktails.gif)
 
 * The recipe page showcases all the recipes submitted by the registered users and the admin. All recipes are displayed in responsive cards including a picture, a category and a name all submitted by the user/author of the recipe.
 * If the user is the author of the recipe or the admin and is logged in, the buttons "edit and "delete" appears. They are not visbible if the author or admin is not logged in.
 * The recipes are displayed on responsive cards with a hover effect (not available on mobile).
 
 **Search box**
+![Search Box](static/img/readme/search_box.png)
 
 * This feature allows the user to search through keywords specific cocktails in the Cocktails.html.
 * It allows the user to search through text and/or categories combined.
 * When no results match the search, the text "No Result Found" is displayed.
 
 **Pagination**
+![pagination](static/img/readme/pagination.png)
 
 * This feature helps to display the cocktail cards on several pages to avoid crowding the page with too much content.
 * Each page displays 9 cocktail cards maximum per page.
 
 **Individual Recipe Page**
+![cocktail](static/img/readme/cocktail.gif)
 
 * This page allows the user to view a custom recipe including
     - Cocktail Name 
@@ -208,18 +215,15 @@ View my wireframes [here]().
 
 *Features visible for registered users*
 
-**Navigation bar**
-
-* The navigation bar is completely responsive.
-* The Navigation Bar displays the logo of the website and the options "Home", "Cocktail Recipes", "Profile" and "Log Out" when the user is not logged in.
-
 **Profile**
+![Profile](static/img/readme/profile.png)
 
 * The user's profile showcases their personal informations: username, profile picture, level and location.
 * The section "Your cocktails" displays the cocktail recipes submitted by the user. The user can also create a recipe by clicking on a specified button next to the recipe cards.
 * Each recipe card has 3 buttons : View, Edit, Delete.
 
 **Edit Profile (CRUD)**
+![Edit Profilew](static/img/readme/edit_profile.png)
 
 * The user can edit their profile informations by clicking on the green "Edit" button in the dedicated profile card.
 * This feature allows the user to edit their picture, level and location. The user cannot edit their username and password (yet)
@@ -227,6 +231,7 @@ View my wireframes [here]().
 * After clicking on the button the user will be redirected towards their updated profile page with an alert confirming the changes made.
 
 **Delete Profile (CRUD)**
+![Delete Profile](static/img/readme/delete_profile.png)
 
 * The user can delete their profile by clicking on the red "Delete" button in the dedicated profile card.
 * This feature allows the user to permanently delete their profile.
@@ -234,6 +239,7 @@ View my wireframes [here]().
 * If the confirmation button is clicked, the profile is permanently deleted and the now guest user will be redirected to the registration page with an alert confirming the changes.
 
 **Add a Cocktail (CRUD)**
+![Add Cocktail](static/img/readme/add_cocktail.png)
 
 * This feature allows the user to submit a custom recipe through a form including the following required blank fields and options:
     - Cocktail name (blank)
@@ -251,6 +257,7 @@ View my wireframes [here]().
 * This feature is accessible through the navigation bar and the user's profile.
 
 **Edit a Cocktail (CRUD)**
+![Edit Cocktail](static/img/readme/edit_cocktail.png)
 
 * The user can edit the choosen recipe only when logged in.
 * The form passes the informations previously submitted for more clarity and can all be changed.
@@ -260,6 +267,7 @@ View my wireframes [here]().
 * The edit  functionnality can be accessed through the recipe cards on the cocktails.html page, profile.html and the specific cocktail/cocktail_id.html.
 
 **Delete a Cocktail (CRUD)**
+![Delete Cocktail](static/img/readme/delete_cocktail.png)
 
 * The user can delete the choosen recipe only when logged in.
 * The delete functionnality can be accessed through the recipe cards on the cocktails.html page, profile.html and the specific cocktail/cocktail_id.html.
@@ -267,6 +275,7 @@ View my wireframes [here]().
 * If confirmed, the recipe is deleted forever.
 
 **Like a Cocktail (CRUD)**
+![Like](static/img/readme/like_button.gif)
 
 * The user can only like a recipe when logged in.
 * The user can only like a recipe once.
@@ -274,6 +283,7 @@ View my wireframes [here]().
 * A message on top of the recipe confirms the "like" to the user.
 
 **Log Out**
+![Logout](static/img/readme/logout.png)
 
 * The user can access this functionnality through the navigation bar.
 * When clicked, a modal appears and ask for confirmation.
@@ -282,6 +292,10 @@ View my wireframes [here]().
 *Features only for the admin (all of the above plus the following)*
 
 **Manage Categories (CRUD)**
+![category](static/img/readme/categories.png)
+![Add Catergory](static/img/readme/add_category.png)
+![Edit Category](static/img/readme/edit_category.png)
+![Delete Category](static/img/readme/delete_category.png)
 
 * The admin can edit, delete and view all cocktail categories through buttons displayed on the category cards.
 * The admin can access the Categories through their profile.
@@ -361,16 +375,12 @@ View my wireframes [here]().
 
 **Featured Cocktails**
 
-![featured]()
-
 * As any user, scroll down to the bottom of the index page, are the "Featured cocktails" cards rendered ?
 * Are the pictures, name, category and username rendered ?
 * If yes, click on the yellow "try" button, is the cocktail template correctly rendered?
 * Are all informations displayed on the page ?
 
 **All Cocktails**
-
-![all]()
 
 * As a guest user, navigate to the "All cocktail" page through the navigation bar. Is the all cocktail template rendered correctly?
 * Is the search box and the Category dropdown present ?
@@ -390,7 +400,7 @@ View my wireframes [here]().
 
 **Pagination**
 
-* As a guest/registered user, navigate to the All cocktails page. Is the template remdered correctly ?
+* As a guest/registered user, navigate to the All cocktails page. Is the template rendered correctly ?
 * Is there 9 cocktail cards on the page ?
 * Go to the bottom of the page. Is the pagination section correctly rendered ?
 * Click on all pages. Are the cocktail cards correctly rendered?
@@ -398,8 +408,6 @@ View my wireframes [here]().
 
 
 **Cocktail Recipe**
-
-![recipe]
 
 * As a guest user, select a cocktail card from the All Cocktails page and click on the "try" button. Is the cocktail template rendered correctly ?
 * Are all these informations rendered correctly:
@@ -451,8 +459,6 @@ View my wireframes [here]().
 
 **Search box**
 
-![search]() 
-
 * As any user, navigate to the All cocktail page through the navigation bar. Is the All cocktails template rendered correctly?
 * If yes, is the search box present?
 * Enter a word in the search box and click on the yellow search button. Is the result of your search showing in the card section?
@@ -466,8 +472,6 @@ View my wireframes [here]().
 * If no result was found, is the text "No result found" displayed?
 
 **Log In and Profile**
-
-![login]()
 
 * If the user is already registered, access the Login page through the navigation bar.
 * Is the login form and background correctly rendered ?
@@ -488,8 +492,6 @@ View my wireframes [here]().
 
 **Register**
 
-![register]()
-
 * Navigate to the Register page through the navigation bar and click. Is the registration form and its background correctly rendered?
 * Try to submit an empty form. Is the bootstrap form validation tooltip shows in the empty fields?
 * Try to fill the fields with a password and username under 5 characters or above 15 characters. Is the Bootstrap form validation tooltip showing in the incorrectly filled fields?
@@ -498,8 +500,6 @@ View my wireframes [here]().
 * Is the "Your cocktail" section empty?
 
 **Your cocktails**
-
-![profile]()
 
 * In your profile page, is the "Your cocktail" section displayed?
 * If you haven't submitted any recipe yet, is the message "Wow, such empty." showing ?
@@ -511,8 +511,6 @@ View my wireframes [here]().
 
 **Submit a cocktail (Admin/Registered user)**
 
-![submit]()
-
 * Navigate to the form through your profile page. Is the yellow button "Add a cocktail" rendered ?
 * Click on the button, is the "Add a cocktail" form correctly ?
 * Are all fields empty, except for the option fields?
@@ -522,8 +520,6 @@ View my wireframes [here]().
 * Are all informations previously entered displayed?
 
 **Edit a cocktail**
-
-![Edit]()
 
 *Method 1*
 * When logged in, go to your profile. If the cocktail cards are correctly rendered, is the green "Edit" icon correctly rendered?
@@ -555,8 +551,6 @@ View my wireframes [here]().
 * Did the change occur ?
 
 **Delete a cocktail**
-
-![delete]()
 
 *Method 1*
 * When logged in, go to your profile. If the cocktail cards are correctly rendered, is the red "Delete" icon correctly rendered?
@@ -592,8 +586,6 @@ View my wireframes [here]().
 
 **Manage Category (Admin only)**
 
-![manage]()
-
 * As an admin, log into your profile. Is the profile template rendered ?
 * If yes, is the "Manage category" section present?
 * If yes, click on the green "Check it" button. is the "Categories" template correctly rendered ?
@@ -613,8 +605,6 @@ View my wireframes [here]().
 
 **Like a cocktail (View for all/ Action only for registered user and Admin**
 
-![rate]()
-
 * As a guest user, navigate to the "All cocktails" page through the navigation bar and select a cocktail of your choice. Is the cocktail template rendered correctly ?
 * Scroll down, is the grey outline "like" button with like count rendered correctly?
 * Try to click on it, are you correctly redirected to the login page ?
@@ -631,6 +621,10 @@ View my wireframes [here]().
 ### Defensive Design Testing ###
 
 **Register and Log In**
+![Username Error](static/img/readme/username_error.png)
+![Email Error](static/img/readme/email_error.png)
+![Username exist](static/img/readme/username_exist.png)
+![Incorrect ](static/img/readme/incorrect_password.png)
 
 * If any field is left empty after the button is clicked, the form will request a valid entry.
 * It is impossible to register or log in without filling all the fields.
@@ -638,13 +632,31 @@ View my wireframes [here]().
 * All usernames and passwords must be minimum 5 characters or the form will require the user a valid entry.
 * In Log In specifically, if the user submit with the wrong password or username, the message "Incorrect password/username" will appear on the page.
 
+**Newsletter**
+
+* If the user (registered or not) attempt to fill the Newsletter email field with a invalid address, the form will display an error tooltip.
+![Newsletter Error](static/img/readme/newsletter_error.png)
+
 **Category**
 
 * Only the admin can access the category pages :
     - categories.html
     - add_category.html
     - edit_category.html
-* When a guest user and/or a registered user try to access the pages by typing the url, they are redirected to the "Login" page.
+* When a guest user and/or a registered user try to access the pages edit_category and add_category by typing the url, they are redirected to the "Login" page.
+* When a guest user and/or a registered user try to access the pages categories by typing the url, they are redirected to the custom error page.
+![Error](static/img/readme/error.png)
+
+**Add and Edit cocktail**
+
+* Only registered users can add, edit and delete cocktails. 
+* When a non registered-user tries to enter the url manually, they will be redirected towards the login page.
+
+**Like Button**
+
+* Only a registered user can like a cocktail.
+* If a non-registered user tries to like a cocktail, they will be redirected to the login page.
+* For registered user: the like button is disabled after the it is clicked once to avoid like multiplication from the same user.
 
 <a name="issues"></a>
 ## Issues ##
