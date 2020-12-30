@@ -606,12 +606,20 @@ def get_categories():
         Fetch the list of all categories in the MongoDB categories collection
 
         Returns:
-        template: categories.html
+        template: categories.html if admin is logged in
+        template: index.html in any other case
 
     """
-    categories = list(mongo.db.categories.find().sort("category_name", 1))
 
-    return render_template("categories.html", categories=categories)
+    categories = list(
+                mongo.db.categories.find().sort("category_name", 1))
+
+    if "user" in session.keys():
+        if session["user"] == "admin":
+            return render_template(
+                "categories.html", categories=categories)
+
+    return redirect(url_for("index"))
 
 
 # ======== EDIT CATEGORY PAGE ======== #
@@ -712,6 +720,8 @@ def add_category():
 
         if user == "admin".lower():
             return render_template("add_category.html", categories=categories)
+        else:
+            return redirect(url_for("index"))
 
     else:
         return redirect(url_for("login"))
@@ -727,6 +737,34 @@ def delete_category(category_id):
     flash("Adieu Category, see you never!")
 
     return redirect(url_for("get_categories"))
+
+
+# ======== USER LIST ======== #
+
+# all users list
+@app.route("/users_list")
+def users_list():
+
+    """
+        Display all users for the admin only
+
+        Fetch the list of all users per username
+        in the MongoDB users collection
+
+        Returns:
+        template: users_list.html if admin is logged in
+        template: index.html in any other case
+
+    """
+    users = list(
+                mongo.db.users.find().sort("username", 1))
+
+    if "user" in session.keys():
+        if session["user"] == "admin":
+            return render_template(
+                "users_list.html", users=users, user_count=len(users)-1)
+
+    return redirect(url_for("index"))
 
 
 # ======== ERROR PAGES ======== #

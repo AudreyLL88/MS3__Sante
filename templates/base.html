@@ -75,15 +75,13 @@
         
       <!-- Main content -->
       <main class="content-container">
-        <section>
           {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
-            <div class="row mx-auto">
+            <div class="row mx-auto message_container">
                 <div class="alert alert-warning mx-auto mt-5" role="alert">
                     {{message}}
                 </div>
             </div>
             {% endfor %} {% endif %} {% endwith %}
-        </section>
          {% block content %}
          {% endblock %}
       </main>

@@ -222,6 +222,13 @@ ul {
     height: 100%;
     min-height: 100%;
 }
+.message_container {
+    background: transparent;
+}
+
+.alert {
+    z-index: 10;
+}
 
 /**** Footer ****/
 
