@@ -107,7 +107,7 @@ Admin
 * I choose to work with a very momocromatic color scheme of light and dark yellows, inspired by the palette below. 
 * The **warning** Bootstrap color class fits perfectly with that color scheme, so I used it for the buttons and some titles.
 * I choose yellow because it is a color that increase cheerfulness and stimulate the user mentally. This website is all about a positive and fun message in these pretty dark times, and I thought yellow was the right amount of playfulness.
-* The buttons have their own color code: Red for all delete functionnalities, Green for all Edit functionnalities, Yellow for the Add functionnalities as well as the View cocktail buttons. Only the admin has a blue "Add Category" button as this is a functionnality only the Admin has.
+* The buttons have their own color code: Red for all delete functionnalities, Green for all Edit functionnalities, Yellow for the Add functionnalities as well as the View cocktail buttons. Only the admin has a blue "Add Category" button and a black "Check users" buttons as these are functionnalities only the Admin has.
 * The gradients used for the background of the Newsletter section, the detail section of the cocktail recipe pages and the category section is the **Citrus Peel** gradient from [**UiGradients**](https://uigradients.com/).
 ![Color Scheme](static/img/readme/color_scheme.png) 
 
@@ -316,6 +316,16 @@ View my wireframes [here]().
 ![Delete Category](static/img/readme/delete_category.png)
 
 * The admin can edit, delete and view all cocktail categories through buttons displayed on the category cards.
+* The admin can access the Categories through their profile.
+
+**Manage Users (CRUD)**
+
+![userslist](static/img/readme/users_list.png)
+![delete user](static/img/readme/delete_user.png)
+![delete confirmation](static/img/readme/delete_confirmation.png)
+
+* The admin can view how many users are registered on the website and check them by username.
+* The admin can delete any of the users registered through a red delete button displayed next to the user name on the list.
 * The admin can access the Categories through their profile.
 
 **Profile**
@@ -600,7 +610,7 @@ View my wireframes [here]().
 * If yes, is the confirmation alert present ?
 * Did the cocktail disappear ?
 
-**Manage Category (Admin only)**
+**Manage Categories (Admin only)**
 
 * As an admin, log into your profile. Is the profile template rendered ?
 * If yes, is the "Manage category" section present?
@@ -617,6 +627,21 @@ View my wireframes [here]().
 * If yes, click on delete. Is the "categories" template correctly rendered ?
 * If yes, is the confirmation alert present ?
 * Did the category disappear ?
+
+**Manage Users (Admin only)**
+
+* As an admin, log into your profile. Is the profile template rendered ?
+* If yes, is the "Manage users" section present?
+* If yes, click on the black "Check users" button. is the "Users_list" template correctly rendered ?
+* Is the number of registered user correctly displayed?
+* Are usernames and delete buttons displayed ?
+* If yes click on the red trashcan, is the delete modal correctly displayed?
+* Is the username, text,"cancel" button and "delete" button correctly displayed ?
+* If yes, click on cancel. Did the modal disappear and no change happened ?
+* Click again on the red "Delete" Icon. Is the modal correctly rendered?
+* If yes, click on delete. Is the "users_list" template correctly rendered ?
+* If yes, is the confirmation alert present ?
+* Did the user disappear from the list ?
 
 
 **Like a cocktail (View for all/ Action only for registered user and Admin**
@@ -660,13 +685,19 @@ View my wireframes [here]().
     - add_category.html
     - edit_category.html
 * When a guest user and/or a registered user try to access the pages edit_category and add_category by typing the url, they are redirected to the "Login" page.
-* When a guest user and/or a registered user try to access the pages categories by typing the url, they are redirected to the custom error page.
+* When a guest user and/or a registered user try to access the pages categories by typing the url, they are redirected to the index page.
 ![Error](static/img/readme/error.png)
 
 **Add and Edit cocktail**
 
 * Only registered users can add, edit and delete cocktails. 
 * When a non registered-user tries to enter the url manually, they will be redirected towards the login page.
+
+**Manage user list**
+
+
+* Only the admin can view the userlist and have access to the delete user functionnality.
+* When a user that is not the admin try to access the url manually they are directed to the index page.
 
 **Like Button**
 
