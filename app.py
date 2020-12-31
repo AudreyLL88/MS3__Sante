@@ -749,7 +749,7 @@ def delete_category(category_id):
 
 # ======== USER LIST ======== #
 
-# all users list
+# all users list for admin
 @app.route("/users_list")
 def users_list():
 
