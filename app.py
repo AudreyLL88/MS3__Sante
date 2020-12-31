@@ -22,6 +22,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+
 # ======== INDEX PAGE ======== #
 
 
@@ -237,13 +238,16 @@ def login():
         if existing_user:
 
             if check_password_hash(
-                    existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    return redirect(url_for(
-                        "profile", username=session["user"]))
+                existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                return redirect(url_for(
+                    "profile", username=session["user"]))
             else:
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("login"))
+        else:
+            flash("Username doesn't exist")
+            return redirect(url_for("login"))
 
     return render_template("login.html")
 
@@ -605,13 +609,13 @@ def delete_cocktail(cocktail_id):
 def get_categories():
 
     """
-        Display all categories for the admin only
+        Display all categories for the admin only.
 
-        Fetch the list of all categories in the MongoDB categories collection
+        Fetch the list of all categories in the MongoDB categories collection.
 
         Returns:
-        template: categories.html if admin is logged in
-        template: index.html in any other case
+        template: categories.html if admin is logged in.
+        template: index.html in any other case.
 
     """
 
@@ -750,23 +754,28 @@ def delete_category(category_id):
 def users_list():
 
     """
-        Display all users for the admin only
+        Display all users for the admin only.
 
         Fetch the list of all users per username
-        in the MongoDB users collection
+        in the MongoDB users collection.
 
         Returns:
-        template: users_list.html if admin is logged in
-        template: index.html in any other case
+        template: users_list.html if admin is logged in.
+        template: index.html in any other case.
 
     """
     users = list(
                 mongo.db.users.find().sort("username", 1))
 
+    for i, user in enumerate(users):
+        if user["username"] == "admin":
+            users.pop(i)
+            break
+
     if "user" in session.keys():
         if session["user"] == "admin":
             return render_template(
-                "users_list.html", users=users, user_count=len(users)-1)
+                "users_list.html", users=users, user_count=len(users))
 
     return redirect(url_for("index"))
 
