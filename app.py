@@ -758,6 +758,7 @@ def users_list():
 
         Fetch the list of all users per username
         in the MongoDB users collection.
+        Exclude Admin from list.
 
         Returns:
         template: users_list.html if admin is logged in.
@@ -767,11 +768,14 @@ def users_list():
     users = list(
                 mongo.db.users.find().sort("username", 1))
 
+    # exclude admin from the list by finding
+    # the dictionary where username is admin
     for i, user in enumerate(users):
         if user["username"] == "admin":
             users.pop(i)
             break
 
+    # grants list access to admin only
     if "user" in session.keys():
         if session["user"] == "admin":
             return render_template(
@@ -782,7 +786,7 @@ def users_list():
 # ======== DELETE USER ======== #
 
 
-# Allows user to delete account when in session
+# Allows admin to delete user account when in session
 # Removes all user data from database
 @app.route("/delete_user/<username>")
 def delete_user(username):
