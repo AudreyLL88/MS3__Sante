@@ -793,7 +793,7 @@ def users_list():
 
     # fetch the page number from request / set the page 1
     page = int(request.args.get('page') or 1)
-    num = 3
+    num = 10
 
     # count documents for of pagination options
     count = ceil(float(len(users) / num))

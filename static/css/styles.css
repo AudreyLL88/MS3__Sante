@@ -268,9 +268,6 @@ footer a:hover{
 /**** REGISTER/LOGIN PAGES ****/
 
 #bg_cover {
-    background: #F7971E;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #FFD200, #F7971E);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #FFD200, #F7971E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     align-items: center;
     background-size: cover;
     display: flex;
@@ -287,7 +284,7 @@ footer a:hover{
 }
 
 #register_form:before {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color:var(--first-color-darken);
     border-radius: 10px;
 	content: '';
 	height: 100%;
@@ -448,7 +445,7 @@ figure .wrap_img {
 
 /**** MEDIA QUERIES ****/
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
 	body {
 		margin: 0;
 	}
@@ -484,7 +481,7 @@ figure .wrap_img {
     }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1280px) {
 	.bd-grid {
 		margin-left: auto;
 		margin-right: auto;
@@ -500,7 +497,7 @@ figure .wrap_img {
 	}
 	.home__img img {
 		width: 604px;
-	}
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -513,6 +510,12 @@ figure .wrap_img {
     .l-header {
 		position: fixed;
 	}
+}
+
+@media screen and (max-width: 992px) {
+    .home__title {
+        font-size: 3rem;
+    }
 }
 
 
