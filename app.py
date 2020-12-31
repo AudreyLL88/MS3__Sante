@@ -776,6 +776,7 @@ def users_list():
 # Removes all user data from database
 @app.route("/delete_user/<username>")
 def delete_user(username):
+    mongo.db.cocktails.remove({"created_by": username.lower()})
     mongo.db.users.remove({"username": username.lower()})
     flash("Adieu user!")
 
