@@ -360,6 +360,7 @@ def edit_profile(username):
 # Removes all user data from database
 @app.route("/delete_profile/<username>")
 def delete_profile(username):
+    mongo.db.cocktails.remove({"created_by": username.lower()})
     mongo.db.users.remove({"username": username.lower()})
     flash("Profile deleted")
     session.pop("user")
