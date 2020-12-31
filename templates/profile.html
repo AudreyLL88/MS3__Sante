@@ -51,7 +51,7 @@
                 <h2>Your Cocktails</h2>
                 <hr> 
             <div class="row">
-                     {% for cocktail in cocktails %}
+                    {% for cocktail in cocktails %}
                         <div class="col-md-6">
                             <div class="wrap">
                                 <div class="cocktail-card shadow my-3 d-flex">
@@ -96,6 +96,26 @@
                         </div>
                     {% endfor %}
                 </div>
+                 <!-- Pagination -->
+                    {% if search == False %}
+                    <div class="row justify-content-center">
+                        <nav aria-label="page navigation">
+                            <ul class="pagination d-flex text-center">
+                                {% for i in range(0, count) %} 
+                                    <li class="page-item">
+                                        {% if i+1 == page %}
+                                            <a class="page-link active btn-color">
+                                        {% else %}
+                                            <a class="page-link btn-color" href="{{ url_for('profile', username=user.username, page=i+1) }}">
+                                        {% endif %}
+                                            {{ i + 1  }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </nav>
+                    </div>
+                    {% endif %}
             </div>
            
            <!--Submit a recipe button/Category/Users -->

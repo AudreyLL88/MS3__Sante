@@ -52,6 +52,24 @@
             </div>
         </div>
         {% endfor %}
+        <!-- Pagination -->
+        {% if search == False %}
+            <nav aria-label="page navigation">
+                <ul class="pagination d-flex justify-content-center">
+                    {% for i in range(0, count) %} 
+                        <li class="page-item">
+                            {% if i+1 == page %}
+                                <a class="page-link active btn-color">
+                            {% else %}
+                                <a class="page-link btn-color" href="{{ url_for('users_list', page=i+1) }}">
+                            {% endif %}
+                                {{ i + 1  }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        {% endif %}
     </section>
 
 {% endblock %}

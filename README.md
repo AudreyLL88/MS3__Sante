@@ -182,7 +182,8 @@ View my wireframes [here]().
 ![pagination](static/img/readme/pagination.png)
 
 * This feature helps to display the cocktail cards on several pages to avoid crowding the page with too much content.
-* Each page displays 9 cocktail cards maximum per page.
+* Pagination is also present on the admin user list for the same reasons. It displays 10 users per page.
+* Each page displays 9 cocktail cards maximum per page in the all cocktails page and 6 on the profile page.
 
 **Individual Recipe Page**
 
@@ -533,6 +534,7 @@ View my wireframes [here]().
 * As a registered user, if you have submitted cocktails previously, are the cocktail cards showing?
 * Are the buttons "View"(yellow), "Edit"(green), and "Delete"(red) displayed?
 * Is the picture, name and category of the cocktal showing?
+* is the pagination displayed at the bottom of the page if you have more than 6 cocktails submitted?
 * As an admin, are your cocktails as well as all registered user cocktails showing in "Your cocktail" section?
 * As an admin, do you haven "View","Edit" and "Delete" buttons on your cocktail recipes and "View" and "Delete" buttons for other users cocktail recipes?
 
@@ -637,6 +639,7 @@ View my wireframes [here]().
 * Is the number of registered user correctly displayed?
 * Are usernames and delete buttons displayed?
 * Is the admin excluded from the list?
+* Is the pagination displayed if more than 10 users are registered ?
 * If yes click on the red trashcan, is the delete modal correctly displayed?
 * Is the username, text,"cancel" button and "delete" button correctly displayed?
 * If yes, click on cancel. Did the modal disappear and no change happened?

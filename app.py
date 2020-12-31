@@ -281,6 +281,7 @@ def profile(username):
         Checks previously submitted cocktails through username
         in cocktail collection.
         Grants access to all cocktail data to admin.
+        Displays cocktail cards with pagination (6 per page).
 
         Parameter:
         string: username from user collection field "username".
@@ -300,7 +301,21 @@ def profile(username):
             cocktails = list(
                 mongo.db.cocktails.find({"created_by": username.lower()}))
 
-        return render_template("profile.html", user=user, cocktails=cocktails)
+        # fetch the page number from request / set the page 1
+        page = int(request.args.get('page') or 1)
+        num = 6
+
+        # count documents for of pagination options
+        count = ceil(float(len(cocktails) / num))
+
+        # page - 1 checks that the first items can be found
+        start = (page - 1) * num
+        end = start + num
+        cocktails_display = cocktails[start:end]
+
+        return render_template(
+            "profile.html", user=user, cocktails=cocktails_display,
+            page=page, count=count, search=False)
 
     return render_template(
         "profile.html", user=user, cocktails=cocktails)
@@ -758,6 +773,7 @@ def users_list():
 
         Fetch the list of all users per username
         in the MongoDB users collection.
+        Displays users with pagination (10 per page)
         Exclude Admin from list.
 
         Returns:
@@ -775,13 +791,27 @@ def users_list():
             users.pop(i)
             break
 
+    # fetch the page number from request / set the page 1
+    page = int(request.args.get('page') or 1)
+    num = 3
+
+    # count documents for of pagination options
+    count = ceil(float(len(users) / num))
+
+    # page - 1 checks that the first items can be found
+    start = (page - 1) * num
+    end = start + num
+    users_display = users[start:end]
+
     # grants list access to admin only
     if "user" in session.keys():
         if session["user"] == "admin":
             return render_template(
-                "users_list.html", users=users, user_count=len(users))
+                "users_list.html", users=users_display, user_count=len(users),
+                page=page, count=count, search=False)
 
     return redirect(url_for("index"))
+
 
 # ======== DELETE USER ======== #
 
