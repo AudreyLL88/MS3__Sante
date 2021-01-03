@@ -111,6 +111,19 @@ Admin
 * The gradients used for the background of the Newsletter section, the detail section of the cocktail recipe pages and the category section is the **Citrus Peel** gradient from [**UiGradients**](https://uigradients.com/).
 ![Color Scheme](static/img/readme/color_scheme.png) 
 
+### Responsiveness ###
+ 
+![responsive](static/img/readme/responsive.png) 
+
+* Santé is completely responsive thanks to **Bootstrap** and custom CSS media queries. I also used the website [**Am I Responsive**](http://ami.responsivedesign.is/) to test on all major sizes as well as **Google Chrome Dev** to check all other devices available.
+* I also tested this project on several devices : 
+    - Macbook Air 13'
+    - Iphone 6s
+    - Ipad Pro
+    - Samsung Galaxy S10
+    - Desktop screen Dell 2560x1440
+    - Lenovo Legion Performance 15'6
+
 
 <a name="wireframing"></a>
 
@@ -118,9 +131,22 @@ Admin
 ---
 For **wireframing** I used the tool [**Balsamiq**](https://balsamiq.com/).
 
-View my wireframes [here]().
+View my wireframes [here](static/img/wireframe.pdf).
 
-* 
+* As one can see, my wireframe changed quite a bit (but not completely) since I started. I added the following features:
+    - Pagination
+    - Manage users
+    - Profile panel and CRUD
+
+* A few design sections have changed for a better user experience:
+    - I removed the search box in the navigation bar and left it only in the All cocktails page.
+    - The navigation bar is not centered anymore.
+    - The featured cocktails section contains 6 cocktails and not 8.
+    - I removed the newsletter from the footer and gave it it's own section on the landing page.
+    - The footer is social media oriented as the navigation bar is fixed, there is no need for repetition (in my opinion).
+    - The layout of the cocktail recipes is different.
+    - I changed the rating functionnality for a like functionnality.
+
 <a name="features"></a>
 ## Features ## 
 ---
@@ -395,11 +421,6 @@ View my wireframes [here]().
 ### Feature Testing ###
 ---
 <a name="ftest"></a>
-
-**Responsiveness**
- 
-
-* 
 
 **GSAP Animation and Navigation Bar**
 
