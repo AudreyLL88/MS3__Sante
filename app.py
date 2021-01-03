@@ -1,5 +1,6 @@
 import os
 import datetime
+import random
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -537,6 +538,7 @@ def get_cocktail(cocktail_id):
         to fetch corresponding data.
         Checks if the logged in user has previously liked the cocktail
         through the user collection.
+        Select 3 random cocktails of same category in suggested section.
 
         Parameter:
         ObjectId: cocktail_id from the cocktail collection ObjectId field.
@@ -548,6 +550,18 @@ def get_cocktail(cocktail_id):
 
     cocktail = mongo.db.cocktails.find_one({"_id": ObjectId(cocktail_id)})
     is_liked = False
+    category = cocktail["category_name"]
+    suggested_cocktails = list(
+                mongo.db.cocktails.find({"category_name": category}))
+
+    # removes current cocktail from suggested cocktails
+    for i, item in enumerate(suggested_cocktails):
+        if item["_id"] == ObjectId(cocktail_id):
+            suggested_cocktails.pop(i)
+            break
+
+    # pick 3 random from list
+    random_cocktails = random.sample(suggested_cocktails, 3)
 
     # checks if cocktail was liked by registered user
     if "user" in session:
@@ -558,7 +572,7 @@ def get_cocktail(cocktail_id):
 
     return render_template(
         "cocktail.html", cocktail=cocktail,
-        is_liked=is_liked)
+        is_liked=is_liked, suggested_cocktails=random_cocktails)
 
 
 # like button
