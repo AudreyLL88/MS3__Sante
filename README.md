@@ -161,6 +161,13 @@ View my wireframes [here]().
 * This feature is an introduction to some of the cocktail recipes showcased on the website and are cocktail recipes created in the database by the admin only. (6 firsts only)
 * The recipes are displayed on responsive cards with a hover effect (not available on mobile).
 
+**Suggested Cocktails**
+
+![suggested](static/img/readme/suggested.png)
+
+* This feature is placed at the bottom of a cocktail recipe page and suggests to the user 3 random cocktails of the same category as the cocktail currently being checked by the user.
+
+
 **Cocktail Recipes**
 
 ![Cocktails](static/img/readme/cocktails.gif)
@@ -484,6 +491,12 @@ View my wireframes [here]().
     - the instructions
     - the ingredients.
 * Are the "Delete" and "Edit" buttons displayed and clickable?
+* At the bottom of the recipe page, is the suggested cocktails section displayed ?
+* Is there 3 recipes or less displayed ?
+* Are they all from the same category than the recipe being checked ?
+* Is the cocktail currently being reviewed excluded from that list ?
+* If yes, refresh the page, have the cocktails changed (if there are more than 3 cocktails in that category)?
+* If yes, is the cocktail currently being reviewed still excluded ?
 
 **Search box**
 

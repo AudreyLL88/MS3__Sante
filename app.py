@@ -560,7 +560,7 @@ def get_cocktail(cocktail_id):
             suggested_cocktails.pop(i)
             break
 
-    # pick 3 random from list
+    # pick 3 random from suggested list
     random_cocktails = random.sample(suggested_cocktails, 3)
 
     # checks if cocktail was liked by registered user
