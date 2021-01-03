@@ -94,7 +94,7 @@
         </div>
 
        
-        <div class="row">
+        <section class="row">
             <div class="col-sm-12 text-center">
                 <h3>You might also like:</h3>
                 <hr>
@@ -104,7 +104,7 @@
                     <div class="cocktail-card shadow my-3">
                         <div class="cocktail-body text-center">
                             <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}">
-                                <img src="{{ cocktail.cocktail_img }}" alt="" class="cocktail-img rounded">
+                                <img src="{{ cocktail.cocktail_img }}" alt="cocktail image" class="cocktail-img rounded">
                             </a>
                             <h4 class="card-cocktail-title mx-3 my-2">{{ cocktail.cocktail_name }}
                                     <a class="m-1 text-danger" data-toggle="modal" data-target="#delete_cocktail_{{cocktail._id}}"><i class="fas fa-trash"></i></a>
@@ -119,7 +119,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 </section>
 
