@@ -111,6 +111,8 @@ Admin
 * The gradients used for the background of the Newsletter section, the detail section of the cocktail recipe pages and the category section is the **Citrus Peel** gradient from [**UiGradients**](https://uigradients.com/).
 ![Color Scheme](static/img/readme/color_scheme.png) 
 
+<a name="responsive"></a>
+
 ### Responsiveness ###
  
 ![responsive](static/img/readme/responsive.png) 
@@ -123,7 +125,6 @@ Admin
     - Samsung Galaxy S10
     - Desktop screen Dell 2560x1440
     - Lenovo Legion Performance 15'6
-
 
 <a name="wireframing"></a>
 
@@ -371,12 +372,12 @@ View my wireframes [here](static/img/wireframe.pdf).
 * The admin can edit their profile information like a registered user.
 
 <a name="implemented"></a>
+
 ### Future implemented features ###
 
 * "Unlike" functionnality
 * Comment section for registered user
 * Functionnality to consult other member profiles for registered user
-* Suggestions of recipes on the cocktail.html pages.
 * Share recipe functionnality.
 
 <a name="technologies"></a>
@@ -699,6 +700,7 @@ View my wireframes [here](static/img/wireframe.pdf).
 * Is the click function disabled?
 
 <a name="dtest"></a>
+
 ### Defensive Design Testing ###
 
 **Register and Log In**
@@ -745,6 +747,7 @@ View my wireframes [here](static/img/wireframe.pdf).
 * For registered user: the like button is disabled after the it is clicked once to avoid like multiplication from the same user.
 
 <a name="issues"></a>
+
 ## Issues ##
 ---
 
