@@ -26,6 +26,9 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+# ======== UTILITY FUNCTIONS ======== #
+
+
 # check if username matches current user
 def is_user(username):
     if "user" in session.keys():

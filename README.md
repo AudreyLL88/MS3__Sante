@@ -789,6 +789,11 @@ View my wireframes [here](static/img/wireframe.pdf).
 * Santé started acting out (maybe because it's hosted on Heroku) and was requesting and HTTP rather than an HTTPS.
 * I installed **flask_sslify** to force HTTPS on the app and never encountered that problem again.
 
+**User Authentification**
+
+* As I was manually testing the profile pages of Santé! it occured to me that as long as a user was logged in they could access any profile if the route was entered manually in the url.
+* Much head scratching I did. I fixed it by creating a utility function that checks if the logged user matches with the username and redirects to the login page if it doesn't match.
+
 # Deployment<hr>
 
 ***Requirements to deploy:***
