@@ -290,7 +290,6 @@ footer a:hover {
 	z-index: -1;
 }
 
-
 /**** ADD/EDIT PAGES ****/
 
 .cocktail_section {
@@ -354,7 +353,6 @@ footer a:hover {
 	/* Chrome 10-25, Safari 5.1-6 */
 	background: linear-gradient(to right, #FFD200, #F7971E);
 	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	;
 	padding-left: 10px;
 	padding-right: 10px;
 }
@@ -448,7 +446,7 @@ figure .wrap_img {
 
 /**** MEDIA QUERIES ****/
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 770px) {
 	body {
 		margin: 0;
 	}
@@ -495,7 +493,10 @@ figure .wrap_img {
 		background: rgba(245, 210, 12, 0.712);
 		backdrop-filter: blur(10px);
 		transition: .5s;
-	}
+    }
+    .show {
+        right:0;
+    }
 }
 
 @media screen and (min-width: 1280px) {
