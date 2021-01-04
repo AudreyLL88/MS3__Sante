@@ -203,7 +203,7 @@ ul {
 
 .home__button:hover {
     background-color: var(--first-color-darken);
-    color: #F7971E;
+    color: #FFF;
 }
 
 /**** MAIN CONTENT CONTAINER ****/
