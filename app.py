@@ -26,6 +26,48 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+# check if username matches current user
+def is_user(username):
+    if "user" in session.keys():
+        if session["user"] == username:
+            return True
+
+    return False
+
+
+def get_suggested_cocktails(cocktail_id, comp_field, count):
+
+    """
+        Get random cocktails based on compared fields
+
+        Finds all cocktails where compared fields match with provided cocktail.
+        Returns random sample.
+
+        Parameter:
+        string: cocktail_id from cocktails collection field "_id".
+        string: comp_field, name of the keyword to compare with.
+        Int: number of random cocktails returned.
+
+        Returns:
+        list: dictionnary of random cocktails.
+
+    """
+    cocktail = mongo.db.cocktails.find_one({"_id": ObjectId(cocktail_id)})
+    category = cocktail[comp_field]
+    suggested_cocktails = list(
+                mongo.db.cocktails.find({comp_field: category}))
+
+    # removes current cocktail from suggested cocktails
+    for i, item in enumerate(suggested_cocktails):
+        if item["_id"] == ObjectId(cocktail_id):
+            suggested_cocktails.pop(i)
+            break
+
+    # pick 3 random from suggested list
+    return random.sample(
+        suggested_cocktails, min(len(suggested_cocktails), count))
+
+
 # ======== INDEX PAGE ======== #
 
 
@@ -296,8 +338,11 @@ def profile(username):
 
     user = mongo.db.users.find_one({"username": username.lower()})
 
+    if not is_user(username.lower()):
+        return redirect(url_for("login"))
+
     # check for cocktails created by user / grant all access to admin
-    if session["user"]:
+    if "user" in session.keys():
         if session["user"] == "admin":
             cocktails = list(mongo.db.cocktails.find())
         else:
@@ -355,6 +400,9 @@ def edit_profile(username):
     """
 
     user = mongo.db.users.find_one({"username": username.lower()})
+
+    if not is_user(username.lower()):
+        return redirect(url_for("login"))
 
     # update new field entries to database
     if request.method == "POST":
@@ -487,6 +535,9 @@ def edit_cocktail(cocktail_id):
     """
     cocktail_data = mongo.db.cocktails.find_one({"_id": ObjectId(cocktail_id)})
 
+    if not is_user(cocktail_data["created_by"]):
+        return redirect(url_for("login"))
+
     if request.method == "POST":
 
         # send form data to MongoDB and update fields
@@ -555,19 +606,7 @@ def get_cocktail(cocktail_id):
 
     cocktail = mongo.db.cocktails.find_one({"_id": ObjectId(cocktail_id)})
     is_liked = False
-    category = cocktail["category_name"]
-    suggested_cocktails = list(
-                mongo.db.cocktails.find({"category_name": category}))
-
-    # removes current cocktail from suggested cocktails
-    for i, item in enumerate(suggested_cocktails):
-        if item["_id"] == ObjectId(cocktail_id):
-            suggested_cocktails.pop(i)
-            break
-
-    # pick 3 random from suggested list
-    random_cocktails = random.sample(
-        suggested_cocktails, min(len(suggested_cocktails), 3))
+    random_cocktails = get_suggested_cocktails(cocktail_id, "category_name", 3)
 
     # checks if cocktail was liked by registered user
     if "user" in session:
@@ -617,11 +656,13 @@ def update_like(cocktail_id):
                 {"$push": {"liked_cocktail": cocktail_id}})
         cocktail = mongo.db.cocktails.find_one({"_id": ObjectId(cocktail_id)})
 
+    random_cocktails = get_suggested_cocktails(cocktail_id, "category_name", 3)
+
     flash("Merci for le like!")
 
     return render_template(
         "cocktail.html", cocktail=cocktail,
-        is_liked=True)
+        is_liked=True, suggested_cocktails=random_cocktails)
 
 
 # ======== DELETE COCKTAIL ======== #
@@ -725,7 +766,7 @@ def edit_category(category_id):
 
 
 # add category
-@app.route("/add_category", methods=["GET", "POST"]) 
+@app.route("/add_category", methods=["GET", "POST"])
 def add_category():
 
     """
