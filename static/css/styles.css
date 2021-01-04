@@ -137,7 +137,7 @@ ul {
 }
 
 .nav__link:hover,
-.nav__loho:hover {
+.nav__logo:hover {
 	color: var(--first-color-dark);
 }
 
@@ -202,7 +202,8 @@ ul {
 }
 
 .home__button:hover {
-	background-color: var(--first-color-darken);
+    background-color: var(--first-color-darken);
+    color: #F7971E;
 }
 
 /**** MAIN CONTENT CONTAINER ****/
