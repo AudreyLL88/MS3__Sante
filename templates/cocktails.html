@@ -1,69 +1,65 @@
 {% extends "base.html" %}
-{% block content %}
-
- <!-- Main container/Page Title -->
-<section class="container cocktail-section min-vh-100 pt-3">
-   <div class="cocktail-headline text-center">
-      <h2>All Cocktails</h2>
-   </div>
-   <hr class="mb-2">  
-
-  
-    <!-- Search box -->
-   <div class="row mt-4">
-       <div class="col-12 col-lg-5 mb-2">
-            <form action="{{ url_for('search') }}" method="POST" class="align-item-center">
-                <div class="input-group">
+{% block content %} 
+    
+    <!-- Main container/Page Title -->
+    <section class="container cocktail-section min-vh-100 pt-3">
+        <div class="cocktail-headline text-center">
+            <h2>All Cocktails</h2>
+        </div>
+        <hr class="mb-2">
+        <!-- Search box -->
+        <div class="row mt-4">
+            <div class="col-12 col-lg-5 mb-2">
+                <form action="{{ url_for('search') }}" method="POST" class="align-item-center">
+                    <div class="input-group">
                     <input type="search" name="search" class="search form-control" placeholder="Search cocktail">
                     <select required name="select" id="select" class="form-control mx-1">
                         <option value="All Categories" selected>All Categories</option>
                         {% for category in categories %}
                             <option value="{{ category.category_name }}">{{ category.category_name }}</option>
                         {% endfor %}
-                     </select>
+                    </select>
                     <span class="input-group-btn">
-                        <button class="btn btn-warning text-white" type="submit"><i class="fa fa-search"></i></button>
+                    <button class="btn btn-warning text-white" type="submit"><i class="fa fa-search"></i></button>
                     </span>
-                </div>
-            </form>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-                        
-    <!-- Cocktail Cards -->
-   {% if cocktails|length > 0 %}
-    <div class="row">
-        {% for cocktail in cocktails %}
-            <div class="col-md-4">
-                <div class="wrap">
-                    <div class="cocktail-card shadow my-3">
-                        <div class="cocktail-body text-center">
-                            <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}">
-                                <img src="{{ cocktail.cocktail_img }}" alt="" class="cocktail-img rounded">
-                            </a>
-                            <h4 class="card-cocktail-title mx-3 my-2">{{ cocktail.cocktail_name }}
-                                {% if session.user|lower == cocktail.created_by|lower %}
-                                    <a class="m-1 text-danger" data-toggle="modal" data-target="#delete_cocktail_{{cocktail._id}}"><i class="fas fa-trash"></i></a>
-                                    <a  href="{{ url_for('edit_cocktail', cocktail_id=cocktail._id)}}" class="m-1 text-success"><i class="fas fa-edit"></i></a>
-                                {% endif %}
-                            </h4>
-                            <p>{{ cocktail.category_name }}</p>
-                            <small class="card-cocktail-description px-3"><i class="fas fa-user m-2"></i> {{ cocktail.created_by }}</small>
-                        </div>
-                        <div class="text-center mb-3">
-                            <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-lg d-block btn-warning btn-color mx-2">Try</a>
+        <!-- Cocktail Cards -->
+        {% if cocktails|length > 0 %}
+            <div class="row">
+                {% for cocktail in cocktails %}
+                    <div class="col-md-4">
+                        <div class="wrap">
+                            <div class="cocktail-card shadow my-3">
+                            <div class="cocktail-body text-center">
+                                <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}">
+                                <img src="{{ cocktail.cocktail_img }}" alt="cocktail image" class="cocktail-img rounded">
+                                </a>
+                                <h4 class="card-cocktail-title mx-3 my-2">{{ cocktail.cocktail_name }}
+                                    {% if session.user|lower == cocktail.created_by|lower %}
+                                        <a class="m-1 text-danger" data-toggle="modal" data-target="#delete_cocktail_{{cocktail._id}}"><i class="fas fa-trash"></i></a>
+                                        <a  href="{{ url_for('edit_cocktail', cocktail_id=cocktail._id)}}" class="m-1 text-success"><i class="fas fa-edit"></i></a>
+                                    {% endif %}
+                                </h4>
+                                <p>{{ cocktail.category_name }}</p>
+                                <small class="card-cocktail-description px-3"><i class="fas fa-user m-2"></i> {{ cocktail.created_by }}</small>
+                            </div>
+                            <div class="text-center mb-3">
+                                <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-lg d-block btn-warning btn-color mx-2">Try</a>
+                            </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Modal -->
-            <div class="modal fade" id="delete_cocktail_{{cocktail._id}}" tabindex="-1" role="dialog" aria-labelledby="delete_cocktail" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered " role="document">
-                    <div class="modal-content rounded-0">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Delete this cocktail?</h5>
+                    <!-- Modal -->
+                    <div class="modal fade" id="delete_cocktail_{{cocktail._id}}" tabindex="-1" role="dialog" aria-labelledby="delete_cocktail_{{cocktail._id}}" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered " role="document">
+                            <div class="modal-content rounded-0">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Delete this cocktail?</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
+                                <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
@@ -74,38 +70,35 @@
                                 <a href="{{ url_for('delete_cocktail', cocktail_id=cocktail._id)}}" 
                                     class="btn btn-danger">Delete</a>
                             </div>
+                            </div>
                         </div>
                     </div>
+                {% endfor %}
+            </div>
+            <!-- No results -->
+            {% else %}
+                <div class="vh-100">
+                    <h2 class="mt-3">No result found</h2>
                 </div>
-            {% endfor %}
-        </div>
+        {% endif %}
+        <!-- Pagination -->
+        {% if search == False %}
+            <nav aria-label="page navigation">
+                <ul class="pagination d-flex justify-content-center">
+                    {% for i in range(0, count) %} 
+                        <li class="page-item">
+                            {% if i+1 == page %}
+                            <a class="page-link active btn-color">
+                            {% else %}
+                            <a class="page-link btn-color" href="{{ url_for('get_cocktails', page=i+1) }}">
+                            {% endif %}
+                            {{ i + 1  }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        {% endif %}
+    </section>
 
-       <!-- No results -->
-        {% else %}
-        <div class="vh-100">
-            <h2 class="mt-3">No result found</h2>
-        </div>
-    {% endif %}
-
-   <!-- Pagination -->
-   {% if search == False %}
-    <nav aria-label="page navigation">
-        <ul class="pagination d-flex justify-content-center">
-            {% for i in range(0, count) %} 
-                <li class="page-item">
-                    {% if i+1 == page %}
-                        <a class="page-link active btn-color">
-                    {% else %}
-                        <a class="page-link btn-color" href="{{ url_for('get_cocktails', page=i+1) }}">
-                    {% endif %}
-                        {{ i + 1  }}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-    </nav>
-{% endif %}
-  
-</section>
-
-{% endblock %}
+{% endblock %} 

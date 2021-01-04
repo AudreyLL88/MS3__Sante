@@ -1,172 +1,167 @@
 {% extends "base.html"%}
 {% block content %}
 
- <!-- Main Container -->
-<section id="cocktail_recipe">
-   <div class="container pt-3">
-        <!-- Cocktail Title, Informations and EDIT/DELETE Buttons -->
-        <div class="cocktail_name text-center">
-            <h2>{{ cocktail.cocktail_name }}</h2>
-            <hr>
-            <div class="text-muted text-center mb-4">
-                <p>Posted by: <i class="fas fa-user mx-1"></i> {{ cocktail.created_by }}</p>
-                <p> on <i class="fas fa-calendar-plus mx-1"></i>{{ cocktail.cocktail_date }} in <i class="fas fa-folder-open mx-1"></i> {{ cocktail.category_name }} </p>
-            </div>
-            {% if session.user|lower == cocktail.created_by|lower %}
-                <div class="pb-3 text-center">
-                <button class="btn btn-sm btn-danger p-3 m-2" data-toggle="modal" data-target="#delete_cocktail">Delete</button>
-                <a  href="{{ url_for('edit_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-sm btn-success p-3 m-2">Edit</a>
+    <!-- Main Container -->
+    <main id="cocktail_recipe">
+        <section class="container pt-3">
+            <!-- Cocktail Title, Informations and EDIT/DELETE Buttons -->
+            <article class="cocktail_name text-center">
+                <h2>{{ cocktail.cocktail_name }}</h2>
+                <hr>
+                <div class="text-muted text-center mb-4">
+                    <p>Posted by: <i class="fas fa-user mx-1"></i> {{ cocktail.created_by }}</p>
+                    <p> on <i class="fas fa-calendar-plus mx-1"></i>{{ cocktail.cocktail_date }} in <i class="fas fa-folder-open mx-1"></i> {{ cocktail.category_name }} </p>
                 </div>
+                {% if session.user|lower == cocktail.created_by|lower %}
+                    <div class="pb-3 text-center">
+                        <button class="btn btn-sm btn-danger p-3 m-2" data-toggle="modal" data-target="#delete_cocktail">Delete</button>
+                        <a  href="{{ url_for('edit_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-sm btn-success p-3 m-2">Edit</a>
+                    </div>
+                {% endif %}
+                </article>
+            <!-- Image and Credentials -->
+            <figure class="wrap_img">
+                <img class="cocktail_img mx-auto rounded" src="{{ cocktail.cocktail_img }}" alt="{{ cocktail.cocktail_name }}">
+                <figcaption class="figure-caption text-center mx-auto"><i class="fas fa-camera mx-1"></i> Credits: {{ cocktail.cocktail_img_cred }}</figcaption>
+            </figure>
+            <!-- Cocktail Description and Like Button -->
+            <article class="cocktail_description m-3 pt-2">
+                <h6>"{{ cocktail.cocktail_description }}"</h6>
+                <div class="addthis_inline_share_toolbox"></div>
+            </article>
+            {% if session.user|lower %}
+                {% if is_liked == true %}
+                    <div class="ratings text-center mb-3">
+                        <a href="" class="btn btn-dark btn-small text-white disabled"><i class="fas fa-heart"></i> {{ cocktail.cocktail_like }} Likes</a>
+                    </div>
+                    {% else %}
+                    <div class="ratings text-center mb-3">
+                        <a href="{{ url_for('update_like', cocktail_id=cocktail._id)}}" class="btn btn-outline-secondary btn-small"><i class="fas fa-heart"></i> {{ cocktail.cocktail_like }} Likes</a>
+                    </div>
+                {% endif %}
+                {% else %}
+                    <div class="ratings text-center mb-3">
+                        <a href="{{ url_for('login')}}" class="btn btn-outline-secondary btn-small"><i class="fas fa-heart"></i> {{ cocktail.cocktail_like }} Likes</a>
+                    </div>
             {% endif %}
-        </div>
-
-        <!-- Image and Credentials -->
-        <figure class="wrap_img">
-            <img class="cocktail_img mx-auto rounded" src="{{ cocktail.cocktail_img }}" alt="{{ cocktail.cocktail_name }}">
-            <figcaption class="figure-caption text-center mx-auto"><i class="fas fa-camera mx-1"></i> Credits: {{ cocktail.cocktail_img_cred }}</figcaption>
-         </figure>
-
-        <!-- Cocktail Description and Like Button -->
-        <div class="cocktail_description m-3 pt-2">
-            <h6>"{{ cocktail.cocktail_description }}"</h6>
-            <div class="addthis_inline_share_toolbox"></div>
-        </div>
-        {% if session.user|lower %}
-            {% if is_liked == true %}
-                <div class="ratings text-center mb-3">
-                    <a href="" class="btn btn-dark btn-small text-white disabled"><i class="fas fa-heart"></i> {{ cocktail.cocktail_like }} Likes</a>
-                </div>
-            {% else %}
-                <div class="ratings text-center mb-3">
-                    <a href="{{ url_for('update_like', cocktail_id=cocktail._id)}}" class="btn btn-outline-secondary btn-small"><i class="fas fa-heart"></i> {{ cocktail.cocktail_like }} Likes</a>
-                </div>
-            {% endif %}
-        {% else %}
-                <div class="ratings text-center mb-3">
-                    <a href="{{ url_for('login')}}" class="btn btn-outline-secondary btn-small"><i class="fas fa-heart"></i> {{ cocktail.cocktail_like }} Likes</a>
-                </div>
-        {% endif %}
-
-        <!-- Cocktail Preparation/Servings/Level -->
-        <div class="cocktail_info text-center bg-warning rounded">
-            <div class="row btn-color">
-                <div class="col-4">
+            <!-- Cocktail Preparation/Servings/Level -->
+            <article class="cocktail_info text-center bg-warning rounded">
+                <div class="row btn-color">
+                    <div class="col-4">
                     <h3>PREP TIME: </h3>
                     <p>{{ cocktail.cocktail_prep }}</p>
-                </div>
-                <div class="col-4">
+                    </div>
+                    <div class="col-4">
                     <h3>SERVES:</h3>
                     <p>{{ cocktail.cocktail_serv }}</p>
-                </div>
-                <div class="col-4">
+                    </div>
+                    <div class="col-4">
                     <h3>Level:</h3>
                     <p>{{ cocktail.cocktail_diff }}</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- Cocktail Ingredients and Instructions-->
-        <div class="shadow p-4 mb-5">
+            </article>
+            <!-- Cocktail Ingredients and Instructions-->
+            <article class="shadow p-4 mb-5">
                 <div class="row">
                     <div class="col-md-4 mt-2">
                     <div class="cocktail_ingredients">
                         <h4>Ingredients</h4>
                         <hr>
-                         {% for line in cocktail.cocktail_ingredients.splitlines() %}
-                        <ul>
-                            <li class="cocktail_ingredient">{{ line }}</li>
-                        </ul>
+                        {% for line in cocktail.cocktail_ingredients.splitlines() %}
+                            <ul>
+                                <li class="cocktail_ingredient">{{ line }}</li>
+                            </ul>
                         {% endfor %}
                     </div>
-                </div>
-                <div class="col-md-8 cocktail_instructions mt-2">
+                    </div>
+                    <div class="col-md-8 cocktail_instructions mt-2">
                     <h4 >Instructions</h4>
                     <hr>
                     <div class="cocktail_step d-flex lh-lg">
                         <ul>
                             {% for line in cocktail.cocktail_instructions.splitlines() %}
-                            <li><i class="fas fa-cocktail"></i>{{ line }}</li>
+                                <li><i class="fas fa-cocktail"></i>{{ line }}</li>
                             {% endfor %}
                         </ul>
                     </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- Suggestions -->
-        <section class="row">
-            <div class="col-sm-12 text-center">
-                <h3>You might also like:</h3>
-                <hr>
-            </div>
-            {% for suggested_cocktail in suggested_cocktails %}
-            <div class="col-md-4">
-                <div class="wrap">
-                    <div class="cocktail-card shadow my-3">
-                        <div class="cocktail-body text-center">
-                            <a href="{{url_for('get_cocktail', cocktail_id=suggested_cocktail._id)}}">
+            </article>
+            <!-- Suggestions -->
+            <article class="row">
+                <div class="col-sm-12 text-center">
+                    <h3>You might also like:</h3>
+                    <hr>
+                </div>
+                {% for suggested_cocktail in suggested_cocktails %}
+                    <div class="col-md-4">
+                        <div class="wrap">
+                        <div class="cocktail-card shadow my-3">
+                            <div class="cocktail-body text-center">
+                                <a href="{{url_for('get_cocktail', cocktail_id=suggested_cocktail._id)}}">
                                 <img src="{{ suggested_cocktail.cocktail_img }}" alt="cocktail image" class="cocktail-img rounded">
-                            </a>
-                            <h4 class="card-cocktail-title mx-3 my-2">{{ suggested_cocktail.cocktail_name }}
-                             {% if session.user|lower == suggested_cocktail.created_by|lower %}
-                                    <a class="m-1 text-danger" data-toggle="modal" data-target="#delete_cocktail_{{suggested_cocktail._id}}"><i class="fas fa-trash"></i></a>
-                                    <a  href="{{ url_for('edit_cocktail', cocktail_id=suggested_cocktail._id)}}" class="m-1 text-success"><i class="fas fa-edit"></i></a>
-                             {% endif %}
-                            </h4>
-                            <p>{{ suggested_cocktail.category_name }}</p>
-                            <small class="card-cocktail-description px-3"><i class="fas fa-user m-2"></i> {{ suggested_cocktail.created_by }}</small>
+                                </a>
+                                <h4 class="card-cocktail-title mx-3 my-2">{{ suggested_cocktail.cocktail_name }}
+                                    {% if session.user|lower == suggested_cocktail.created_by|lower %}
+                                        <a class="m-1 text-danger" data-toggle="modal" data-target="#delete_cocktail_{{suggested_cocktail._id}}"><i class="fas fa-trash"></i></a>
+                                        <a  href="{{ url_for('edit_cocktail', cocktail_id=suggested_cocktail._id)}}" class="m-1 text-success"><i class="fas fa-edit"></i></a>
+                                    {% endif %}
+                                </h4>
+                                <p>{{ suggested_cocktail.category_name }}</p>
+                                <small class="card-cocktail-description px-3"><i class="fas fa-user m-2"></i> {{ suggested_cocktail.created_by }}</small>
+                            </div>
+                            <div class="text-center mb-3">
+                                <a href="{{url_for('get_cocktail', cocktail_id=suggested_cocktail._id)}}" class="btn btn-lg d-block btn-warning btn-color mx-2">Try</a>
+                            </div>
                         </div>
-                        <div class="text-center mb-3">
-                            <a href="{{url_for('get_cocktail', cocktail_id=suggested_cocktail._id)}}" class="btn btn-lg d-block btn-warning btn-color mx-2">Try</a>
                         </div>
                     </div>
-                </div>
-            </div>
-             <!-- Suggested cocktail delete modal -->
-            <div class="modal fade" id="delete_cocktail_{{suggested_cocktail._id}}" tabindex="-1" role="dialog" aria-labelledby="delete_cocktail" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered " role="document">
-                    <div class="modal-content rounded-0">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Delete this cocktail?</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <!-- Suggested cocktail delete modal -->
+                    <div class="modal fade" id="delete_cocktail_{{suggested_cocktail._id}}" tabindex="-1" role="dialog" aria-labelledby="delete_cocktail" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered " role="document">
+                        <div class="modal-content rounded-0">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Delete this cocktail?</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
-                            </button>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete this cocktail? This will be deleted forever.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-warning text-white" data-dismiss="modal">Cancel</button>
+                                <a href="{{ url_for('delete_cocktail', cocktail_id=suggested_cocktail._id)}}" 
+                                    class="btn btn-danger">Delete</a>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            Are you sure you want to delete this cocktail? This will be deleted forever.
-                        </div>
-                         <div class="modal-footer">
-                            <button type="button" class="btn btn-warning text-white" data-dismiss="modal">Cancel</button>
-                            <a href="{{ url_for('delete_cocktail', cocktail_id=suggested_cocktail._id)}}" 
-                                class="btn btn-danger">Delete</a>
                         </div>
                     </div>
-                </div>
-            </div>
-            {% endfor %}
+                {% endfor %}
+                </article>
         </section>
-    </div>
-</section>
-
-<!-- Modal "Delete Cocktail" -->
-<div class="modal fade" id="delete_cocktail" tabindex="-1" role="dialog" aria-labelledby="delete_cocktail" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered " role="document">
-        <div class="modal-content rounded-0">
-            <div class="modal-header">
-                <h5 class="modal-title">Delete this cocktail?</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to delete this cocktail? This will be deleted forever.
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-warning text-white" data-dismiss="modal">Cancel</button>
-                <a href="{{ url_for('delete_cocktail', cocktail_id=cocktail._id)}}"
+        <!-- Modal "Delete Cocktail" -->
+        <div class="modal fade" id="delete_cocktail" tabindex="-1" role="dialog" aria-labelledby="delete_cocktail" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered " role="document">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Delete this cocktail?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete this cocktail? This will be deleted forever.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning text-white" data-dismiss="modal">Cancel</button>
+                        <a href="{{ url_for('delete_cocktail', cocktail_id=cocktail._id)}}"
                         class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </main>
+
 {% endblock %}

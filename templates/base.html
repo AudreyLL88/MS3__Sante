@@ -6,8 +6,8 @@
       <meta name="description" content="">
       <meta name="author" content="">
       <title>Santé!</title>
-       <!-- Favicon -->
-      <link rel="icon" href="static/img/favicon.ico">
+      <!-- Favicon -->
+      <link rel="icon" href="{{ url_for('static', filename='img/favicon.io') }}">
       <!-- Google fonts -->
       <link href="https://fonts.googleapis.com/css2?family=Lato&family=Lobster&display=swap" rel="stylesheet">
       <!--Font Awesome -->
@@ -23,7 +23,6 @@
    <body>
       <!-- Navigation -->
       <header class="l-header">
-
          <!-- Navbar -->
          <nav class="nav bd-grid">
             <div>
@@ -43,49 +42,45 @@
                     <li class="nav__item"><a href="{{ url_for('profile', username=session['user']) }}" class="nav__link">Profile</a></li>
                     <li class="nav__item"><a class="nav__link" data-toggle="modal" data-target="#logout">Log Out</a></li>
                     {% else %}
-                    <li class="nav__item"><a href="{{ url_for('login') }}" class="nav__link">Log In</a></li>
-                    <li class="nav__item"><a href="{{ url_for('register') }}" class="nav__link">Register</a></li>
+                        <li class="nav__item"><a href="{{ url_for('login') }}" class="nav__link">Log In</a></li>
+                        <li class="nav__item"><a href="{{ url_for('register') }}" class="nav__link">Register</a></li>
                   {% endif %}
                </ul>
             </div>
          </nav>
       </header>
-
       <!-- Modal "log out" -->
       <div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="logout" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered " role="document">
+         <div class="modal-dialog modal-dialog-centered " role="document">
             <div class="modal-content rounded-0">
-                <div class="modal-header">
-                    <h5 class="modal-title">Log Out?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to log out? Remember your username and password for next time !
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-warning text-white" data-dismiss="modal">Stay</button>
-                    <a href="{{ url_for('logout') }}" 
-                            class="btn btn-danger"> Log Out</a>
-                </div>
+               <div class="modal-header">
+                  <h5 class="modal-title">Log Out?</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+                  Are you sure you want to log out? Remember your username and password for next time !
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-warning text-white" data-dismiss="modal">Stay</button>
+                  <a href="{{ url_for('logout') }}" class="btn btn-danger"> Log Out</a>
+               </div>
             </div>
-        </div>
-    </div>
-        
+         </div>
+      </div>
       <!-- Main content -->
       <main class="content-container">
-          {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+         {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
             <div class="row mx-auto message_container">
                 <div class="alert alert-warning mx-auto mt-5" role="alert">
-                    {{message}}
+                {{message}}
                 </div>
             </div>
-            {% endfor %} {% endif %} {% endwith %}
+         {% endfor %} {% endif %} {% endwith %}
          {% block content %}
          {% endblock %}
       </main>
-
       <!-- Footer -->
       <footer class="py-5 pt-2">
          <div class="container">
@@ -93,16 +88,16 @@
                <div class="col-md-12 py-3">
                   <div class="mb-5 text-center">
                      <a class="fb-icon" href="https://www.facebook.com/" target="_blank">
-                        <i class="fab fa-facebook-f fa-lg mr-md-5 mr-3 fa-2x"> </i>
+                     <i class="fab fa-facebook-f fa-lg mr-md-5 mr-3 fa-2x"> </i>
                      </a>
                      <a class="tw-icon" href="https://www.twitter.com/" target="_blank">
-                        <i class="fab fa-twitter fa-lg mr-md-5 mr-3 fa-2x"> </i>
+                     <i class="fab fa-twitter fa-lg mr-md-5 mr-3 fa-2x"> </i>
                      </a>
                      <a class="ins-icon" href="https://www.instagram.com/" target="_blank">
-                        <i class="fab fa-instagram fa-lg mr-md-5 mr-3 fa-2x"> </i>
+                     <i class="fab fa-instagram fa-lg mr-md-5 mr-3 fa-2x"> </i>
                      </a>
                      <a class="pin-icon" href="https://www.pinterest.com/" target="_blank">
-                        <i class="fab fa-pinterest fa-lg fa-2x"> </i>
+                     <i class="fab fa-pinterest fa-lg fa-2x"> </i>
                      </a>
                   </div>
                </div>
@@ -110,7 +105,6 @@
             <p class="m-0 text-center btn-color">Copyright &copy; Audrey Lloancy 2020</p>
          </div>
       </footer>
-
       <!-- Bootstrap and GSAP core JavaScript -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ==" crossorigin="anonymous"></script>
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

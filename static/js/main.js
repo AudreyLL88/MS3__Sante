@@ -5,11 +5,11 @@ const navMenu = document.getElementById('nav-menu'),
 // Toggle Navbar on mobile
 
 toggleMenu.addEventListener('click', ()=>{
-    navMenu.classList.toggle('show')
+    navMenu.classList.toggle('show');
 }); 
 
 closeMenu.addEventListener('click', ()=>{
-    navMenu.classList.remove('show') 
+    navMenu.classList.remove('show');
 });
 
 // If statement to prevent errors on the console 
@@ -38,7 +38,6 @@ if (window.location.pathname==='/') {
     gsap.from('.home__button', {opacity: 0, duration: 1, delay:2.1, y: 30}); //Delayed display hero button on page load
     gsap.from('.home__img', {opacity: 0, duration: 1, delay:1.3, y: 30}); // Delayed display hero image block on page load
 }
-
 
 // GSAP Animation navbar
 

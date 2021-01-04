@@ -1,22 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
    
-   <!--Main container -->
+        <!--Main container -->
     <section class="container cocktail_section min-vh-100 pt-3">
         <div class="cocktail_headline text-center">
             <h2>Add Category</h2>
         </div>
         <hr class="mb-5">
-
-         <!--Category input -->
+        <!--Category input -->
         <form class="pb-5 col-12" action="{{ url_for('add_category') }}" method="POST">
             <div class="form-group">
                 <label for="category_name">Category Name</label>
                 <input required type="text" class="form-control" id="category_name" name="category_name" aria-describedby="category_name"
-                   maxlength="25">
+                    maxlength="25">
             </div>
-             <div class="col-sm-12 text-center">
-                 <button class="btn btn-lg btn-warning text-uppercase btn-color mt-3"  type="submit">Submit</button>
+            <div class="col-sm-12 text-center">
+                <button class="btn btn-lg btn-warning text-uppercase btn-color mt-3"  type="submit">Submit</button>
             </div>
         </form>
     </section>

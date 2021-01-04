@@ -2,15 +2,13 @@
 {% block content %}
 
     <!--Main container and Background -->
-    <section id="bg_cover" class="min-vh-100 m-auto">
-        <main id="cover_caption">
+    <main id="bg_cover" class="min-vh-100 m-auto">
+        <section id="cover_caption">
             <div class="container">
-
                 <!--Title -->
                 <div class="row text-white">
                     <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
                         <h1 class="display-4 py-3 text-truncate text-white">Log In</h1>
-
                         <!--Login form -->
                         <div class="px-2">
                             <form id="register_form" class="justify-content-center" method="POST" action="{{ url_for('login') }}">
@@ -28,7 +26,6 @@
                                 <button class="btn btn-lg btn-warning btn-color btn-block text-uppercase" value="login" type="submit">Log In</button>
                             </form>
                         </div>
-
                         <!--Register page redirect -->
                         <div class="row">
                             <div class="col s12">
@@ -40,7 +37,7 @@
                     </div>
                 </div> 
             </div>
-        </main>
-    </section>
+        </section>
+    </main>
 
 {% endblock %}

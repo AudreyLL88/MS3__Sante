@@ -2,8 +2,8 @@
 {% block content %}
 
     <!--Hero animation -->
-    <main class="l-main">
-        <section class="home">
+    <section class="l-main">
+        <article class="home">
             <div class="home__container bd-grid pb-3">
                 <div class="home__img">
                     <img src="static/img/Layer_0.png" alt="image hero" data-speed="3" class="move">
@@ -19,22 +19,20 @@
                     <a href="{{ url_for('register') }}" class="home__button mb-3">Register</a>
                 </div>
             </div>
-        </section>
-    </main>
-
+        </article>
+    </section>
     <!-- Page Content -->
-    <div class="container">
-
+    <main class="container">
         <!-- Carousel / About section-->
-        <div class="row align-items-center my-5">
+        <section class="row align-items-center my-5">
             <div class="col-lg-7">
                 <div id="carouselExampleIndicators" class="carousel slide shadow mb-3" data-ride="carousel">
                     <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                     </ol>
-                <div class="carousel-inner">
+                    <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img class="img-fluid rounded d-block" src="https://cdn.pixabay.com/photo/2019/06/13/11/28/cocktail-4271392_960_720.jpg" alt="bartender">
                     </div>
@@ -46,71 +44,68 @@
                     </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
                     </a>
                     <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
                     </a>
                 </div>
             </div>
-            <div class="col-lg-5">
+            <article class="col-lg-5">
                 <h2 class="mb-3 text-center">It's Apéro time!</h2>
                 <p>L'Apé-what? L'apéro in french is an after-work drink that you share with your co-worker. As we are all working from home now and the bars are closed, It is important to learn to socialize in a different way. With Santé! No need for a bartender, make your own drink and call your friends from the safety and comfort of your own home!</p>
                 <a class="text-center btn btn-warning btn-color mt-3" href="{{ url_for('get_cocktails') }}">CHECK OUR RECIPES!</a>
-            </div>
-        </div>
-
+            </article>
+        </section>
         <!-- Subscription call to action  -->
-        <div class="subscribe text-white my-5 py-4 text-center border-0 rounded shadow">
+        <section class="subscribe text-white my-5 py-4 text-center border-0 rounded shadow">
             <div class="row">
                 <div class="col-12 text-center subscribe-body">
                     <div class="subscribe-title">
-                        <h3 class="mb-3">Subscribe to our Newsletter</h3>
-                            <form class="input-group" method="POST" action="{{url_for('subscribe')}}" name="subscriber_form">
-                                <input type="email" class="form-control" placeholder="Enter your email"
-                                    name="subscriber_email" id="subscriber_email" required>
-                                <span class="input-group-btn">
-                                    <button class="btn btn_subscription" type="submit">Subscribe</button>
-                                </span>
-                            </form>
-                        </div>
+                    <h3 class="mb-3">Subscribe to our Newsletter</h3>
+                    <form class="input-group" method="POST" action="{{url_for('subscribe')}}" name="subscriber_form">
+                        <input type="email" class="form-control" placeholder="Enter your email"
+                            name="subscriber_email" id="subscriber_email" required>
+                        <span class="input-group-btn">
+                        <button class="btn btn_subscription" type="submit">Subscribe</button>
+                        </span>
+                    </form>
                     </div>
                 </div>
             </div>
-
-            <!-- Featured cocktails -->
-            <div class="row">
-                <div class="col-12">
-                    <h2 class="text-center">Our featured Cocktails</h2>
-                    <hr>
-                </div>
+        </section>
+    <!-- Featured cocktails -->
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center">Our featured Cocktails</h2>
+                <hr>
             </div>
-
-            {% if cocktails|length > 0 %}
-                <div class="row text-center">
-                     {% for cocktail in cocktails %}
-                        <div class="col-md-4">
-                            <div class="wrap">
-                                <div class="cocktail-card shadow my-3">
-                                    <div class="cocktail-body text-center">
-                                        <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}">
-                                            <img src="{{ cocktail.cocktail_img }}" alt="cocktail image" class="cocktail-img rounded">
-                                        </a>
-                                        <h4 class="card-cocktail-title mx-3 my-2">{{ cocktail.cocktail_name }}</h4>
-                                        <p>{{ cocktail.category_name }}</p>
-                                        <small class="card-cocktail-description px-3"><i class="fas fa-user m-2"></i> {{ cocktail.created_by }}</small>
-                                    </div>
-                                    <div class="text-center mb-3">
-                                        <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-lg d-block btn-warning btn-color mx-2">Try</a>
-                                    </div>
-                                </div>
-                            </div>  
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
         </div>
+        {% if cocktails|length > 0 %}
+            <div class="row text-center">
+                {% for cocktail in cocktails %}
+                    <div class="col-md-4">
+                        <div class="wrap">
+                            <div class="cocktail-card shadow my-3">
+                            <div class="cocktail-body text-center">
+                                <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}">
+                                <img src="{{ cocktail.cocktail_img }}" alt="cocktail image" class="cocktail-img rounded">
+                                </a>
+                                <h4 class="card-cocktail-title mx-3 my-2">{{ cocktail.cocktail_name }}</h4>
+                                <p>{{ cocktail.category_name }}</p>
+                                <small class="card-cocktail-description px-3"><i class="fas fa-user m-2"></i> {{ cocktail.created_by }}</small>
+                            </div>
+                            <div class="text-center mb-3">
+                                <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-lg d-block btn-warning btn-color mx-2">Try</a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </main>
 
 {% endblock %}

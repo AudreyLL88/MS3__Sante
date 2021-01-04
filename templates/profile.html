@@ -2,8 +2,7 @@
 {% block content %}
 
     <!--Main container -->
-    <div class="container min-vh-100 pt-3">
-
+    <main class="container min-vh-100 pt-3">
         <!--Username header -->
         <header class="py-5 mb-2">
                 <div class="card shadow mx-auto">
@@ -22,7 +21,6 @@
                     </div>
                 </div>
         </header>
-
         <!-- Modal "Delete Profile" -->
         <div class="modal fade" id="delete_profile" tabindex="-1" role="dialog" aria-labelledby="delete_profile" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered " role="document">
@@ -44,9 +42,8 @@
                 </div>
             </div>
         </div>
-
         <!--User cocktails -->
-        <div class="row">
+        <section class="row">
             <div class="col-md-8 mb-5">
                 <h2>Your Cocktails</h2>
                 <hr> 
@@ -72,7 +69,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <!-- Modal "Delete Cocktail"-->
                         <div class="modal fade" id="delete_cocktail_{{cocktail._id}}" tabindex="-1" role="dialog" aria-labelledby="delete_cocktail_{{cocktail._id}}" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered " role="document">
@@ -96,8 +92,8 @@
                         </div>
                     {% endfor %}
                 </div>
-                 <!-- Pagination -->
-                    {% if search == False %}
+                <!-- Pagination -->
+                {% if search == False %}
                     <div class="row justify-content-center">
                         <nav aria-label="page navigation">
                             <ul class="pagination d-flex text-center">
@@ -106,35 +102,33 @@
                                         {% if i+1 == page %}
                                             <a class="page-link active btn-color">
                                         {% else %}
-                                            <a class="page-link btn-color" href="{{ url_for('profile', username=user.username, page=i+1) }}">
+                                        <a class="page-link btn-color" href="{{ url_for('profile', username=user.username, page=i+1) }}">
                                         {% endif %}
-                                            {{ i + 1  }}
+                                        {{ i + 1  }}
                                         </a>
                                     </li>
                                 {% endfor %}
                             </ul>
                         </nav>
                     </div>
-                    {% endif %}
-            </div>
-           
+                {% endif %}
+            </div> 
            <!--Submit a recipe button/Category/Users -->
-            <div class="col-md-4 mb-5">
+            <article class="col-md-4 mb-5">
                 <h2>Submit a recipe</h2>
                 <hr>
                 <a class="btn btn-warning btn-color btn-lg mb-3" href="{{ url_for('add_cocktail')}}">Create New &raquo;</a>
                  {% if session.user == 'admin' %}
-                    <h2 class="mt-3">Manage Categories</h2>
-                    <hr>
-                    <a class="btn btn-success text-white btn-lg my-3 " href="{{ url_for('get_categories')}}">Check it &raquo;</a>
-                    <a class="btn btn-primary text-white btn-lg my-3" href="{{ url_for('add_category')}}">Add Category &raquo;</a>
-                    <h2 class="mt-3">Manage Users</h2>
-                    <hr>
-                    <a class="btn btn-dark btn-lg mt-3" href="{{ url_for('users_list')}}">Check users &raquo;</a>
-                   
+                        <h2 class="mt-3">Manage Categories</h2>
+                        <hr>
+                        <a class="btn btn-success text-white btn-lg my-3 " href="{{ url_for('get_categories')}}">Check it &raquo;</a>
+                        <a class="btn btn-primary text-white btn-lg my-3" href="{{ url_for('add_category')}}">Add Category &raquo;</a>
+                        <h2 class="mt-3">Manage Users</h2>
+                        <hr>
+                        <a class="btn btn-dark btn-lg mt-3" href="{{ url_for('users_list')}}">Check users &raquo;</a>
                  {% endif %}
-            </div>
-        </div>
-    </div>
+            </article>
+        </section>
+    </main>
 
 {% endblock %}

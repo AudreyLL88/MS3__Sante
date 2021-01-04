@@ -9,7 +9,7 @@
 	--text-color: #524400;
 	--shadow-color: #D3D3D3;
 	/* Font and typography */
-	--body-font:'Montserrat', sans-serif;
+	--body-font: 'Montserrat', sans-serif;
 	--big-font-size: 2.5rem;
 	--normal-font-size: .938rem;
 	/* z index */
@@ -38,24 +38,24 @@ a {
 body {
 	font-family: var(--body-font);
 	font-size: var(--normal-font-size);
-    font-weight: 500;
-    height: 100%;
-    margin: var(--header-height) 0 0 0;
-    padding: 0;
+	font-weight: 500;
+	height: 100%;
+	margin: var(--header-height) 0 0 0;
+	padding: 0;
 }
 
 .btn-color {
-    color: var(--text-color);
+	color: var(--text-color);
 }
 
 img {
-    height: auto;
+	height: auto;
 	max-width: 100%;
 }
 
-html{
-    min-height: 100%;
-    position: relative;
+html {
+	min-height: 100%;
+	position: relative;
 }
 
 h1,
@@ -68,101 +68,90 @@ h2,
 h4,
 h5,
 h6 {
-    color: var(--first-color-dark);
+	color: var(--first-color-dark);
 	font-family: "Lobster", cursive;
 }
 
 h1,
 h3 {
-    color: var(--text-color);
-    font-family: "Lobster", cursive;
+	color: var(--text-color);
+	font-family: "Lobster", cursive;
 }
 
 ul {
-    list-style: none;
+	list-style: none;
 	padding: 0;
 }
-
 
 /****  LAYOUT  ****/
 
 .bd-grid {
-    column-gap: 2rem;
+	column-gap: 2rem;
 	display: grid;
 	grid-template-columns: 100%;
 	margin-left: 1rem;
-    margin-right: 1rem;
-    max-width: 1024px;
-    width: calc(100% - 2rem);
+	margin-right: 1rem;
+	max-width: 1024px;
+	width: calc(100% - 2rem);
 }
 
 .l-header {
-    background-color: var(--first-color);
-    left: 0;
+	background-color: var(--first-color);
+	left: 0;
 	top: 0;
-    width: 100%;
+	width: 100%;
 	z-index: var(--z-fixed);
 }
 
-
 /****  NAVIGATION BAR  ****/
 
-
-.nav{
-  height: var(--header-height);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.nav {
+	height: var(--header-height);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .nav__logo {
-    font-family: "Lobster", cursive;
-    font-size: 2rem;
+	font-family: "Lobster", cursive;
+	font-size: 2rem;
 }
 
-@media screen and (max-width: 768px){
-  .nav__menu{
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 70%;
-    height: 100%;
-    padding: 3.5rem 1.5rem 0;
-    background: rgba(245, 210, 12, 0.712);
-    backdrop-filter: blur(10px);
-    transition: .5s;
-  }
+.nav__close {
+	position: absolute;
+	top: .75rem;
+	right: 1rem;
+	font-size: 1.5rem;
+	cursor: pointer;
 }
 
-.nav__close{
-  position: absolute;
-  top: .75rem;
-  right: 1rem;
-  font-size: 1.5rem;
-  cursor: pointer;
+.nav__item {
+	margin-bottom: 2rem;
 }
 
-.nav__item{
-  margin-bottom: 2rem;
+.nav__close,
+.nav__link,
+.nav__logo,
+.nav__toggle {
+	color: var(--text-color);
 }
 
-.nav__close, .nav__link, .nav__logo, .nav__toggle{
-  color: var(--text-color);
+.nav__link:hover,
+.nav__loho:hover {
+	color: var(--first-color-dark);
 }
 
-.nav__link:hover{
-  color: var(--first-color-dark);
-}
-
-.nav__toggle{
-  font-size: 1.5rem;
-  cursor: pointer;
+.nav__toggle {
+	font-size: 1.5rem;
+	cursor: pointer;
 }
 
 /* Show menu */
-.show{
-  right: 0;
+
+.show {
+	right: 0;
 }
+
 /**** INDEX HERO  ****/
 
 .home {
@@ -171,21 +160,21 @@ ul {
 }
 
 .home__container {
-    grid-template-rows: repeat(2, max-content);
-    height: auto;
+	grid-template-rows: repeat(2, max-content);
+	height: auto;
 	row-gap: 1.5rem;
 }
 
 .home__img {
-    height: 233px;
-    justify-self: center;
+	height: 233px;
+	justify-self: center;
 	padding-top: 1.5rem;
 	position: relative;
 	width: 302px;
 }
 
 .home__img img {
-    left: 0;
+	left: 0;
 	position: absolute;
 	top: 0;
 }
@@ -205,10 +194,10 @@ ul {
 }
 
 .home__button {
-    background-color: var(--first-color-dark);
-    border-radius: .5rem;
-    color: var(--text-color);
-    display: inline-block;
+	background-color: var(--first-color-dark);
+	border-radius: .5rem;
+	color: var(--text-color);
+	display: inline-block;
 	padding: 1.125rem 2rem;
 }
 
@@ -219,73 +208,78 @@ ul {
 /**** MAIN CONTENT CONTAINER ****/
 
 .content-container {
-    height: 100%;
-    min-height: 100%;
+	height: 100%;
+	min-height: 100%;
 }
+
 .message_container {
-    background: transparent;
+	background: transparent;
 }
 
 .alert {
-    z-index: 10;
+	z-index: 10;
 }
+
 
 /**** Footer ****/
 
 footer {
-    background-color: var(--first-color);
-    position: absolute;
-    text-align: center;
-    width: 100%;
+	background-color: var(--first-color);
+	position: absolute;
+	text-align: center;
+	width: 100%;
 }
 
 footer p,
 footer a {
-    color: var(--text-color);
-    text-decoration: none;
+	color: var(--text-color);
+	text-decoration: none;
 }
 
-footer a:hover{
-    color: orange;
+footer a:hover {
+	color: orange;
 }
 
 /**** SUBSCRIPTION ****/
 
 .subscribe {
-    align-items: center;
-	background: #F7971E;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #FFD200, #F7971E);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #FFD200, #F7971E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	align-items: center;
+	background: #F7971E;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #FFD200, #F7971E);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #FFD200, #F7971E);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	display: flex;
 	justify-content: center;
 }
 
 .btn_subscription {
-    background-color: white;
-    color: var(--first-color-darken);
+	background-color: white;
+	color: var(--first-color-darken);
 }
 
 /**** REGISTER/LOGIN PAGES ****/
 
 #bg_cover {
-    align-items: center;
-    background-size: cover;
-    display: flex;
-    height: 100%;
-    max-height: 100vh;
-    position: relative;
-    text-align: center;
+	align-items: center;
+	background-size: cover;
+	display: flex;
+	height: 100%;
+	max-height: 100vh;
+	position: relative;
+	text-align: center;
 }
 
 #cover_caption {
-    position: relative;
-    width: 100%;
+	position: relative;
+	width: 100%;
 	z-index: 1;
 }
 
 #register_form:before {
-    background-color:var(--first-color-darken);
-    border-radius: 10px;
+	background-color: var(--first-color-darken);
+	border-radius: 10px;
 	content: '';
 	height: 100%;
 	left: 0;
@@ -294,6 +288,7 @@ footer a:hover{
 	width: 100%;
 	z-index: -1;
 }
+
 
 /**** ADD/EDIT PAGES ****/
 
@@ -307,10 +302,10 @@ footer a:hover{
 }
 
 .cocktail_headline h2 {
-    color: var(--first-color-dark);
-    font-size: 2rem;
+	color: var(--first-color-dark);
+	font-size: 2rem;
 	font-style: normal;
-    font-weight: 700;
+	font-weight: 700;
 	margin-top: 50px;
 	margin-bottom: 20px;
 }
@@ -319,7 +314,7 @@ footer a:hover{
 /**** COCKTAIL CARDS ****/
 
 .wrap {
-    border-radius: 5px;
+	border-radius: 5px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -332,116 +327,123 @@ footer a:hover{
 
 .cocktail-card img {
 	height: 12rem;
-    min-height:12rem;
-    object-fit: cover;
-    width: 100%;
+	min-height: 12rem;
+	object-fit: cover;
+	width: 100%;
 }
+
 
 /**** COCKTAIL PAGE (SINGLE RECIPE) ****/
 
 .cocktail_name p {
-    font-size: 1rem;
+	font-size: 1rem;
 }
 
 .cocktail_name h2 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-top: 50px;
-    margin-bottom: 20px;
+	font-size: 2rem;
+	font-weight: 700;
+	margin-top: 50px;
+	margin-bottom: 20px;
 }
 
 .cocktail_info {
-    background: #F7971E;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #FFD200, #F7971E);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #FFD200, #F7971E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */;
-    padding-left: 10px;
-    padding-right: 10px;
+	background: #F7971E;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #FFD200, #F7971E);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #FFD200, #F7971E);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 .cocktail_info h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    margin-top: 30px;
-    word-wrap: break-word;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1rem;
+	font-weight: 700;
+	margin-top: 30px;
+	word-wrap: break-word;
 }
 
 .cocktail_info p {
-    margin-bottom: 30px;
+	margin-bottom: 30px;
 }
 
 .cocktail_info .col-3 {
-    padding:5px;
+	padding: 5px;
 }
 
 .cocktail_description h6 {
-    color: black;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.2rem;
-    font-style: italic;
-    font-weight: 700;
-    text-align: center;
+	color: black;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.2rem;
+	font-style: italic;
+	font-weight: 700;
+	text-align: center;
 }
 
 .cocktail_step {
-    line-height: 2rem;
-    margin-bottom: 15px;
-    position: relative;
-    z-index: 1;
+	line-height: 2rem;
+	margin-bottom: 15px;
+	position: relative;
+	z-index: 1;
 }
 
 .cocktail_step i {
-    color: var(--first-color-darken);
-    flex: 0 0 60px;
-    max-width: 60px;
-    width: 60px;
+	color: var(--first-color-darken);
+	flex: 0 0 60px;
+	max-width: 60px;
+	width: 60px;
 }
 
 figure .wrap_img {
-    display: block;
-    max-height: 100vh;
-    max-width: 80vh;
+	display: block;
+	max-height: 100vh;
+	max-width: 80vh;
 }
 
 .cocktail_img {
-    height: 100%;
-    object-fit: cover;
-    width: 100%;
+	height: 100%;
+	object-fit: cover;
+	width: 100%;
 }
+
 
 /**** PROFILE PAGE ****/
 
 .profile_img {
-    border-radius: 50%;
-    display: block;
-    height: 200px;
-    object-fit: cover;
-    width: 200px;
+	border-radius: 50%;
+	display: block;
+	height: 200px;
+	object-fit: cover;
+	width: 200px;
 }
 
 .profile_info p {
-    line-height:2rem ;
+	line-height: 2rem;
 }
 
-.profile_info i{
-    color: var(--first-color-darken); 
+.profile_info i {
+	color: var(--first-color-darken);
 }
 
 .profile_info h4,
 .profile_info h2 {
-    color: var(--first-color-darken)!important;
-    font-weight: bold;
+	color: var(--first-color-darken)!important;
+	font-weight: bold;
 }
 
 .menu_cocktail {
-    color: black;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
+	color: black;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
 }
 
-.menu_cocktail:hover{
-    color: var(--first-color-dark);
+.menu_cocktail:hover {
+	color: var(--first-color-dark);
 }
+
 
 /**** MEDIA QUERIES ****/
 
@@ -460,25 +462,39 @@ figure .wrap_img {
 		display: flex;
 	}
 	.nav__item {
-        margin-bottom: 0;
+		margin-bottom: 0;
 		margin-left: 3rem;
 	}
 	.home__container {
-        align-items: center;
+		align-items: center;
 		grid-template-columns: repeat(2, max-content);
-        grid-template-rows: 1fr;
-        justify-content: center;
-        min-height: auto;
+		grid-template-rows: 1fr;
+		justify-content: center;
+		min-height: auto;
 		row-gap: 0;
 	}
 	.home__img {
-        height: 289px;
-        order: 1;
+		height: 289px;
+		order: 1;
 		width: 375px;
 	}
 	.home__img img {
 		width: 375px;
-    }
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.nav__menu {
+		position: fixed;
+		top: 0;
+		right: -100%;
+		width: 70%;
+		height: 100%;
+		padding: 3.5rem 1.5rem 0;
+		background: rgba(245, 210, 12, 0.712);
+		backdrop-filter: blur(10px);
+		transition: .5s;
+	}
 }
 
 @media screen and (min-width: 1280px) {
@@ -487,35 +503,33 @@ figure .wrap_img {
 		margin-right: auto;
 	}
 	.home__container {
-        column-gap: 4.5rem;
-        height: 80vh;
+		column-gap: 4.5rem;
+		height: 80vh;
 		justify-content: initial;
 	}
 	.home__img {
-        height: 466px;
+		height: 466px;
 		width: 604px;
 	}
 	.home__img img {
 		width: 604px;
-    }
+	}
 }
 
 @media screen and (max-width: 768px) {
-    .home__data {
+	.home__data {
 		text-align: center;
-    }
-    .home__container {
-        min-height: auto;
-    }
-    .l-header {
+	}
+	.home__container {
+		min-height: auto;
+	}
+	.l-header {
 		position: fixed;
 	}
 }
 
 @media screen and (max-width: 992px) {
-    .home__title {
-        font-size: 3rem;
-    }
+	.home__title {
+		font-size: 3rem;
+	}
 }
-
-
