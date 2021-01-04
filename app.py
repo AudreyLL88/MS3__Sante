@@ -66,8 +66,9 @@ def subscribe():
     subscriptions = mongo.db.subscriptions
     return_data = request.form.to_dict()
     subscriptions.insert_one(return_data)
+    flash("You are subscribed!")
 
-    return redirect(request.referrer)
+    return render_template("index.html")
 
 
 # ======== COCKTAILS PAGE ======== #
@@ -239,7 +240,6 @@ def login():
 
         # grants profile page access to user
         if existing_user:
-
             if check_password_hash(
              existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
@@ -297,7 +297,7 @@ def profile(username):
     user = mongo.db.users.find_one({"username": username.lower()})
 
     # check for cocktails created by user / grant all access to admin
-    if "user" in session.keys():
+    if session["user"]:
         if session["user"] == "admin":
             cocktails = list(mongo.db.cocktails.find())
         else:
@@ -470,7 +470,7 @@ def edit_cocktail(cocktail_id):
         Allows the user to edit their submitted cocktails through a form.
 
         Checks for cocktail ID field in MongoDB to fetch all data.
-        Displays allpreviously submitted data of the cocktail by the user.
+        Displays all previously submitted data of the cocktail by the user.
         Fetch all new entries to database and update the fields
         when submitted in cocktail collection.
         Checks if the user in session is the author of the entry.
@@ -514,7 +514,7 @@ def edit_cocktail(cocktail_id):
     categories = mongo.db.categories.find().sort("category_name", 1)
 
     # check if user in session is the author of the previous entries
-    if "user" in session:
+    if "user" in session.keys():
         user = session["user"].lower()
 
         if user == session["user"].lower():
@@ -566,7 +566,8 @@ def get_cocktail(cocktail_id):
             break
 
     # pick 3 random from suggested list
-    random_cocktails = random.sample(suggested_cocktails, 3)
+    random_cocktails = random.sample(
+        suggested_cocktails, min(len(suggested_cocktails), 3))
 
     # checks if cocktail was liked by registered user
     if "user" in session:
@@ -724,7 +725,7 @@ def edit_category(category_id):
 
 
 # add category
-@app.route("/add_category", methods=["GET", "POST"])
+@app.route("/add_category", methods=["GET", "POST"]) 
 def add_category():
 
     """
@@ -867,4 +868,4 @@ def internal(error):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=False)
+            debug=True)
