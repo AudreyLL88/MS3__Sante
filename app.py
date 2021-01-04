@@ -297,7 +297,7 @@ def profile(username):
     user = mongo.db.users.find_one({"username": username.lower()})
 
     # check for cocktails created by user / grant all access to admin
-    if session["user"]:
+    if "user" in session.keys():
         if session["user"] == "admin":
             cocktails = list(mongo.db.cocktails.find())
         else:
