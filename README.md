@@ -784,6 +784,11 @@ View my wireframes [here](static/img/wireframe.pdf).
 * My first pagination function was not displaying the last page if it wasn't full.
 * I fixed it by changing the interger value to a float to get the decimal.
 
+**SSL**
+
+* Santé started acting out (maybe because it's hosted on Heroku) and was requesting and HTTP rather than an HTTPS.
+* I installed **flask_sslify** to force HTTPS on the app and never encountered that problem again.
+
 # Deployment<hr>
 
 ***Requirements to deploy:***
