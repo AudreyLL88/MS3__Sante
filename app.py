@@ -320,6 +320,9 @@ def profile(username):
             "profile.html", user=user, cocktails=cocktails_display,
             page=page, count=count, search=False)
 
+    else:
+        return redirect(url_for("login"))
+
     return render_template(
         "profile.html", user=user, cocktails=cocktails)
 

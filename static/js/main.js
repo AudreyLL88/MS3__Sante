@@ -5,11 +5,11 @@ const navMenu = document.getElementById('nav-menu'),
 // Toggle Navbar on mobile
 
 toggleMenu.addEventListener('click', ()=>{
-    navMenu.classList.toggle('show');
+    navMenu.classList.toggle('show')
 }); 
 
 closeMenu.addEventListener('click', ()=>{
-    navMenu.classList.remove('show');
+    navMenu.classList.remove('show')
 });
 
 // If statement to prevent errors on the console 

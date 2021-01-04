@@ -39,7 +39,7 @@ body {
 	font-family: var(--body-font);
 	font-size: var(--normal-font-size);
 	font-weight: 500;
-	height: 100%;
+	min-height: 100vh;
 	margin: var(--header-height) 0 0 0;
 	padding: 0;
 }
@@ -256,26 +256,20 @@ footer a:hover {
 }
 
 .btn_subscription {
-	background-color: white;
+	background-color: #FFF;
 	color: var(--first-color-darken);
 }
 
 /**** REGISTER/LOGIN PAGES ****/
 
 #bg_cover {
-	align-items: center;
-	background-size: cover;
-	display: flex;
-	height: 100%;
-	max-height: 100vh;
-	position: relative;
-	text-align: center;
+    flex: 1;
+    display: flex;
 }
 
 #cover_caption {
-	position: relative;
-	width: 100%;
-	z-index: 1;
+  width: 60vw;
+  margin: auto;
 }
 
 #register_form:before {
