@@ -8,7 +8,7 @@
                 <div class="card shadow mx-auto">
                     <div class="text-center row no-gutters">
                         <div class="col-lg-6 bg-warning">
-                            <img class="profile_img mx-auto my-4 shadow" src="{{ user.user_img }}" alt="user image">
+                            <img class="profile_img mx-auto my-4 shadow" src="{{ user.user_img }}" alt="user image" onerror="this.onerror=null;this.src='/static/img/user_default.jpg';">
                         </div>
                         <div class="col-lg-6 text-lg-left text-sm-center profile_info px-4">
                             <h4 class="pt-4">Welcome back,</h4>
@@ -47,13 +47,13 @@
             <div class="col-md-8 mb-5">
                 <h2>Your Cocktails</h2>
                 <hr> 
-            <div class="row">
+                <div class="row">
                     {% for cocktail in cocktails %}
                         <div class="col-md-6">
                             <div class="wrap">
                                 <div class="cocktail-card shadow my-3 d-flex">
                                     <div class="text-center">
-                                        <img src="{{ cocktail.cocktail_img }}" alt="" class="rounded">
+                                        <img src="{{ cocktail.cocktail_img }}" alt="" class="rounded" onerror="this.onerror=null;this.src='/static/img/cocktail_default.jpg';">
                                         <h4 class="py-2 px-3">{{ cocktail.cocktail_name }}</h4>
                                         <p>{{ cocktail.category_name }}</p>
                                         <div class="text-center">

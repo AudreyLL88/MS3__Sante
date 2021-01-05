@@ -36,7 +36,7 @@
                             <div class="cocktail-card shadow my-3">
                             <div class="text-center">
                                 <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}">
-                                <img src="{{ cocktail.cocktail_img }}" alt="cocktail image" class="rounded">
+                                <img src="{{ cocktail.cocktail_img }}" alt="cocktail image" class="rounded" onerror="this.onerror=null;this.src='/static/img/cocktail_default.jpg';">
                                 </a>
                                 <h4 class="mx-3 my-2">{{ cocktail.cocktail_name }}
                                     {% if session.user|lower == cocktail.created_by|lower %}
