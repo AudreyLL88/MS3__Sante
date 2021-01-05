@@ -17,7 +17,7 @@
             <div class="form-group">
                 <label for="user_level" class="sr-only">Your Level</label>
                 <select id="user_level" name="user_level" class="form-control" required>
-                    <option value="" selected disabled>{{ user.user_level }}</option>
+                    <option value="{{ user.user_level }}" selected>{{ user.user_level }}</option>
                     <option>Newbie</option>
                     <option>Weekender</option>
                     <option>Pro</option>
