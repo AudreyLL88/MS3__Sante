@@ -12,12 +12,6 @@
                     <p>Posted by: <i class="fas fa-user mx-1"></i> {{ cocktail.created_by }}</p>
                     <p> on <i class="fas fa-calendar-plus mx-1"></i>{{ cocktail.cocktail_date }} in <i class="fas fa-folder-open mx-1"></i> {{ cocktail.category_name }} </p>
                 </div>
-                {% if session.user|lower == cocktail.created_by|lower %}
-                    <div class="pb-3 text-center">
-                        <button class="btn btn-sm btn-danger p-3 m-2" data-toggle="modal" data-target="#delete_cocktail">Delete</button>
-                        <a  href="{{ url_for('edit_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-sm btn-success p-3 m-2">Edit</a>
-                    </div>
-                {% endif %}
                 </article>
             <!-- Image and Credentials -->
             <figure class="wrap_img">
@@ -85,8 +79,14 @@
                             {% endfor %}
                         </ul>
                     </div>
-                    </div>
                 </div>
+            </div>
+            {% if session.user|lower == cocktail.created_by|lower %}
+                <div class="pb-3 text-center">
+                    <button class="btn btn-sm btn-danger p-3 m-2" data-toggle="modal" data-target="#delete_cocktail">Delete</button>
+                    <a  href="{{ url_for('edit_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-sm btn-success p-3 m-2">Edit</a>
+                </div>
+            {% endif %}
             </article>
             <!-- Suggestions -->
             <article class="row">

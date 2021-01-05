@@ -807,18 +807,19 @@ View my wireframes [here](static/img/wireframe.pdf).
 
 ## Local Deployment<hr>
 
-* Open browser od choice.
+* Open browser of choice.
 * Copy/Paste the address of [**Santé! repository**](https://github.com/AudreyLL88/MS3__Sante) in your search box.
 * When on the page, click on the "Code" button.
 * Copy the the |**HTTPS link**](https://github.com/AudreyLL88/MS3__Sante.git).
-* Open your IDE and in your terminal, type "git clone" and paste the [**HTTPS Link**](https://github.com/AudreyLL88/MS3__Sante.git).
-* Create an environement file called ".env" and add :
+* Open your IDE and in your terminal, create a virtual environement and activate it.
+* Type "git clone" and paste the [**HTTPS Link**](https://github.com/AudreyLL88/MS3__Sante.git).
+* Create an environement file called "env.py" and add :
     - MONGO_URI=mongodb+srv://...
     - SECRET_KEY=MyLittleSecret
 * Add your .env to .gitignore. to avoid it being uploaded.
 * In app.py, switch **debug=False** to **debug=True**
 * Upgrade pip locally with the command "pip install -U pip".
-* Install the modules used to run the application using "pip -r requirement.txt" in your terminal.
+* Install the modules used to run the application using "pip freeze > requirements.txt" in your terminal.
 * In parallel, create a MongoDB account and create a database called **"sante_project"**.
 * Add the following collections in the new database:
 
