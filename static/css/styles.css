@@ -138,7 +138,7 @@ ul {
 
 .nav__link:hover,
 .nav__logo:hover {
-	color: var(--first-color-dark);
+	color: #8F250A;
 }
 
 .nav__toggle {
@@ -238,7 +238,7 @@ footer a {
 }
 
 footer a:hover {
-	color: orange;
+	color: #8F250A;
 }
 
 /**** SUBSCRIPTION ****/
