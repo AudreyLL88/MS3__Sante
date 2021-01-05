@@ -64,10 +64,7 @@
             <div class="row">
                 <div class="col-12 text-center subscribe-body">
                     <div class="subscribe-title">
-                    <h3 class="mb-3">Subscribe to our Newsletter</h3>
-                    {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
-                          <p class="text-white">{{message}}</p>      
-                        {% endfor %} {% endif %} {% endwith %}
+                    <h3 class="mb-3">Subscribe to our Newsletter</h3>     
                     <form class="input-group" method="POST" action="{{url_for('subscribe')}}" name="subscriber_form">
                         <input type="email" class="form-control" placeholder="Enter your email"
                             name="subscriber_email" id="subscriber_email" required>
@@ -79,7 +76,7 @@
                 </div>
             </div>
         </section>
-    <!-- Featured cocktails -->
+        <!-- Featured cocktails -->
         <div class="row">
             <div class="col-12">
                 <h2 class="text-center">Our featured Cocktails</h2>

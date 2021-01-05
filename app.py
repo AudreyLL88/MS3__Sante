@@ -94,7 +94,7 @@ def index():
 
 
 # Subscribe box
-@ app.route('/subscribe', methods=['POST'])
+@ app.route('/subscribed', methods=['POST'])
 def subscribe():
 
     """
@@ -111,9 +111,11 @@ def subscribe():
     subscriptions = mongo.db.subscriptions
     return_data = request.form.to_dict()
     subscriptions.insert_one(return_data)
-    flash("You are subscribed!")
+    flash("Merci for subscribing!")
 
-    return render_template("index.html")
+    cocktails = list(
+                mongo.db.cocktails.find({"created_by": "admin"}).limit(6))
+    return render_template("index.html", cocktails=cocktails)
 
 
 # ======== COCKTAILS PAGE ======== #
@@ -912,4 +914,4 @@ def internal(error):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=False)
+            debug=True)

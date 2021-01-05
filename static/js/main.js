@@ -14,7 +14,7 @@ closeMenu.addEventListener('click', ()=>{
 
 // If statement to prevent errors on the console 
 
-if (window.location.pathname==='/') {
+if (window.location.pathname==='/' || window.location.pathname==='/subscribed') {
 
     // Hero image animation on mouse move in index.html
 
