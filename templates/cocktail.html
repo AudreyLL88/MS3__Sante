@@ -2,7 +2,7 @@
 {% block content %}
 
     <!-- Main Container -->
-    <main id="cocktail_recipe">
+    <main>
         <section class="container pt-3">
             <!-- Cocktail Title, Informations and EDIT/DELETE Buttons -->
             <article class="cocktail_name text-center">
@@ -31,16 +31,16 @@
             </article>
             {% if session.user|lower %}
                 {% if is_liked == true %}
-                    <div class="ratings text-center mb-3">
+                    <div class="text-center mb-3">
                         <a href="" class="btn btn-dark btn-small text-white disabled"><i class="fas fa-heart"></i> {{ cocktail.cocktail_like }} Likes</a>
                     </div>
                     {% else %}
-                    <div class="ratings text-center mb-3">
+                    <div class="text-center mb-3">
                         <a href="{{ url_for('update_like', cocktail_id=cocktail._id)}}" class="btn btn-outline-secondary btn-small"><i class="fas fa-heart"></i> {{ cocktail.cocktail_like }} Likes</a>
                     </div>
                 {% endif %}
                 {% else %}
-                    <div class="ratings text-center mb-3">
+                    <div class="text-center mb-3">
                         <a href="{{ url_for('login')}}" class="btn btn-outline-secondary btn-small"><i class="fas fa-heart"></i> {{ cocktail.cocktail_like }} Likes</a>
                     </div>
             {% endif %}
@@ -65,17 +65,17 @@
             <article class="shadow p-4 mb-5">
                 <div class="row">
                     <div class="col-md-4 mt-2">
-                    <div class="cocktail_ingredients">
+                    <div>
                         <h4>Ingredients</h4>
                         <hr>
                         {% for line in cocktail.cocktail_ingredients.splitlines() %}
                             <ul>
-                                <li class="cocktail_ingredient">{{ line }}</li>
+                                <li>{{ line }}</li>
                             </ul>
                         {% endfor %}
                     </div>
                     </div>
-                    <div class="col-md-8 cocktail_instructions mt-2">
+                    <div class="col-md-8 mt-2">
                     <h4 >Instructions</h4>
                     <hr>
                     <div class="cocktail_step d-flex lh-lg">
@@ -100,16 +100,16 @@
                         <div class="cocktail-card shadow my-3">
                             <div class="cocktail-body text-center">
                                 <a href="{{url_for('get_cocktail', cocktail_id=suggested_cocktail._id)}}">
-                                <img src="{{ suggested_cocktail.cocktail_img }}" alt="cocktail image" class="cocktail-img rounded">
+                                <img src="{{ suggested_cocktail.cocktail_img }}" alt="cocktail image" class="rounded">
                                 </a>
-                                <h4 class="card-cocktail-title mx-3 my-2">{{ suggested_cocktail.cocktail_name }}
+                                <h4 class="mx-3 my-2">{{ suggested_cocktail.cocktail_name }}
                                     {% if session.user|lower == suggested_cocktail.created_by|lower %}
                                         <a class="m-1 text-danger" data-toggle="modal" data-target="#delete_cocktail_{{suggested_cocktail._id}}"><i class="fas fa-trash"></i></a>
                                         <a  href="{{ url_for('edit_cocktail', cocktail_id=suggested_cocktail._id)}}" class="m-1 text-success"><i class="fas fa-edit"></i></a>
                                     {% endif %}
                                 </h4>
                                 <p>{{ suggested_cocktail.category_name }}</p>
-                                <small class="card-cocktail-description px-3"><i class="fas fa-user m-2"></i> {{ suggested_cocktail.created_by }}</small>
+                                <small class="px-3"><i class="fas fa-user m-2"></i> {{ suggested_cocktail.created_by }}</small>
                             </div>
                             <div class="text-center mb-3">
                                 <a href="{{url_for('get_cocktail', cocktail_id=suggested_cocktail._id)}}" class="btn btn-lg d-block btn-warning btn-color mx-2">Try</a>

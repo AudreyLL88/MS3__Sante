@@ -92,13 +92,13 @@
                     <div class="col-md-4">
                         <div class="wrap">
                             <div class="cocktail-card shadow my-3">
-                            <div class="cocktail-body text-center">
+                            <div class="text-center">
                                 <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}">
-                                <img src="{{ cocktail.cocktail_img }}" alt="cocktail image" class="cocktail-img rounded">
+                                <img src="{{ cocktail.cocktail_img }}" alt="cocktail image" class="rounded">
                                 </a>
-                                <h4 class="card-cocktail-title mx-3 my-2">{{ cocktail.cocktail_name }}</h4>
+                                <h4 class="mx-3 my-2">{{ cocktail.cocktail_name }}</h4>
                                 <p>{{ cocktail.category_name }}</p>
-                                <small class="card-cocktail-description px-3"><i class="fas fa-user m-2"></i> {{ cocktail.created_by }}</small>
+                                <small class="px-3"><i class="fas fa-user m-2"></i> {{ cocktail.created_by }}</small>
                             </div>
                             <div class="text-center mb-3">
                                 <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}" class="btn btn-lg d-block btn-warning btn-color mx-2">Try</a>

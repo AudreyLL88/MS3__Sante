@@ -52,14 +52,14 @@
                         <div class="col-md-6">
                             <div class="wrap">
                                 <div class="cocktail-card shadow my-3 d-flex">
-                                    <div class="cocktail-body text-center">
-                                        <img src="{{ cocktail.cocktail_img }}" alt="" class="cocktail-img rounded">
-                                        <h4 class="card-cocktail-title py-2 px-3">{{ cocktail.cocktail_name }}</h4>
+                                    <div class="text-center">
+                                        <img src="{{ cocktail.cocktail_img }}" alt="" class="rounded">
+                                        <h4 class="py-2 px-3">{{ cocktail.cocktail_name }}</h4>
                                         <p>{{ cocktail.category_name }}</p>
                                         <div class="text-center">
                                             <a href="{{url_for('get_cocktail', cocktail_id=cocktail._id)}}" class=" btn btn-small btn-warning btn-color  m-2"><i class="fas fa-eye"></i></a>
                                                 {% if session.user == 'admin' or session.user|lower == cocktail.created_by|lower %}
-                                                    <button class="btn btn-small btn-danger  m-2" data-toggle="modal" data-target="#delete_cocktail_{{cocktail._id}}"><i class="fas fa-trash"></i></button>
+                                                    <button class="btn btn-small btn-danger m-2" data-toggle="modal" data-target="#delete_cocktail_{{cocktail._id}}"><i class="fas fa-trash"></i></button>
                                                 {% endif %}
                                                 {% if session.user|lower == cocktail.created_by|lower %}
                                                     <a  href="{{ url_for('edit_cocktail', cocktail_id=cocktail._id)}}" class="btn  btn-small btn-success m-2"><i class="fas fa-edit"></i></a>
@@ -114,9 +114,9 @@
                     {% endif %}
             </div>
 
-           <!--Submit a recipe button/Category/Users -->
+           <!--Submit a Cocktail/Category/Users buttons -->
             <div class="col-md-4 mb-5">
-                <h2>Submit a recipe</h2>
+                <h2>Submit a Cocktail</h2>
                 <hr>
                 <a class="btn btn-warning btn-color btn-lg mb-3" href="{{ url_for('add_cocktail')}}">Create New &raquo;</a>
                  {% if session.user == 'admin' %}
