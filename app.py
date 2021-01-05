@@ -239,11 +239,16 @@ def register():
 
             return redirect(url_for("register"))
 
+        # replaces empty image url with default
+        user_img = request.form.get("user_img")
+        if user_img == '':
+            user_img = "/static/img/user_default.jpg"
+
         # grabs data from form to users collection
         register = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password")),
-            "user_img": request.form.get("user_img"),
+            "user_img": user_img,
             "user_level": request.form.get("user_level"),
             "user_loc": request.form.get("user_loc"),
             "liked_cocktail": []
