@@ -434,10 +434,25 @@ def edit_profile(username):
 # ======== DELETE PROFILE ======== #
 
 
-# Allows user to delete account when in session
-# Removes all user data from database
 @app.route("/delete_profile/<username>")
 def delete_profile(username):
+
+    """
+        Allows user to delete account when in session.
+
+        Deletes user from database.
+        Deletes user's cocktail from database.
+        Sends visual confirmation.
+        Removes from session.
+
+        Parameter:
+        string: username from users collection.
+
+        Returns:
+        template: redirects to login.html
+
+    """
+
     mongo.db.cocktails.remove({"created_by": username.lower()})
     mongo.db.users.remove({"username": username.lower()})
     flash("Profile deleted")
@@ -672,9 +687,21 @@ def update_like(cocktail_id):
 # ======== DELETE COCKTAIL ======== #
 
 
-# Allows the user(author/admin) to delete cocktail
 @app.route("/delete_cocktail/<cocktail_id>")
 def delete_cocktail(cocktail_id):
+
+    """
+        Allows user to delete cocktails.
+
+        Deletes cocktail from database.
+
+        Parameter:
+        string: cocktail_id from cocktails collection.
+
+        Returns:
+        template: redirects to cocktails.html
+
+    """
     mongo.db.cocktails.remove({"_id": ObjectId(cocktail_id)})
     flash("Adieu cocktail, see you never!")
 
@@ -818,9 +845,21 @@ def add_category():
 # ======== DELETE CATEGORY ======== #
 
 
-# allows admin to a delete category forever
 @app.route("/delete_category/<category_id>")
 def delete_category(category_id):
+
+    """
+        Allows admin to delete categories.
+
+        Deletes category from database.
+
+        Parameter:
+        string: category_id from category collection.
+
+        Returns:
+        template: redirects to categories.html
+
+    """
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
     flash("Adieu Category, see you never!")
 
@@ -828,6 +867,7 @@ def delete_category(category_id):
 
 
 # ======== USER LIST ======== #
+
 
 # all users list for admin
 @app.route("/users_list")
@@ -885,6 +925,19 @@ def users_list():
 # Removes all user data from database
 @app.route("/delete_user/<username>")
 def delete_user(username):
+
+    """
+        Allows admin to delete users.
+
+        Removes all user data from database.
+
+        Parameter:
+        string: username from users collection.
+
+        Returns:
+        template: redirects to users_list.html
+
+    """
     mongo.db.cocktails.remove({"created_by": username.lower()})
     mongo.db.users.remove({"username": username.lower()})
     flash("Adieu user!")
