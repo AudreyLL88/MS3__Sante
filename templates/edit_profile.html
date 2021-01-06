@@ -2,7 +2,7 @@
 {% block content %}
    
   <!--Main container -->
-    <main class="container cocktail_section min-vh-100 my-auto">
+    <section class="container cocktail_section min-vh-100 my-auto">
         <section class="cocktail_headline text-center pt-3">
             <h2>Edit Profile</h2>
         </section>
@@ -33,6 +33,6 @@
                 <a href="{{ url_for('profile', username=user.username|lower)}}" class="btn btn-lg btn-danger text-uppercase mt-3 ml-2">Cancel</a>
             </div>
         </form>
-    </main>
+    </section>
 
 {% endblock %}

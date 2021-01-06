@@ -11,7 +11,7 @@
             <!--Cocktail name input -->
             <div class="form-group">
                 <label for="cocktail_name">Cocktail Name</label>
-                <input required value="{{ cocktail.cocktail_name }}" type="text" class="form-control" id="cocktail_name" name="cocktail_name" aria-describedby="cocktail_name"
+                <input value="{{ cocktail.cocktail_name }}" type="text" class="form-control" id="cocktail_name" name="cocktail_name" aria-describedby="cocktail_name"
                     maxlength="45">
             </div>
             <!--Cocktail category input -->
@@ -53,7 +53,7 @@
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
                     <label for="cocktail_prep">Prep time</label>
-                    <select required id="cocktail_prep" name="cocktail_prep" class="form-control">
+                    <select id="cocktail_prep" name="cocktail_prep" class="form-control">
                         <option selected value="{{ cocktail.cocktail_prep }}" >{{ cocktail.cocktail_prep }}</option>
                         <option>Fast</option>
                         <option>Steady</option>
@@ -73,8 +73,8 @@
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
                     <label for="cocktail_diff">Level</label>
-                    <select required id="cocktail_diff" name="cocktail_diff" class="form-control">
-                        <option  value="{{ cocktail.cocktail_diff }}" selected> {{ cocktail.cocktail_diff }}</option>
+                    <select id="cocktail_diff" name="cocktail_diff" class="form-control">
+                        <option  value="{{ cocktail.cocktail_diff }}" selected>{{ cocktail.cocktail_diff }}</option>
                         <option>Easy</option>
                         <option>Medium</option>
                         <option>Hard</option>

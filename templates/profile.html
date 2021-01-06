@@ -36,7 +36,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-warning text-white" data-dismiss="modal">Cancel</button>
-                        <a href="{{ url_for('delete_profile', username=user.username)}}" type="button"
+                        <a href="{{ url_for('delete_profile', username=user.username)}}"
                         class="btn btn-danger">Delete</a>
                     </div>
                 </div>
@@ -92,28 +92,27 @@
                         </div>
                     {% endfor %}
                 </div>
-                 <!-- Pagination -->
-                    {% if search == False %}
-                        <div class="row justify-content-center">
-                            <nav aria-label="page navigation">
-                                <ul class="pagination d-flex text-center">
-                                    {% for i in range(0, count) %} 
-                                        <li class="page-item">
-                                            {% if i+1 == page %}
-                                                <a class="page-link active btn-color">
-                                            {% else %}
-                                                <a class="page-link btn-color" href="{{ url_for('profile', username=user.username, page=i+1) }}">
-                                            {% endif %}
-                                                {{ i + 1  }}
-                                            </a>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </nav>
-                        </div>
-                    {% endif %}
+                <!-- Pagination -->
+                {% if search == False %}
+                    <div class="row justify-content-center">
+                        <nav aria-label="page navigation">
+                            <ul class="pagination d-flex text-center">
+                                {% for i in range(0, count) %} 
+                                    <li class="page-item">
+                                        {% if i+1 == page %}
+                                            <a class="page-link active btn-color">
+                                        {% else %}
+                                            <a class="page-link btn-color" href="{{ url_for('profile', username=user.username, page=i+1) }}">
+                                        {% endif %}
+                                        {{ i + 1  }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </nav>
+                    </div>
+                {% endif %}
             </div>
-
            <!--Submit a Cocktail/Category/Users buttons -->
             <div class="col-md-4 mb-5">
                 <h2>Submit a Cocktail</h2>
