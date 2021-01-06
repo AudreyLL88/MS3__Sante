@@ -30,7 +30,7 @@
 ### Project Summary ###
 
 * Santé! is a collaborative platform where registered users can share cocktail recipes from all around the world, discover new cocktails and upgrade their knowledge and skills about mixology.
-* Santé! is also accessible to guest users without to possibility to post their own recipe or "like" a cocktail recipe.
+* Santé! is also accessible to guest users without the possibility to post their own recipes or "like" a cocktail recipe.
 
 <a name="user-stories"></a>
 ### User Stories ### 
@@ -55,8 +55,11 @@ Registered user
 * As a registered user of Santé! I want to be able to search for specific recipes.
 * As a registered user of Santé! I want to be able to "like" a cocktail recipe.
 * As a registered user of Santé! I want to be able to edit my cocktail recipes.
-* As a registered user of Santé! I want to get a visual confirmation when I edited my cocktail
+* As a registered user of Santé! I want to be able to edit my profile.
+* As a registered user of Santé! I want to get a visual confirmation when I edited my cocktail.
+* As a registered user of Santé! I want to get a visual confirmation when I edited my profile.
 * As a registered user of Santé! I want to be able to delete my cocktail recipes.
+* As a registered user of Santé! I want to be able to delete my profile.
 * As a registered user of Santé! I want to see who has published a cocktail recipe that isn't mine.
 * As a registered user of Santé! I want to be able to add a picture and relevant informations to my profile.
 * As a registered user of Santé! I want to be able to delete my profile.
@@ -64,7 +67,8 @@ Registered user
 Admin
 
 * As an admin of Santé! I want all of the above options but I would also be able to access and delete all the recipes from other users.
-* As an admin of Santé! I want to be able to create, edit and delete cocktail categories.
+* As an admin of Santé! I want to be able to create and delete cocktail categories.
+* As an admin of Santé! I want to be able to view how many users are registered on the website and delete users if necessary.
 
 <a name="requirements"></a>
 
@@ -250,6 +254,7 @@ View my wireframes [here](static/img/wireframe.pdf).
     - The user's picture,
     - The user's location,
     - The user's level.
+* Only the user image input is optional. If the field is left blank or has an invalid/broken image url, a default image will be displayed.
 * The passwords  are hashed and protected using the import "generate_password_hash, check_password_hash" from werkzeug security.
 * All that data is stored in the collection "users" on MongoDB Atlas database.
 
@@ -301,6 +306,7 @@ View my wireframes [here](static/img/wireframe.pdf).
     - Cocktail Instructions (blank)
 
 * The date is automatically generated through the Python import datetime and is not to be selected in the form.
+* If the image url is broken or invalid, a default image will be displayed.
 * After clicking on the submit button, the user can see the new recipe page topped with a validation flash message. The recipe will then appear in the user's profile.
 * This feature is accessible through the navigation bar and the user's profile.
 
@@ -379,6 +385,8 @@ View my wireframes [here](static/img/wireframe.pdf).
 * Comment section for registered user
 * Functionnality to consult other member profiles for registered user
 * Share recipe functionnality.
+* Possibility to have more than one admin.
+* Reverse search from ingredients to cocktails.
 
 <a name="technologies"></a>
 
@@ -543,6 +551,7 @@ View my wireframes [here](static/img/wireframe.pdf).
 * Try to fill the form with a wrong password/username. Is an alert informing you that your password/username is incorrect?
 * Fill the form with correct password/username. Is your profile page displayed correctly?
 * Is your profile card displaying your profile picture, username, level and location?
+* If the Image url input field was left blank, is the default profile picture displayed?
 * Is the dashboard correctly displaying the "Your cocktails" with its content and "Add cocktail" sections?
 * Click on the green "Edit Profile" button. Is the Edit Profile template rendered correctly?
 * Make one change in one of the fields and click submit. Are you redirected towards your profile page?
@@ -811,17 +820,17 @@ View my wireframes [here](static/img/wireframe.pdf).
 * Copy/Paste the address of [**Santé! repository**](https://github.com/AudreyLL88/MS3__Sante) in your search box.
 * When on the page, click on the "Code" button.
 * Copy the the |**HTTPS link**](https://github.com/AudreyLL88/MS3__Sante.git).
-* Open your IDE and in your terminal, create a virtual environement and activate it.
+* Open your IDE and in your terminal, create a virtual environement supporting python and flask and activate it.
 * Type "git clone" and paste the [**HTTPS Link**](https://github.com/AudreyLL88/MS3__Sante.git).
 * Create an environement file called "env.py" and add :
     - MONGO_URI=mongodb+srv://...
-    - SECRET_KEY=MyLittleSecret
-* Add your .env to .gitignore. to avoid it being uploaded.
+    - SECRET_KEY= [Your Secret key]
+* Add your env.py to .gitignore. to avoid it being uploaded.
 * In app.py, switch **debug=False** to **debug=True**
 * Upgrade pip locally with the command "pip install -U pip".
 * Install the modules used to run the application using "pip freeze > requirements.txt" in your terminal.
 * In parallel, create a MongoDB account and create a database called **"sante_project"**.
-* Add the following collections in the new database:
+* These are the following collections in the database:
 
 ***categories***
 ```
@@ -863,7 +872,11 @@ created_by:<string>
 cocktail_like:<decimal128>
 cocktail_date:<string>
 ```
-* You can now run your application locally by typing the command "python3 app.py" in your terminal.
+
+![Entity](static/img/readme/diagram.png)
+
+* You can now run your application locally by typing the command "python3 app.py" or "run app.py" in your terminal.
+* You can visit the website at http://127.0.0.1:5000
 
 ## Deploying on Heroku<hr>
 
