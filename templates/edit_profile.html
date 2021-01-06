@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
    
-  <!--Main container -->
+    <!--Main container -->
     <section class="container cocktail_section min-vh-100 my-auto">
         <section class="cocktail_headline text-center pt-3">
             <h2>Edit Profile</h2>
@@ -11,7 +11,7 @@
         <form class="pb-5 col-12"  method="POST" action="{{ url_for('edit_profile', username=user.username|lower) }}">
             <div class="form-group">
                 <label for="user_img">Your profile picture</label>
-                <input required type="text" class="form-control" id="user_img" name="user_img" aria-describedby="user_img"
+                <input type="text" class="form-control" id="user_img" name="user_img" aria-describedby="user_img"
                     value="{{ user.user_img }}">
             </div>
             <div class="form-group">
