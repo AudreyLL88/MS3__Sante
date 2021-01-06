@@ -75,7 +75,8 @@ Admin
 ### Research ###
 
 * To create Santé! I researched several popular Food and Beverages websites such as [**Epicurious**](https://www.epicurious.com/), [**Delish**](https://www.delish.com/) and [**Cocktail Flow**](https://cocktailflow.com/).
-* I also checked which website had the most interesting cocktail recipes (classics and originals) and my choice went to:
+* I also checked which website had the most interesting cocktail recipes (classics and originals) and my choice went to: **Goop**, **Liquor.com** and **TheSpruceEats**.
+* The language of the website is English with a few words in French to stick with the French origin of the app's name. The french used is grammatically correct as I am French.
 * Most of these websites usually include a story around the cocktail and I decided to turn it only in a small description as I as a user usually skip most of the text and prefer to have the ingredients right away. I did a small poll among my friends on **Instagram** about the Story vs. No Story topic on recipe website and results showed 89% (on 145 people) in favor of No Story. The people have spoken, No story it is.
 
 <a name="design-choices"></a>
@@ -574,7 +575,6 @@ View my wireframes [here](static/img/wireframe.pdf).
 **Your cocktails**
 
 * In your profile page, is the "Your cocktail" section displayed?
-* If you haven't submitted any recipe yet, is the message "Wow, such empty." showing?
 * As a registered user, if you have submitted cocktails previously, are the cocktail cards showing?
 * Are the buttons "View"(yellow), "Edit"(green), and "Delete"(red) displayed?
 * Is the picture, name and category of the cocktal showing?
@@ -924,11 +924,12 @@ SECRET_KEY = [Your Secret key]
 * All images used in the **It's Apero Time** index.html section are from [**Pixabay**](https://pixabay.com/)
 * The elements used on the hero section of index.html are all made by **Ivar Dahlberg**.
 * The image used for the profile picture of Audrey88 is my portrait.
-* The image used for the profile picture of LeBarman and Admin are from [**Pexel**](https://www.pexels.com/)
+* The image used for the profile picture of LeBarman, Admin and user default image are from [**Pexel**](https://www.pexels.com/)
+* The image user for the error page is from **MemeGenerator**.
 
 **Many thanks to:**
 
-* My mentor **Ignatius Ukwuoma** for his patience and kindness.
+* My mentor **Ignatius Ukwuoma** for his advice.
 * **Kasia** for her very inspiring ReadME.
 * **Sean** who will dislike being mentionned but his time was precious.
 * **Anthony and Jim** for their advice on use of doctstring and comments.
