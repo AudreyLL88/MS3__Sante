@@ -1,7 +1,6 @@
 import os
 import datetime
 import random
-import requests
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -473,7 +472,6 @@ def add_cocktail():
     if request.method == "POST":
 
         date = str(datetime.date.today())
-        print(date)
         # send form data to cocktails collection
         cocktail = {
             "category_name": request.form.get("category_name"),
