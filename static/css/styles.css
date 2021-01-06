@@ -445,7 +445,7 @@ figure .wrap_img {
 		margin: 0;
 	}
 	.nav {
-		height: calc(var(--header-height) + 1.5rem);
+		height: 4.5rem;
 	}
 	.nav__toggle,
 	.nav__close {
@@ -485,7 +485,6 @@ figure .wrap_img {
 		height: 100%;
 		padding: 3.5rem 1.5rem 0;
 		background: rgba(245, 210, 12, 0.712);
-		backdrop-filter: blur(10px);
 		transition: .5s;
     }
     .show {
