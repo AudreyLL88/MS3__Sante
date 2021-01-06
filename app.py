@@ -113,9 +113,7 @@ def subscribe():
     subscriptions.insert_one(return_data)
     flash("Merci for subscribing!")
 
-    cocktails = list(
-                mongo.db.cocktails.find({"created_by": "admin"}).limit(6))
-    return render_template("index.html", cocktails=cocktails)
+    return redirect(request.referrer)
 
 
 # ======== COCKTAILS PAGE ======== #
